@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F3FAF8"/>
+  <circle cx="180" cy="120" r="150" fill="#D7EFEA"/>
+  <circle cx="1060" cy="540" r="180" fill="#D6EAF4"/>
+
+  <rect x="120" y="120" width="960" height="390" rx="38" fill="white" stroke="#D4E5EA" stroke-width="4"/>
+
+  <text x="180" y="260" fill="#134B49" font-family="Arial" font-size="64" font-weight="700">
+    Business Systems Architect
+  </text>
+  <text x="180" y="340" fill="#2A6663" font-family="Arial" font-size="38">
+    Install the operating system your
+  </text>
+  <text x="180" y="392" fill="#2A6663" font-family="Arial" font-size="38">
+    business runs on.
+  </text>
+
+  <circle cx="930" cy="250" r="58" fill="#BFE0D8"/>
+  <circle cx="1010" cy="310" r="42" fill="#C8E0EE"/>
+</svg>
