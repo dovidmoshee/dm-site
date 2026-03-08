@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Business Systems Architect",
-  tagLine: "Install the operating system your business runs on.",
+  tagLine: "Simplify how your business runs.",
   description:
-    "In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
+    "In 30 days I simplify tools, workflows, automations, and AI so your team moves faster.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   ogImage: "/og-image.svg",
   contactEmail: "hello@businesssystemsarchitect.com",
@@ -29,31 +29,31 @@ export const deliverables = [
   "Tool Stack Architecture",
   "Automation Layer",
   "AI Workflow Layer",
-  "Documentation and Team Training",
+  "Docs and Team Training",
 ] as const;
 
 export const processPhases = [
   {
     name: "Discover",
-    summary: "Understand your current workflows, bottlenecks, and team constraints.",
+    summary: "Map current workflows, bottlenecks, and constraints.",
     iDo: "Audit your current systems, interview stakeholders, and map workflow friction.",
     iNeed: "Access to key tools, one core stakeholder, and your current process notes.",
   },
   {
     name: "Design",
-    summary: "Create the target business operating system and implementation plan.",
+    summary: "Design the target system and implementation plan.",
     iDo: "Design workflows, define system owners, and choose the right tool architecture.",
     iNeed: "Fast feedback on priorities and approval on the implementation plan.",
   },
   {
     name: "Implement",
-    summary: "Build, connect, and automate your workflows with clear handoffs.",
+    summary: "Build workflows, automations, and clear handoffs.",
     iDo: "Configure tools, ship automations, and set up AI-powered workflow support.",
     iNeed: "Timely access permissions and one point person for internal coordination.",
   },
   {
     name: "Train",
-    summary: "Make the system durable through documentation and team enablement.",
+    summary: "Document the system and train your team.",
     iDo: "Deliver SOPs, run training sessions, and hand over a clean operating manual.",
     iNeed: "Your team at one live walkthrough and agreement on ownership moving forward.",
   },
@@ -62,19 +62,19 @@ export const processPhases = [
 export const testimonials = [
   {
     quote:
-      "Our weekly operations meeting went from reactive chaos to clear decisions in two weeks.",
+      "Our weekly operations meeting now ends with clear decisions.",
     name: "Maya Levin",
     role: "Founder, Arcwell Studio",
   },
   {
     quote:
-      "We finally have one system of record. New hires now know exactly where work lives.",
+      "We finally have one system of record. New hires ramp faster.",
     name: "Daniel Ross",
     role: "COO, North Harbor Labs",
   },
   {
     quote:
-      "The automation layer removed manual handoffs we had tolerated for years.",
+      "Automation removed manual handoffs we had tolerated for years.",
     name: "Nina Park",
     role: "Head of Operations, Lanebridge",
   },
@@ -102,7 +102,7 @@ export const packages = [
   {
     name: "Build",
     price: "$9,500",
-    description: "End-to-end implementation for teams ready to move fast.",
+    description: "End-to-end setup for teams that need speed.",
     includes: [
       "Everything in Foundation",
       "Full implementation",
@@ -114,7 +114,7 @@ export const packages = [
   {
     name: "Scale",
     price: "$14,000",
-    description: "Advanced automation with support and reporting.",
+    description: "Advanced automation plus support and reporting.",
     popular: false,
     includes: [
       "Everything in Build",
@@ -129,17 +129,17 @@ export const faqItems = [
   {
     question: "Who is this for?",
     answer:
-      "This is for founders and teams with 5 to 150 people who need cleaner operations and faster execution.",
+      "Founder-led teams of 5 to 150 people that need cleaner operations.",
   },
   {
     question: "What tools do you work with?",
     answer:
-      "I work across common stacks such as Notion, Airtable, HubSpot, ClickUp, Asana, Slack, Zapier, Make, and AI copilots.",
+      "Notion, Airtable, HubSpot, ClickUp, Asana, Slack, Zapier, Make, and AI copilots.",
   },
   {
     question: "Do you replace my ops manager?",
     answer:
-      "No. I design and implement the system, then equip your ops lead or team to run it with confidence.",
+      "No. I build the system, then equip your team to run it confidently.",
   },
   {
     question: "How much time will you need from us?",

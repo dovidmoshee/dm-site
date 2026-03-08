@@ -19,37 +19,37 @@ import { deliverables, faqItems, measurableOutcomes, packages, processPhases, te
 export const metadata = buildMetadata({
   title: "Business Systems Architect",
   description:
-    "Install the operating system your business runs on. In 30 days, streamline tools, workflows, automations, and AI.",
+    "In 30 days, simplify your tools, workflows, automations, and AI.",
   path: "/",
 });
 
 const problemCards = [
   {
     title: "Chaos",
-    description: "Tasks sit in too many places and ownership is unclear.",
+    description: "Work is scattered and ownership is unclear.",
   },
   {
     title: "Manual work",
-    description: "Your team repeats steps that should already be automated.",
+    description: "Your team repeats steps that should be automatic.",
   },
   {
     title: "Tool sprawl",
-    description: "Tools grow faster than your process and reporting breaks.",
+    description: "Too many tools, not enough process.",
   },
 ] as const;
 
 const outcomeCards = [
   {
     title: "Clear workflows",
-    description: "Every core process has clear steps, owners, and handoffs.",
+    description: "Each core process has clear steps and owners.",
   },
   {
     title: "Automated handoffs",
-    description: "Key moments trigger the next action without manual chasing.",
+    description: "Key actions trigger the next step automatically.",
   },
   {
     title: "Single source of truth",
-    description: "Your team knows where decisions, data, and status live.",
+    description: "Everyone knows where work and decisions live.",
   },
 ] as const;
 
@@ -61,25 +61,24 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <FadeIn className="space-y-6">
               <Badge variant="secondary" className="rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]">
-                Business OS Setup
+                Business OS
               </Badge>
               <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl">
-                Install the operating system your business runs on.
+                Simplify how your business runs.
               </h1>
               <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-                In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less
-                manual work.
+                In 30 days, I simplify your tools and workflows so your team moves faster with less manual work.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg" className="rounded-full px-7">
-                  <Link href="/contact#book-call">Book a Call</Link>
+                  <Link href="/contact#book-call">Book a call</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full px-7">
-                  <Link href="/contact#checklist">Get the Checklist</Link>
+                  <Link href="/contact#checklist">Get checklist</Link>
                 </Button>
               </div>
               <div className="rounded-3xl border border-border/70 bg-white/80 p-5 shadow-sm">
-                <p className="text-sm font-medium text-muted-foreground">Trusted by founders and teams</p>
+                <p className="text-sm font-medium text-muted-foreground">Trusted by teams</p>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {["North Harbor", "Arcwell", "Lanebridge", "Pilot Ridge"].map((logo) => (
                     <div
@@ -113,9 +112,9 @@ export default function HomePage() {
       <section className="section-space">
         <Container className="space-y-10">
           <SectionHeading
-            eyebrow="Before and After"
-            title="Replace operational drag with reliable execution"
-            description="Most teams do not need more tools. They need a better operating model with clear ownership and consistent flow."
+            eyebrow="Before / After"
+            title="From drag to flow"
+            description="You do not need more tools. You need a clear system."
           />
 
           <div className="grid gap-4 md:grid-cols-3">
@@ -153,22 +152,21 @@ export default function HomePage() {
           <Card className="rounded-3xl border-border/70 bg-white/85 shadow-sm">
             <CardHeader className="space-y-4">
               <Badge variant="outline" className="w-fit rounded-full px-3 py-1 text-xs uppercase tracking-[0.16em]">
-                Business OS Setup
+                Business OS
               </Badge>
-              <CardTitle className="text-3xl">A focused 30-day engagement that upgrades how your business runs</CardTitle>
+              <CardTitle className="text-3xl">A focused 30-day build for simpler operations</CardTitle>
               <CardDescription className="max-w-3xl text-base">
-                This is for founder-led teams that want cleaner operations without a six-month transformation project. You get a
-                practical system your team can run right away.
+                For founder-led teams that want a practical system they can run right away.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
               <Button asChild className="rounded-full">
                 <Link href="/offer">
-                  Explore the Offer <ArrowRight className="ml-2 h-4 w-4" />
+                  See the Offer <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline" className="rounded-full">
-                <Link href="/contact#book-call">Book a Call</Link>
+                <Link href="/contact#book-call">Book a call</Link>
               </Button>
             </CardContent>
           </Card>
@@ -195,7 +193,7 @@ export default function HomePage() {
         <Container className="space-y-8">
           <SectionHeading
             title="How implementation works"
-            description="A tight four-phase process keeps momentum high and surprises low."
+            description="Four phases. Clear progress. No surprises."
           />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {processPhases.map((phase, index) => (
@@ -218,7 +216,7 @@ export default function HomePage() {
 
       <section className="section-space pt-0">
         <Container className="space-y-8">
-          <SectionHeading title="Proof and results" />
+          <SectionHeading title="Results" />
           <div className="grid gap-4 md:grid-cols-3">
             {testimonials.map((item) => (
               <Card key={item.name} className="rounded-3xl border-border/70 bg-white/85">
@@ -247,7 +245,7 @@ export default function HomePage() {
 
       <section className="section-space pt-0">
         <Container className="space-y-8">
-          <SectionHeading title="Packages" description="Choose the right level based on your timeline, complexity, and internal capacity." />
+          <SectionHeading title="Packages" description="Pick the package that fits your team." />
           <div className="grid gap-4 md:grid-cols-3">
             {packages.map((item) => (
               <Card key={item.name} className="rounded-3xl border-border/70 bg-white/85">
@@ -298,14 +296,14 @@ export default function HomePage() {
           <div className="rounded-3xl border border-border/70 bg-gradient-to-br from-slate-50 via-white to-teal-50 p-10 shadow-sm sm:p-12">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="space-y-3">
-                <h2 className="text-3xl font-semibold sm:text-4xl">Ready for a calmer, faster business?</h2>
+                <h2 className="text-3xl font-semibold sm:text-4xl">Ready for simpler operations?</h2>
                 <p className="max-w-xl text-muted-foreground">
-                  Let us design the operating system your team can trust every day.
+                  Let us build a system your team can trust every day.
                 </p>
               </div>
               <Button asChild size="lg" className="rounded-full px-7">
                 <Link href="/contact#book-call">
-                  Book a Call <ArrowRight className="ml-2 h-4 w-4" />
+                  Book a call <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
