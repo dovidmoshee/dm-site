@@ -21,8 +21,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Business Systems Architect",
-    template: "%s | Business Systems Architect",
+    default: "Calibrate Media",
+    template: "%s | Calibrate Media",
   },
   description: siteConfig.description,
   openGraph: {

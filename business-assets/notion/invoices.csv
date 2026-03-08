@@ -1,0 +1,2 @@
+invoice_number,client_name,project_name,issue_date,due_date,amount,currency,status,payment_date,notes
+INV-0001, , , , ,0,USD,Draft, ,

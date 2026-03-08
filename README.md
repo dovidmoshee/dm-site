@@ -1,4 +1,4 @@
-# Business Systems Architect Website
+# Calibrate Media Website
 
 Production-ready marketing site built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, lucide-react, and Framer Motion.
 
@@ -51,7 +51,7 @@ SMTP_HOST=smtp.your-provider.com
 SMTP_PORT=587
 SMTP_USER=your_smtp_user
 SMTP_PASS=your_smtp_password
-SMTP_FROM="Business Systems Architect <hello@your-domain.com>"
+SMTP_FROM="Calibrate Media <hello@your-domain.com>"
 SMTP_TO=hello@your-domain.com
 ```
 

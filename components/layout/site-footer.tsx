@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-border/60 bg-white/70 py-12">
       <Container className="grid gap-10 md:grid-cols-3 md:gap-6">
         <div className="space-y-4">
-          <p className="text-sm font-semibold">Business Systems Architect</p>
+          <p className="text-sm font-semibold">Calibrate Media</p>
           <p className="max-w-xs text-sm text-muted-foreground">
             Calm systems, faster execution, and clear ownership for founder-led teams.
           </p>

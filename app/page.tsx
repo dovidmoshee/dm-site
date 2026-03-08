@@ -17,7 +17,7 @@ import { buildMetadata } from "@/lib/seo";
 import { deliverables, faqItems, measurableOutcomes, packages, processPhases, testimonials } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Business Systems Architect",
+  title: "Calibrate Media",
   description:
     "In 30 days, simplify your tools, workflows, automations, and AI.",
   path: "/",

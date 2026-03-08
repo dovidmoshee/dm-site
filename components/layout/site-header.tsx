@@ -20,7 +20,7 @@ export function SiteHeader() {
           <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-primary-foreground">
             <Workflow className="h-4 w-4" aria-hidden />
           </span>
-          <span>Business Systems Architect</span>
+          <span>Calibrate Media</span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
@@ -44,10 +44,10 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild variant="ghost" className="rounded-full">
-            <Link href="/contact#checklist">Get the Checklist</Link>
+            <Link href="/contact#checklist">Get checklist</Link>
           </Button>
           <Button asChild className="rounded-full px-5">
-            <Link href="/contact#book-call">Book a Call</Link>
+            <Link href="/contact#book-call">Book a call</Link>
           </Button>
         </div>
 
@@ -59,7 +59,7 @@ export function SiteHeader() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[320px]">
             <SheetHeader>
-              <SheetTitle>Business Systems Architect</SheetTitle>
+              <SheetTitle>Calibrate Media</SheetTitle>
               <SheetDescription>Choose a page to continue.</SheetDescription>
             </SheetHeader>
             <div className="mt-8 flex flex-col gap-2">
@@ -71,10 +71,10 @@ export function SiteHeader() {
             </div>
             <div className="mt-6 flex flex-col gap-2">
               <Button asChild variant="outline" className="rounded-full">
-                <Link href="/contact#checklist">Get the Checklist</Link>
+                <Link href="/contact#checklist">Get checklist</Link>
               </Button>
               <Button asChild className="rounded-full">
-                <Link href="/contact#book-call">Book a Call</Link>
+                <Link href="/contact#book-call">Book a call</Link>
               </Button>
             </div>
           </SheetContent>

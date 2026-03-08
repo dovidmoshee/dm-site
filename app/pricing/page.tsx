@@ -12,7 +12,7 @@ import { packages } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Choose between Foundation, Build, and Scale packages for your Business OS Setup. Clear scope, fixed pricing, and fast delivery.",
+    "Choose between Foundation, Build, and Scale packages for your 30-day systems setup. Clear scope, fixed pricing, and fast delivery.",
   path: "/pricing",
 });
 
@@ -55,7 +55,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild className="w-full rounded-full">
-                    <Link href="/contact#book-call">Book a Call</Link>
+                    <Link href="/contact#book-call">Book a call</Link>
                   </Button>
                 </CardFooter>
               </Card>

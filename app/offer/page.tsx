@@ -10,9 +10,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Business OS Setup",
+  title: "30-Day Systems Setup",
   description:
-    "A 30-day Business OS Setup to streamline workflows, automate handoffs, and create one reliable system for your team.",
+    "A 30-day systems setup to streamline workflows, automate handoffs, and create one reliable operating model for your team.",
   path: "/offer",
 });
 
@@ -107,11 +107,11 @@ export default function OfferPage() {
             In 30 days, install a business operating system your team can run with confidence.
           </h1>
           <p className="max-w-3xl text-lg text-muted-foreground">
-            Business OS Setup is a fixed-scope engagement that replaces fragmented workflows with clear process design,
+            This fixed-scope engagement replaces fragmented workflows with clear process design,
             automation, and durable documentation.
           </p>
           <Button asChild className="rounded-full">
-            <Link href="/contact#book-call">Book a Call</Link>
+            <Link href="/contact#book-call">Book a call</Link>
           </Button>
         </Container>
       </section>

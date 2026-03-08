@@ -10,7 +10,7 @@ import { processPhases } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "How It Works",
   description:
-    "See the four-phase Business OS Setup process from discovery to training, including key artifacts and success criteria.",
+    "See the four-phase systems setup process from discovery to training, including key artifacts and success criteria.",
   path: "/process",
 });
 

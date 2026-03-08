@@ -7,7 +7,7 @@ import { faqItems } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "FAQ",
   description:
-    "Answers to common questions about Business OS Setup, tooling, timelines, security, and expected outcomes.",
+    "Answers to common questions about systems setup, tooling, timelines, security, and expected outcomes.",
   path: "/faq",
 });
 
@@ -18,7 +18,7 @@ export default function FaqPage() {
         <Container className="space-y-4">
           <h1 className="text-4xl font-semibold sm:text-5xl">Frequently asked questions</h1>
           <p className="max-w-3xl text-lg text-muted-foreground">
-            Everything teams usually ask before starting a Business OS Setup engagement.
+            Everything teams usually ask before starting a systems setup engagement.
           </p>
         </Container>
       </section>

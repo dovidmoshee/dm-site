@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "Privacy policy for Business Systems Architect.",
+  description: "Privacy policy for Calibrate Media.",
   path: "/legal/privacy",
 });
 
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold text-foreground">Your rights</h2>
             <p>
               You may request access, correction, or deletion of your personal information by contacting us at
-              hello@businesssystemsarchitect.com.
+              hello@calibratemedia.com.
             </p>
           </section>
         </div>

@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "Business Systems Architect",
+  name: "Calibrate Media",
   tagLine: "Simplify how your business runs.",
   description:
     "In 30 days I simplify tools, workflows, automations, and AI so your team moves faster.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   ogImage: "/og-image.svg",
-  contactEmail: "hello@businesssystemsarchitect.com",
-  calendlyPlaceholderUrl: "https://calendly.com/your-handle/business-systems-call",
+  contactEmail: "hello@calibratemedia.com",
+  calendlyPlaceholderUrl: "https://calendly.com/your-handle/calibrate-media-call",
 } as const;
 
 export const navLinks = [
@@ -21,7 +21,7 @@ export const navLinks = [
 export const socialLinks = [
   { href: "#", label: "LinkedIn" },
   { href: "#", label: "X" },
-  { href: "mailto:hello@businesssystemsarchitect.com", label: "Email" },
+  { href: "mailto:hello@calibratemedia.com", label: "Email" },
 ] as const;
 
 export const deliverables = [

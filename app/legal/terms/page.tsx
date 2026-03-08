@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Terms of Service",
-  description: "Terms of service for Business Systems Architect.",
+  description: "Terms of service for Calibrate Media.",
   path: "/legal/terms",
 });
 
@@ -18,7 +18,7 @@ export default function TermsPage() {
           <section className="space-y-2">
             <h2 className="text-2xl font-semibold text-foreground">Scope of services</h2>
             <p>
-              Business Systems Architect provides consulting and implementation services as described in signed proposals and
+              Calibrate Media provides consulting and implementation services as described in signed proposals and
               agreements.
             </p>
           </section>

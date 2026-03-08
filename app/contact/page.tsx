@@ -55,7 +55,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <Container>
           <Card className="rounded-3xl border-border/70 bg-white/85">
             <CardHeader>
-              <CardTitle className="text-2xl">Book a Call</CardTitle>
+              <CardTitle className="text-2xl">Book a call</CardTitle>
               <CardDescription className="text-base">
                 Replace this placeholder with your real Calendly link or embed code.
               </CardDescription>

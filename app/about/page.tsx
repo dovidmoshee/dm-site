@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Learn how a Business Systems Architect bridges business strategy and technical execution to build reliable operations.",
+    "Learn how Calibrate Media bridges business strategy and technical execution to build reliable operations.",
   path: "/about",
 });
 
