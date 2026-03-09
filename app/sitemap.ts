@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { getAllBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
 
 const routes = [
@@ -8,6 +9,7 @@ const routes = [
   "/process",
   "/pricing",
   "/about",
+  "/blog",
   "/faq",
   "/contact",
   "/thank-you",
@@ -15,13 +17,20 @@ const routes = [
   "/legal/terms",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const blogPosts = await getAllBlogPosts();
+  const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`);
 
-  return routes.map((route) => ({
-    url: `${siteConfig.url}${route || "/"}`,
-    lastModified: now,
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/contact" ? 0.9 : 0.7,
-  }));
+  return [...routes, ...blogRoutes].map((route) => {
+    const blogPost = blogPosts.find((post) => route === `/blog/${post.slug}`);
+    const lastModified = blogPost ? new Date(blogPost.updatedAt ?? blogPost.publishedAt) : now;
+
+    return {
+      url: `${siteConfig.url}${route || "/"}`,
+      lastModified,
+      changeFrequency: route.startsWith("/blog/") || route === "/blog" ? "weekly" : route === "" ? "weekly" : "monthly",
+      priority: route === "" ? 1 : route === "/contact" ? 0.9 : route.startsWith("/blog/") ? 0.75 : 0.7,
+    };
+  });
 }

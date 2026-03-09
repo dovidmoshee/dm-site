@@ -45,6 +45,9 @@ export function SiteFooter() {
             <p className="footer-col-title">Company</p>
             <ul className="footer-links">
               <li>
+                <Link href="/blog">Blog</Link>
+              </li>
+              <li>
                 <Link href="/about">About</Link>
               </li>
               <li>
