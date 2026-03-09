@@ -37,7 +37,18 @@ export type BlogPost = BlogPostSummary & {
 };
 
 export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
-  const files = await fs.readdir(BLOG_CONTENT_DIR);
+  let files: string[] = [];
+
+  try {
+    files = await fs.readdir(BLOG_CONTENT_DIR);
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") {
+      return [];
+    }
+
+    throw error;
+  }
+
   const slugs = files.filter((file) => file.endsWith(".mdx")).map((file) => file.replace(/\.mdx$/, ""));
   const posts = await Promise.all(slugs.map((slug) => getBlogPostBySlug(slug)));
   const summaries: BlogPostSummary[] = [];
@@ -69,19 +80,28 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefi
   let fileContent: string;
   try {
     fileContent = await fs.readFile(postPath, "utf8");
-  } catch {
-    return undefined;
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") {
+      return undefined;
+    }
+
+    throw error;
   }
 
-  const { content, data } = matter(fileContent);
-  const frontmatter = parseFrontmatter(data, slug);
+  try {
+    const { content, data } = matter(fileContent);
+    const frontmatter = parseFrontmatter(data, slug);
 
-  return {
-    slug,
-    ...frontmatter,
-    readingMinutes: calculateReadingMinutes(content),
-    content: content.trim(),
-  };
+    return {
+      slug,
+      ...frontmatter,
+      readingMinutes: calculateReadingMinutes(content),
+      content: content.trim(),
+    };
+  } catch (error) {
+    console.error(`Skipping invalid blog post "${slug}".`, error);
+    return undefined;
+  }
 }
 
 function parseFrontmatter(data: matter.GrayMatterFile<string>["data"], slug: string): BlogPostFrontmatter {
@@ -124,6 +144,10 @@ function getString(value: unknown) {
 function getOptionalString(value: unknown) {
   const nextValue = getString(value);
   return nextValue || undefined;
+}
+
+function isNodeError(error: unknown): error is NodeJS.ErrnoException {
+  return typeof error === "object" && error !== null && "code" in error;
 }
 
 function getStringArray(value: unknown) {
