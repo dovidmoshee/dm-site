@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "operating-system-for-small-teams",
+    "title": "The Business Operating System Small Teams Actually Need",
+    "excerpt": "A practical framework for founders who want cleaner handoffs, faster execution, and less daily firefighting.",
+    "publishedAt": "2026-03-03",
+    "updatedAt": "2026-03-03",
+    "tags": [
+      "Operations",
+      "Systems",
+      "Leadership"
+    ],
+    "author": {
+      "name": "David Ehrentreu",
+      "role": "Founder, Calibrate Media"
+    },
+    "cta": {
+      "title": "Want this implemented in your team?",
+      "description": "Book an audit call and we will map your current system gaps, then prioritize quick wins.",
+      "href": "/contact",
+      "label": "Book a Call"
+    },
+    "readingMinutes": 1,
+    "content": "## Most teams are not underpowered, they are under-structured\n\nWhen a team misses deadlines repeatedly, founders usually assume the problem is people. In practice, the issue is often system design: unclear ownership, no documented workflow, and missing handoff standards.\n\nA real operating system for a small business is not software. It is a repeatable way of turning demand into delivery with minimal confusion.\n\n## Define the workflow before you automate anything\n\nAutomation magnifies whatever process you already have. If the process is inconsistent, automations only make bad handoffs happen faster.\n\nMap your core journey end-to-end first: lead intake, qualification, proposal, onboarding, execution, reporting, retention. Then assign ownership at each stage.\n\n- One owner per stage\n- One source of truth per data type\n- One documented trigger for each handoff\n\n## Treat documentation as production infrastructure\n\nIf your SOPs are outdated, your systems are already breaking. Documentation should be short, specific, and embedded into the workflow where the work happens.\n\nA useful SOP answers three things: what gets done, who owns it, and what done looks like. Anything beyond that should be optional context.\n\n## Build management visibility into the system itself\n\nFounders should not need to chase updates manually. Your system should surface pipeline state, bottlenecks, and at-risk deliverables without a meeting.\n\nThis is where teams gain leverage: fewer status conversations and more execution time."
+  },
+  {
+    "slug": "how-to-document-workflows-that-scale",
+    "title": "How to Document Workflows So They Survive Team Growth",
+    "excerpt": "A documentation model that keeps quality high while your team adds new clients, teammates, and channels.",
+    "publishedAt": "2026-02-21",
+    "updatedAt": "2026-02-21",
+    "tags": [
+      "Documentation",
+      "SOPs",
+      "Scale"
+    ],
+    "author": {
+      "name": "David Ehrentreu",
+      "role": "Founder, Calibrate Media"
+    },
+    "cta": {
+      "title": "Need a full SOP package for your team?",
+      "description": "I build and implement documentation systems that are easy to run and easy to maintain.",
+      "href": "/offer",
+      "label": "See the Offer"
+    },
+    "readingMinutes": 1,
+    "content": "## Why most SOP libraries fail\n\nMost internal docs are either too vague to execute or too long to use. Teams avoid them because reading takes longer than asking someone directly.\n\nGood documentation reduces decisions. It should remove ambiguity at the exact point where work gets blocked.\n\n## Use a three-layer format\n\nEvery recurring workflow should have a one-page overview, a step-by-step checklist, and a troubleshooting addendum. This keeps execution fast while still preserving edge-case knowledge.\n\n- Layer 1: Purpose, owner, trigger, expected output\n- Layer 2: Ordered checklist with exact tools and fields\n- Layer 3: Known failures and recovery paths\n\n## Design for handoff, not for the original creator\n\nIf only the author can execute the SOP confidently, the process is not documented yet. A new hire should be able to run it with minimal supervision.\n\nReview one SOP every week with someone who did not write it. That exposes hidden assumptions quickly.\n\n## Tie SOP health to operating metrics\n\nTrack lead response time, onboarding cycle time, revision rate, and support escalations. When those drift, your SOP quality usually has drifted too.\n\nDocumentation is not a one-time project. It is a maintenance system connected to performance."
+  },
+  {
+    "slug": "automation-priorities-for-growing-businesses",
+    "title": "Automation Priorities for Growing Service Businesses",
+    "excerpt": "Where to automate first if you want measurable time savings without introducing fragile workflows.",
+    "publishedAt": "2026-01-30",
+    "updatedAt": "2026-01-30",
+    "tags": [
+      "Automation",
+      "Efficiency",
+      "Growth"
+    ],
+    "author": {
+      "name": "David Ehrentreu",
+      "role": "Founder, Calibrate Media"
+    },
+    "cta": {
+      "title": "Want an automation roadmap you can trust?",
+      "description": "I can audit your stack and deliver a phased plan with fast wins and lower-risk implementation.",
+      "href": "/contact#checklist",
+      "label": "Get the Checklist"
+    },
+    "readingMinutes": 1,
+    "content": "## Start where errors are expensive\n\nNot all automation opportunities are equal. Prioritize workflows where misses create revenue loss, delivery delays, or poor client experience.\n\nFor most agencies and SaaS teams, that means lead intake, deal handoff, onboarding, billing triggers, and client update loops.\n\n## Rank opportunities with a simple score\n\nScore each workflow by frequency, manual effort, and downside of failure. Focus on high-frequency, high-impact processes first.\n\n- Frequency: how often does this happen?\n- Friction: how many manual steps are involved?\n- Failure cost: what happens when this breaks?\n\n## Build guardrails before scale\n\nEvery automation should include validation and fallback behavior. If data is missing or malformed, route it to review instead of pushing bad data through the system.\n\nReliability matters more than volume in early-stage automation programs.\n\n## Measure outcomes, not automations\n\nTeams often celebrate number of zaps, scenarios, or workflows. That is activity, not business value.\n\nTrack time saved, cycle-time reduction, and handoff error rates. If those numbers do not move, the automation is not delivering impact."
+  }
+]

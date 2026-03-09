@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run generate:blog-cache && next dev",
+    "generate:blog-cache": "node scripts/generate-blog-cache.mjs",
+    "build": "npm run generate:blog-cache && next build",
     "start": "next start",
     "lint": "eslint"
   },

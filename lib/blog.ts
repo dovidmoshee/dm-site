@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 
 import matter from "gray-matter";
+import generatedBlogPostsData from "@/content/blog/posts.generated.json";
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -36,29 +37,16 @@ export type BlogPost = BlogPostSummary & {
   content: string;
 };
 
+let fileSystemPostsPromise: Promise<BlogPost[] | null> | null = null;
+const generatedBlogPosts = parseGeneratedBlogPosts(generatedBlogPostsData);
+
 export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
-  let files: string[] = [];
+  const posts = await getBlogPosts();
 
-  try {
-    files = await fs.readdir(BLOG_CONTENT_DIR);
-  } catch (error) {
-    if (isNodeError(error) && error.code === "ENOENT") {
-      return [];
-    }
-
-    throw error;
-  }
-
-  const slugs = files.filter((file) => file.endsWith(".mdx")).map((file) => file.replace(/\.mdx$/, ""));
-  const posts = await Promise.all(slugs.map((slug) => getBlogPostBySlug(slug)));
-  const summaries: BlogPostSummary[] = [];
-
-  for (const post of posts) {
-    if (!post) {
-      continue;
-    }
-
-    summaries.push({
+  return posts
+    .slice()
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .map((post) => ({
       slug: post.slug,
       title: post.title,
       excerpt: post.excerpt,
@@ -68,13 +56,52 @@ export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
       tags: post.tags,
       author: post.author,
       cta: post.cta,
-    });
-  }
-
-  return summaries.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    }));
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const posts = await getBlogPosts();
+  return posts.find((post) => post.slug === slug);
+}
+
+async function getBlogPosts(): Promise<BlogPost[]> {
+  const fileSystemPosts = await getFileSystemPosts();
+
+  if (fileSystemPosts !== null) {
+    return fileSystemPosts;
+  }
+
+  return generatedBlogPosts;
+}
+
+async function getFileSystemPosts(): Promise<BlogPost[] | null> {
+  if (!fileSystemPostsPromise) {
+    fileSystemPostsPromise = readBlogPostsFromFileSystem();
+  }
+
+  return fileSystemPostsPromise;
+}
+
+async function readBlogPostsFromFileSystem(): Promise<BlogPost[] | null> {
+  let files: string[] = [];
+
+  try {
+    files = await fs.readdir(BLOG_CONTENT_DIR);
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") {
+      return null;
+    }
+
+    throw error;
+  }
+
+  const slugs = files.filter((file) => file.endsWith(".mdx")).map((file) => file.replace(/\.mdx$/, ""));
+  const posts = await Promise.all(slugs.map((slug) => readBlogPostFromFileSystem(slug)));
+
+  return posts.filter((post): post is BlogPost => Boolean(post));
+}
+
+async function readBlogPostFromFileSystem(slug: string): Promise<BlogPost | undefined> {
   const postPath = path.join(BLOG_CONTENT_DIR, `${slug}.mdx`);
 
   let fileContent: string;
@@ -102,6 +129,48 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefi
     console.error(`Skipping invalid blog post "${slug}".`, error);
     return undefined;
   }
+}
+
+function parseGeneratedBlogPosts(data: unknown): BlogPost[] {
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  const posts: BlogPost[] = [];
+
+  for (const value of data) {
+    if (!value || typeof value !== "object") {
+      continue;
+    }
+
+    const record = value as Record<string, unknown>;
+    const slug = getString(record.slug);
+    const content = getString(record.content);
+
+    if (!slug || !content) {
+      continue;
+    }
+
+    try {
+      const frontmatter = parseFrontmatter(record, slug);
+      const readingMinutesValue = record.readingMinutes;
+      const readingMinutes =
+        typeof readingMinutesValue === "number" && Number.isFinite(readingMinutesValue)
+          ? Math.max(1, Math.round(readingMinutesValue))
+          : calculateReadingMinutes(content);
+
+      posts.push({
+        slug,
+        ...frontmatter,
+        readingMinutes,
+        content,
+      });
+    } catch (error) {
+      console.error(`Skipping invalid generated blog post "${slug}".`, error);
+    }
+  }
+
+  return posts;
 }
 
 function parseFrontmatter(data: matter.GrayMatterFile<string>["data"], slug: string): BlogPostFrontmatter {
