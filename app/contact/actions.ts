@@ -123,7 +123,7 @@ export async function submitContactForm(formData: FormData) {
   const message = getStringValue(formData, "message");
   const wantsChecklist = formData.get("checklist") === "on";
 
-  if (!name || !email || !company || !teamSize || !bottleneck || !message) {
+  if (!name || !email) {
     redirect("/contact?error=missing-fields");
   }
 
@@ -136,10 +136,10 @@ export async function submitContactForm(formData: FormData) {
     createdAt: new Date().toISOString(),
     name,
     email,
-    company,
-    teamSize,
-    bottleneck,
-    message,
+    company: company || "Not provided",
+    teamSize: teamSize || "Not provided",
+    bottleneck: bottleneck || "Not provided",
+    message: message || "Not provided",
     wantsChecklist,
   };
 

@@ -1,4 +1,3 @@
-import { Container } from "@/components/layout/container";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -9,53 +8,48 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <section className="section-space pt-14">
-      <Container className="max-w-4xl space-y-8">
-        <h1 className="text-4xl font-semibold">Privacy Policy</h1>
-        <p className="text-sm text-muted-foreground">Last updated: March 5, 2026</p>
+    <div className="container">
+      <div className="legal-content">
+        <h1>Privacy Policy</h1>
+        <span className="mono">Last updated: January 2025</span>
 
-        <div className="space-y-6 text-muted-foreground">
-          <section className="space-y-2">
-            <h2 className="text-2xl font-semibold text-foreground">Information we collect</h2>
-            <p>
-              When you submit the contact form, we collect the information you provide, such as your name, email, company,
-              and message.
-            </p>
-          </section>
+        <p>
+          Calibrate Media (&quot;we&quot;, &quot;us&quot;) is committed to protecting your personal information. This
+          policy explains what data we collect, how we use it, and your rights.
+        </p>
 
-          <section className="space-y-2">
-            <h2 className="text-2xl font-semibold text-foreground">How we use information</h2>
-            <p>
-              We use submitted information to respond to inquiries, provide requested resources, and discuss potential service
-              engagements.
-            </p>
-          </section>
+        <h2>What we collect</h2>
+        <p>
+          We collect information you provide directly, including name, email address, company name, and message content
+          when you fill out a contact form. We may also collect basic usage data through analytics tools to understand
+          how visitors use this site.
+        </p>
 
-          <section className="space-y-2">
-            <h2 className="text-2xl font-semibold text-foreground">Data retention</h2>
-            <p>
-              We retain inquiry data only as long as needed to manage business communications and comply with legal
-              obligations.
-            </p>
-          </section>
+        <h2>How we use it</h2>
+        <p>
+          We use your information to respond to inquiries, send requested resources like the business systems
+          checklist, and occasionally share relevant updates about our services. We do not sell your data. We do not
+          share it with third parties except where needed to operate our services.
+        </p>
 
-          <section className="space-y-2">
-            <h2 className="text-2xl font-semibold text-foreground">Security</h2>
-            <p>
-              We apply practical safeguards to protect submitted information. No method of transmission or storage is
-              completely secure.
-            </p>
-          </section>
+        <h2>Email communications</h2>
+        <p>
+          If you opt in to receive the checklist or updates, you can unsubscribe at any time by clicking the
+          unsubscribe link in any email or by writing to us directly.
+        </p>
 
-          <section className="space-y-2">
-            <h2 className="text-2xl font-semibold text-foreground">Your rights</h2>
-            <p>
-              You may request access, correction, or deletion of your personal information by contacting us at
-              hello@calibratemedia.com.
-            </p>
-          </section>
-        </div>
-      </Container>
-    </section>
+        <h2>Cookies</h2>
+        <p>This site may use basic cookies for analytics purposes. No advertising or tracking cookies are used.</p>
+
+        <h2>Your rights</h2>
+        <p>
+          You have the right to request access to, correction of, or deletion of any personal data we hold about you.
+          To make such a request, contact us at hello@calibratemedia.co.
+        </p>
+
+        <h2>Contact</h2>
+        <p>For any privacy-related questions, reach us at hello@calibratemedia.co.</p>
+      </div>
+    </div>
   );
 }

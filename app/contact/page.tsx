@@ -1,11 +1,3 @@
-import Link from "next/link";
-
-import { SubmitButton } from "@/components/forms/submit-button";
-import { Container } from "@/components/layout/container";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { buildMetadata } from "@/lib/seo";
 import { bottleneckOptions, siteConfig, teamSizeOptions } from "@/lib/site";
 
@@ -14,7 +6,7 @@ import { submitContactForm } from "./actions";
 export const metadata = buildMetadata({
   title: "Contact",
   description:
-    "Book a call or send your project details. Share your biggest bottleneck and get a recommendation for the right package.",
+    "Book a free 30-minute audit call or send a message to get a clear recommendation for your systems setup.",
   path: "/contact",
 });
 
@@ -30,7 +22,7 @@ function getErrorMessage(errorValue?: string | string[]) {
   }
 
   if (error === "missing-fields") {
-    return "Please fill in all required fields before submitting.";
+    return "Please enter your name and email before submitting.";
   }
 
   return null;
@@ -42,89 +34,113 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
   return (
     <>
-      <section className="section-space pt-14">
-        <Container className="space-y-4">
-          <h1 className="text-4xl font-semibold sm:text-5xl">Book a call or send your details</h1>
-          <p className="max-w-3xl text-lg text-muted-foreground">
-            Share where operations are slowing your team down. I will recommend a practical next step.
+      <div className="inner-hero">
+        <div className="container">
+          <div className="tag">Get in Touch</div>
+          <h1>Let&apos;s talk about your systems.</h1>
+          <p>
+            Book a free 30-minute audit call or send a message. Either way, you will get a straight answer about
+            whether this is the right fit.
           </p>
-        </Container>
-      </section>
+        </div>
+      </div>
 
-      <section id="book-call" className="section-space pt-0">
-        <Container>
-          <Card className="rounded-3xl border-border/70 bg-white/85">
-            <CardHeader>
-              <CardTitle className="text-2xl">Book a call</CardTitle>
-              <CardDescription className="text-base">
-                Replace this placeholder with your real Calendly link or embed code.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="rounded-2xl border border-dashed border-border bg-muted/30 p-8 text-center sm:p-10">
-                <p className="font-medium">Calendly placeholder</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Add your scheduling URL in <code>lib/site.ts</code> as <code>calendlyPlaceholderUrl</code>.
-                </p>
-                <Link
-                  href={siteConfig.calendlyPlaceholderUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-block text-sm font-semibold text-primary underline underline-offset-4"
-                >
-                  Open scheduling link
-                </Link>
+      <section>
+        <div className="container">
+          <div className="contact-grid">
+            <div>
+              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Audit Call</h2>
+              <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
+                A free 30-minute call to walk through your current setup. No pitch. Just a clear picture of where the
+                leverage is.
+              </p>
+              <iframe
+                className="calendly-frame"
+                src={siteConfig.calendlyPlaceholderUrl}
+                title="Book a free audit call"
+                loading="lazy"
+              />
+              <div
+                style={{
+                  marginTop: 32,
+                  padding: 24,
+                  background: "var(--bg2)",
+                  borderRadius: "var(--r)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <div className="mono" style={{ marginBottom: 8 }}>
+                  Direct contact
+                </div>
+                <p style={{ fontSize: 15, color: "var(--ink2)" }}>{siteConfig.contactEmail}</p>
+                <p style={{ fontSize: 13, color: "var(--ink3)", marginTop: 6 }}>Response within one business day.</p>
               </div>
-            </CardContent>
-          </Card>
-        </Container>
-      </section>
+            </div>
 
-      <section id="checklist" className="section-space pt-0">
-        <Container>
-          <Card className="rounded-3xl border-border/70 bg-white/85">
-            <CardHeader>
-              <CardTitle className="text-2xl">Contact form</CardTitle>
-              <CardDescription className="text-base">
-                Submit this form to discuss your bottlenecks or request the checklist.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+            <div id="checklist">
+              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Or send a message</h2>
+              <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
+                Tell me about your situation and I will follow up with some initial thoughts and a link to book time.
+              </p>
+
               {errorMessage ? (
-                <div className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                <div className="form-error" role="alert" aria-live="polite">
                   {errorMessage}
                 </div>
               ) : null}
 
-              <form action={submitContactForm} className="grid gap-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" name="name" autoComplete="name" required />
+              <form action={submitContactForm}>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="name">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      className="form-input"
+                      placeholder="Your name"
+                      autoComplete="name"
+                      required
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" autoComplete="email" required />
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      className="form-input"
+                      placeholder="you@company.com"
+                      autoComplete="email"
+                      required
+                    />
                   </div>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input id="company" name="company" autoComplete="organization" required />
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="company">
+                      Company
+                    </label>
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      className="form-input"
+                      placeholder="Company name"
+                      autoComplete="organization"
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="teamSize">Team size</Label>
-                    <select
-                      id="teamSize"
-                      name="teamSize"
-                      className="flex h-10 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm shadow-xs"
-                      required
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Select team size
-                      </option>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="teamSize">
+                      Team size
+                    </label>
+                    <select id="teamSize" name="teamSize" className="form-select" defaultValue="">
+                      <option value="">Select...</option>
                       {teamSizeOptions.map((option) => (
                         <option key={option} value={option}>
                           {option}
@@ -134,18 +150,12 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="bottleneck">Biggest bottleneck</Label>
-                  <select
-                    id="bottleneck"
-                    name="bottleneck"
-                    className="flex h-10 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm shadow-xs"
-                    required
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Select your bottleneck
-                    </option>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="bottleneck">
+                    Biggest bottleneck right now
+                  </label>
+                  <select id="bottleneck" name="bottleneck" className="form-select" defaultValue="">
+                    <option value="">Select the biggest one...</option>
                     {bottleneckOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -154,24 +164,33 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" rows={6} placeholder="Tell me what is slowing your team down." required />
+                <div className="form-group">
+                  <label className="form-label" htmlFor="message">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    className="form-textarea"
+                    placeholder="Tell me a bit about your current situation and what you are trying to fix."
+                    rows={4}
+                  />
                 </div>
 
-                <label className="flex items-start gap-3 rounded-2xl border border-border/70 bg-muted/25 p-4 text-sm">
-                  <input id="checklistInput" name="checklist" type="checkbox" className="mt-1 h-4 w-4" />
-                  <span>Send me the checklist</span>
-                </label>
-
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-sm text-muted-foreground">You will be redirected to a confirmation page after submitting.</p>
-                  <SubmitButton label="Send Message" pendingLabel="Sending..." />
+                <div className="form-group">
+                  <label className="checkbox-group" htmlFor="checklistOpt">
+                    <input id="checklistOpt" type="checkbox" name="checklist" />
+                    <span>Send me the Business Systems Checklist (free)</span>
+                  </label>
                 </div>
+
+                <button type="submit" className="form-submit">
+                  Send Message →
+                </button>
               </form>
-            </CardContent>
-          </Card>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

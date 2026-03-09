@@ -1,125 +1,110 @@
-import Image from "next/image";
+import Link from "next/link";
 
-import { Container } from "@/components/layout/container";
-import { CtaBanner } from "@/components/sections/cta-banner";
-import { SectionHeading } from "@/components/sections/section-heading";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildMetadata } from "@/lib/seo";
 import { processPhases } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "How It Works",
   description:
-    "See the four-phase systems setup process from discovery to training, including key artifacts and success criteria.",
+    "Transparent, structured delivery in four phases: discover, design, implement, and train.",
   path: "/process",
 });
-
-const successLooksLike = [
-  "Every core workflow has a clear owner and a visible status",
-  "Handoffs are automated for repeatable work",
-  "Leadership reporting requires less manual data collection",
-  "New team members can onboard using system documentation",
-] as const;
-
-const artifactImages = [
-  {
-    src: "/workflow-nodes-2.svg",
-    title: "Systems map",
-    description: "Visual process map with owners and handoff points.",
-  },
-  {
-    src: "/artifact-dashboard.svg",
-    title: "Automation dashboard",
-    description: "Live view of critical automations and exception handling.",
-  },
-  {
-    src: "/artifact-playbook.svg",
-    title: "Team playbook",
-    description: "Documentation template used for handoff and team training.",
-  },
-] as const;
 
 export default function ProcessPage() {
   return (
     <>
-      <section className="section-space pt-14">
-        <Container className="space-y-4">
-          <h1 className="max-w-4xl text-4xl font-semibold sm:text-5xl">A focused four-phase process that keeps work moving</h1>
-          <p className="max-w-3xl text-lg text-muted-foreground">
-            Each phase is structured around clear outputs, fast review loops, and documented decisions.
+      <div className="inner-hero">
+        <div className="container">
+          <div className="tag">The Process</div>
+          <h1>Transparent, structured, and built for busy founders.</h1>
+          <p>
+            No black box. You know what is happening in each phase, what you need to provide, and what I will deliver.
           </p>
-        </Container>
-      </section>
+        </div>
+      </div>
 
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Phase breakdown" />
-          <div className="grid gap-4 lg:grid-cols-2">
-            {processPhases.map((phase, index) => (
-              <Card key={phase.name} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <CardDescription className="font-mono text-xs uppercase tracking-[0.15em]">Phase 0{index + 1}</CardDescription>
-                  <CardTitle className="text-2xl">{phase.name}</CardTitle>
-                  <CardDescription className="text-base">{phase.summary}</CardDescription>
-                </CardHeader>
-                <CardContent className="grid gap-4 border-t border-border/60 pt-5 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground">What I do</p>
-                    <p>{phase.iDo}</p>
+      <section>
+        <div className="container">
+          {processPhases.map((phase) => (
+            <div key={phase.number} className="phase-block">
+              <div className="phase-header">
+                <div className="phase-num-big">{phase.number}</div>
+                <div className="phase-header-content">
+                  <div className="mono">{phase.phase}</div>
+                  <h2>{phase.title}</h2>
+                  <p>{phase.description}</p>
+                </div>
+              </div>
+
+              <div className="phase-cols">
+                <div>
+                  <div className="phase-col-title">What I do</div>
+                  <ul className="check-list">
+                    {phase.whatIDo.map((item) => (
+                      <li key={item}>
+                        <span className="ck">→</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div className="phase-col-title">What I need from you</div>
+                  <ul className="check-list">
+                    {phase.whatINeed.map((item) => (
+                      <li key={item}>
+                        <span className="ck">→</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {phase.artifact ? (
+                <div style={{ marginTop: 28 }}>
+                  <div className="artifact-placeholder" style={{ height: phase.artifactHeight }}>
+                    {phase.artifact}
                   </div>
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground">What I need from you</p>
-                    <p>{phase.iNeed}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              ) : null}
+            </div>
+          ))}
+
+          <div style={{ marginTop: 16 }}>
+            <div className="section-head">
+              <div className="tag">What Success Looks Like</div>
+              <h2>The outcomes you can expect.</h2>
+            </div>
+            <div className="success-grid">
+              <div className="success-item">
+                <div className="metric">10+ hrs</div>
+                <p>Saved per week through automation of repetitive tasks</p>
+              </div>
+              <div className="success-item" style={{ background: "var(--ink)" }}>
+                <div className="metric" style={{ color: "var(--lime)" }}>
+                  50%
+                </div>
+                <p>Reduction in onboarding time for new customers and team members</p>
+              </div>
+              <div className="success-item" style={{ background: "var(--bg2)", color: "var(--ink)" }}>
+                <div className="metric">100%</div>
+                <p style={{ color: "var(--ink2)" }}>Of workflows documented and owned by your team, not me</p>
+              </div>
+            </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Example artifacts" description="Sample placeholders showing the style of assets you will receive." />
-          <div className="grid gap-4 md:grid-cols-3">
-            {artifactImages.map((item) => (
-              <Card key={item.title} className="overflow-hidden rounded-3xl border-border/70 bg-white/85">
-                <Image
-                  src={item.src}
-                  alt={`${item.title} placeholder`}
-                  width={640}
-                  height={420}
-                  className="h-auto w-full border-b border-border/60"
-                />
-                <CardHeader>
-                  <CardTitle className="text-xl">{item.title}</CardTitle>
-                  <CardDescription className="text-base">{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="What success looks like" />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {successLooksLike.map((item) => (
-              <Card key={item} className="rounded-3xl border-emerald-100 bg-emerald-50/70">
-                <CardContent className="p-6">
-                  <p className="font-medium">{item}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <CtaBanner
-        title="Want this process applied to your team?"
-        description="Book a call and we can map your current stage and the fastest implementation path."
-      />
+      <div className="final-cta">
+        <div className="container">
+          <h2>See how this applies to your business.</h2>
+          <p>Book a free audit call and we will walk through your specific situation together.</p>
+          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+            Book a Call →
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

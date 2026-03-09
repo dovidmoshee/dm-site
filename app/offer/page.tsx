@@ -1,222 +1,221 @@
 import Link from "next/link";
-import { CheckCircle2, MinusCircle } from "lucide-react";
 
-import { Container } from "@/components/layout/container";
-import { CtaBanner } from "@/components/sections/cta-banner";
-import { SectionHeading } from "@/components/sections/section-heading";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "30-Day Systems Setup",
+  title: "Business OS Setup",
   description:
-    "A 30-day systems setup to streamline workflows, automate handoffs, and create one reliable operating model for your team.",
+    "The system your business needs to grow without adding headcount. See deliverables, scope, timeline, and optional add-ons.",
   path: "/offer",
 });
 
-const bestFor = [
-  "Founder-led teams that grew faster than their operations",
-  "Teams juggling too many tools with no clear source of truth",
-  "Businesses preparing to scale without adding operational chaos",
-  "Leaders who want execution speed without process debt",
+const fitItems = [
+  "You have 3 to 20 people and feel like coordination is eating your week",
+  "You are using 5 or more tools that don't connect to each other",
+  "New hires take too long to get up to speed because nothing is documented",
+  "You want to scale without hiring a full-time ops person right now",
+  "You are a SaaS startup, agency, or services business with existing revenue",
 ] as const;
 
-const detailedDeliverables = [
+const includedItems = [
   {
     title: "Business Systems Map",
-    description: "A clear model of your core workflows, dependencies, and ownership.",
+    description:
+      "A complete visual audit of your workflows, tools, and handoffs. You will see where work is getting stuck.",
   },
   {
     title: "Tool Stack Architecture",
-    description: "A practical design showing where each tool belongs and how data flows.",
+    description:
+      "A documented recommendation for your tooling. Every choice is justified and tied to your actual needs.",
   },
   {
     title: "Automation Layer",
-    description: "High-leverage automations that remove repetitive work and reduce dropped tasks.",
+    description:
+      "Live, tested automations built with Zapier, Make, or n8n. Lead forms to CRM. CRM to onboarding. Notifications and handoffs.",
   },
   {
     title: "AI Workflow Layer",
-    description: "AI-assisted routines for faster drafting, triage, and internal decision support.",
+    description:
+      "AI integrated into your day-to-day work: meeting summaries, support reply drafting, reporting, and research tasks.",
   },
   {
-    title: "Documentation and Team Training",
-    description: "SOPs, ownership handoff docs, and live training to make adoption stick.",
+    title: "Documentation and Training",
+    description:
+      "Written SOPs for every new workflow and a live training session with your team.",
   },
-] as const;
-
-const included = [
-  "Discovery workshops and workflow audit",
-  "System architecture and implementation plan",
-  "Automation setup and QA",
-  "AI workflow prompts and guardrails",
-  "Documentation and team training session",
 ] as const;
 
 const notIncluded = [
-  "Custom software development",
-  "24/7 managed operations support",
-  "Paid tool subscriptions",
-  "Data migration for legacy systems beyond scope",
+  "Custom software development or code-heavy integrations",
+  "Ongoing management or monitoring after handoff (available as an add-on)",
+  "Tool licensing costs (you own and pay for your own subscriptions)",
+  "Marketing campaigns or demand generation strategy",
 ] as const;
 
-const timeline = [
+const weekByWeek = [
   {
     week: "Week 1",
-    summary: "Discover",
-    detail: "Audit your tools and map process bottlenecks with key stakeholders.",
+    title: "Discovery and Mapping",
+    description:
+      "Full audit call, tool access, workflow interviews. Deliver the Business Systems Map by end of week.",
   },
   {
     week: "Week 2",
-    summary: "Design",
-    detail: "Finalize system architecture, ownership model, and implementation priorities.",
+    title: "Architecture and Sign-off",
+    description:
+      "Present the Tool Stack Architecture and automation logic. Align on priorities. Get your approval before building.",
   },
   {
     week: "Week 3",
-    summary: "Implement",
-    detail: "Build workflows, configure tools, and deploy core automations.",
+    title: "Build and Automate",
+    description:
+      "Build, configure, and test all automations and AI workflows. Mid-week check-in to flag anything unexpected.",
   },
   {
     week: "Week 4",
-    summary: "Train and Handoff",
-    detail: "Deliver documentation, run team training, and close with a future roadmap.",
+    title: "Documentation and Handoff",
+    description:
+      "Write the SOPs, run the training session, and hand over the full system. You own it completely from here.",
   },
 ] as const;
 
 const addOns = [
   {
-    title: "Ongoing Systems Stewardship",
-    description: "Monthly optimization, governance reviews, and incremental upgrades.",
+    title: "Ongoing Stewardship",
+    description: "Monthly check-ins, automation maintenance, and system updates as your business evolves.",
+    price: "From $1,200 / month",
   },
   {
     title: "Advanced Automations",
-    description: "Multi-step automation logic, approval flows, and dashboard alerting.",
+    description: "Complex multi-step workflows, custom API integrations, and advanced AI pipeline setup.",
+    price: "From $2,500",
   },
 ] as const;
 
 export default function OfferPage() {
   return (
     <>
-      <section className="section-space pt-14">
-        <Container className="space-y-6">
-          <Badge variant="secondary" className="rounded-full px-4 py-1 uppercase tracking-[0.18em]">
-            Offer
-          </Badge>
-          <h1 className="max-w-4xl text-4xl font-semibold sm:text-5xl">
-            In 30 days, install a business operating system your team can run with confidence.
-          </h1>
-          <p className="max-w-3xl text-lg text-muted-foreground">
-            This fixed-scope engagement replaces fragmented workflows with clear process design,
-            automation, and durable documentation.
+      <div className="inner-hero">
+        <div className="container">
+          <div className="tag">Business OS Setup</div>
+          <h1>The system your business needs to grow without adding headcount.</h1>
+          <p>
+            A 30-day structured engagement to map, design, build, and hand off a complete operating infrastructure for
+            your team.
           </p>
-          <Button asChild className="rounded-full">
-            <Link href="/contact#book-call">Book a call</Link>
-          </Button>
-        </Container>
-      </section>
+        </div>
+      </div>
 
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Best for" />
-          <div className="grid gap-4 md:grid-cols-2">
-            {bestFor.map((item) => (
-              <Card key={item} className="rounded-3xl border-border/70 bg-white/85">
-                <CardContent className="flex items-start gap-3 p-6">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
-                  <p className="font-medium">{item}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <section>
+        <div className="container">
+          <div className="two-col">
+            <div>
+              <div className="tag">Best For</div>
+              <h2 style={{ fontSize: 32, marginBottom: 16 }}>This engagement is a fit if:</h2>
+              <ul className="check-list" style={{ marginBottom: 48 }}>
+                {fitItems.map((item) => (
+                  <li key={item}>
+                    <span className="ck">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Detailed deliverables" />
-          <div className="grid gap-4 md:grid-cols-2">
-            {detailedDeliverables.map((item) => (
-              <Card key={item.title} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardDescription className="text-base">{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
+              <div className="tag">Deliverables</div>
+              <h2 style={{ fontSize: 32, marginBottom: 16 }}>What is included</h2>
+              <ul className="check-list" style={{ marginBottom: 16 }}>
+                {includedItems.map((item) => (
+                  <li key={item.title}>
+                    <span className="ck">✓</span>
+                    <span>
+                      <strong>{item.title}</strong> — {item.description}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-      <section className="section-space pt-0">
-        <Container className="grid gap-6 lg:grid-cols-2">
-          <Card className="rounded-3xl border-emerald-100 bg-emerald-50/70">
-            <CardHeader>
-              <CardTitle>Included</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {included.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
-                  <p>{item}</p>
+              <h3 style={{ fontSize: 22, marginTop: 40, marginBottom: 16 }}>What is not included</h3>
+              <ul className="check-list" style={{ marginBottom: 48 }}>
+                {notIncluded.map((item) => (
+                  <li key={item}>
+                    <span className="cx">✗</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="tag">Timeline</div>
+              <h2 style={{ fontSize: 32, marginBottom: 24 }}>Week by week</h2>
+              <div className="offer-timeline">
+                {weekByWeek.map((item) => (
+                  <div key={item.week} className="week-item">
+                    <div className="week-num">{item.week}</div>
+                    <div className="week-content">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <h3 style={{ fontSize: 22, marginTop: 40, marginBottom: 16 }}>Optional add-ons</h3>
+              <div className="addons-grid">
+                {addOns.map((item) => (
+                  <div key={item.title} className="addon-card">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <div className="addon-price">{item.price}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="offer-summary-badge">
+                <div className="mono" style={{ color: "rgba(255,255,255,0.8)", marginBottom: 8 }}>
+                  Business OS Setup
                 </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-3xl border-slate-200 bg-slate-50/70">
-            <CardHeader>
-              <CardTitle>Not included</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {notIncluded.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <MinusCircle className="mt-0.5 h-5 w-5 shrink-0 text-slate-500" />
-                  <p>{item}</p>
+                <h3>Ready to get started?</h3>
+                <p>Book a free 30-minute audit call. No pitch, no pressure. Just a clear look at your systems.</p>
+                <Link
+                  className="btn btn-primary"
+                  style={{ width: "100%", marginBottom: 12, background: "var(--lime)", color: "var(--ink)" }}
+                  href="/contact"
+                >
+                  Book a Free Audit Call
+                </Link>
+                <Link
+                  className="btn btn-ghost"
+                  style={{ width: "100%", color: "rgba(255,255,255,0.88)", borderColor: "rgba(255,255,255,0.45)" }}
+                  href="/contact#checklist"
+                >
+                  Get the Free Checklist
+                </Link>
+                <div className="badge-stat">
+                  <div className="badge-stat-label">Packages from</div>
+                  <div className="badge-stat-value">$6,000</div>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="30-day timeline" />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {timeline.map((item) => (
-              <Card key={item.week} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <CardDescription className="font-mono text-xs uppercase tracking-[0.12em]">{item.week}</CardDescription>
-                  <CardTitle>{item.summary}</CardTitle>
-                  <CardDescription className="text-base">{item.detail}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+                <div className="badge-stat">
+                  <div className="badge-stat-label">Payment terms</div>
+                  <div className="badge-stat-value" style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.88)" }}>
+                    50% upfront, 50% on delivery
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Optional add-ons" />
-          <div className="grid gap-4 md:grid-cols-2">
-            {addOns.map((item) => (
-              <Card key={item.title} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardDescription className="text-base">{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <CtaBanner
-        title="Want to know if this is the right fit?"
-        description="Book a short call and I will recommend the right path based on your current systems and growth stage."
-      />
+      <div className="final-cta">
+        <div className="container">
+          <h2>Let&apos;s build your business OS.</h2>
+          <p>Book a free audit call and leave with a clear picture of where your systems need work.</p>
+          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+            Book a Call →
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

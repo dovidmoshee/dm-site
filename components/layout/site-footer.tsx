@@ -1,47 +1,100 @@
 import Link from "next/link";
 
-import { Container } from "@/components/layout/container";
-import { navLinks, socialLinks } from "@/lib/site";
-
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-white/70 py-12">
-      <Container className="grid gap-10 md:grid-cols-3 md:gap-6">
-        <div className="space-y-4">
-          <p className="text-sm font-semibold">Calibrate Media</p>
-          <p className="max-w-xs text-sm text-muted-foreground">
-            Calm systems, faster execution, and clear ownership for founder-led teams.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <p className="text-sm font-semibold">Navigation</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            {navLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="transition-colors hover:text-foreground">
-                {item.label}
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand-name">
+              Calibrate <span>Media</span>
+            </div>
+            <div className="footer-tagline">
+              I design and install the operating system that runs your business. Systems mapping, automation, and AI
+              for growing teams.
+            </div>
+            <div className="footer-socials" aria-label="Social">
+              <span className="footer-social" aria-hidden="true" title="LinkedIn">
+                in
+              </span>
+              <span className="footer-social" aria-hidden="true" title="Twitter/X">
+                𝕏
+              </span>
+              <Link className="footer-social" title="Email" href="mailto:hello@calibratemedia.co" aria-label="Email">
+                @
               </Link>
-            ))}
-            <Link href="/legal/privacy" className="transition-colors hover:text-foreground">
-              Privacy
-            </Link>
-            <Link href="/legal/terms" className="transition-colors hover:text-foreground">
-              Terms
-            </Link>
+            </div>
+          </div>
+
+          <div className="footer-col">
+            <p className="footer-col-title">Services</p>
+            <ul className="footer-links">
+              <li>
+                <Link href="/offer">Business OS Setup</Link>
+              </li>
+              <li>
+                <Link href="/process">How It Works</Link>
+              </li>
+              <li>
+                <Link href="/pricing">Pricing</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <p className="footer-col-title">Company</p>
+            <ul className="footer-links">
+              <li>
+                <Link href="/about">About</Link>
+              </li>
+              <li>
+                <Link href="/faq">FAQ</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <p className="footer-col-title">Legal</p>
+            <ul className="footer-links">
+              <li>
+                <Link href="/legal/privacy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/legal/terms">Terms of Service</Link>
+              </li>
+            </ul>
+            <div style={{ marginTop: 24 }}>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.8)",
+                  marginBottom: 6,
+                  fontFamily: "var(--mono)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Get started
+              </div>
+              <Link
+                className="btn btn-primary"
+                style={{ background: "var(--lime)", color: "var(--ink)", fontSize: 13 }}
+                href="/contact"
+              >
+                Book a Call
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="space-y-3">
-          <p className="text-sm font-semibold">Social</p>
-          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            {socialLinks.map((item) => (
-              <Link key={item.label} href={item.href} className="transition-colors hover:text-foreground">
-                {item.label}
-              </Link>
-            ))}
-          </div>
+        <div className="footer-bottom">
+          <span>© 2025 Calibrate Media. All rights reserved.</span>
+          <span>hello@calibratemedia.co</span>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

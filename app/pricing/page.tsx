@@ -1,85 +1,72 @@
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 
-import { Container } from "@/components/layout/container";
-import { CtaBanner } from "@/components/sections/cta-banner";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildMetadata } from "@/lib/seo";
 import { packages } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Pricing",
-  description:
-    "Choose between Foundation, Build, and Scale packages for your 30-day systems setup. Clear scope, fixed pricing, and fast delivery.",
+  description: "Clear packages. No surprises. Choose Foundation, Build, or Scale.",
   path: "/pricing",
 });
 
 export default function PricingPage() {
   return (
     <>
-      <section className="section-space pt-14">
-        <Container className="space-y-4">
-          <h1 className="max-w-4xl text-4xl font-semibold sm:text-5xl">Packages built for your stage of growth</h1>
-          <p className="max-w-3xl text-lg text-muted-foreground">
-            Fixed pricing keeps scope clear and momentum high. Each package is designed around a complete business systems outcome.
-          </p>
-        </Container>
-      </section>
+      <div className="inner-hero">
+        <div className="container">
+          <div className="tag">Pricing</div>
+          <h1>Clear packages. No surprises.</h1>
+          <p>Every package delivers a complete, working system. Choose the scope that fits where you are right now.</p>
+        </div>
+      </div>
 
-      <section className="section-space pt-0">
-        <Container>
-          <div className="grid gap-4 lg:grid-cols-3">
+      <section>
+        <div className="container">
+          <div className="pricing-grid" style={{ marginBottom: 32 }}>
             {packages.map((item) => (
-              <Card
-                key={item.name}
-                className={`rounded-3xl border-border/70 bg-white/85 ${item.popular ? "ring-2 ring-teal-500/40" : ""}`}
-              >
-                <CardHeader>
-                  <div className="flex items-center justify-between gap-3">
-                    <CardTitle className="text-2xl">{item.name}</CardTitle>
-                    {item.popular ? <Badge className="rounded-full">Most popular</Badge> : null}
-                  </div>
-                  <p className="text-3xl font-semibold">{item.price}</p>
-                  <CardDescription className="text-base">{item.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground">What&apos;s included</p>
+              <div key={item.name} className={`pricing-card ${item.popular ? "popular" : ""}`.trim()}>
+                {item.popular ? <div className="pricing-badge">Most Popular</div> : null}
+                <div className="pricing-name">{item.name}</div>
+                <div className="pricing-price">{item.price}</div>
+                <div className="pricing-desc">{item.description}</div>
+                <ul className="pricing-features">
                   {item.includes.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
-                      <p>{feature}</p>
-                    </div>
+                    <li key={feature}>{feature}</li>
                   ))}
-                </CardContent>
-                <CardFooter>
-                  <Button asChild className="w-full rounded-full">
-                    <Link href="/contact#book-call">Book a call</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
+                </ul>
+                <Link className="btn btn-primary" style={{ width: "100%" }} href="/contact">
+                  Book a Call
+                </Link>
+              </div>
             ))}
           </div>
 
-          <Card className="mt-6 rounded-3xl border-border/70 bg-slate-50/80">
-            <CardContent className="space-y-4 p-6">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">Payment terms</p>
-                <p className="mt-2">50% upfront, 50% on delivery.</p>
-              </div>
-              <p className="text-muted-foreground">
-                If you&apos;re not sure, book a call and I&apos;ll recommend the right package.
-              </p>
-            </CardContent>
-          </Card>
-        </Container>
+          <div className="card" style={{ maxWidth: 640, margin: "0 auto", textAlign: "center", padding: 36 }}>
+            <div className="tag">Payment Terms</div>
+            <h2 style={{ fontSize: 22, marginBottom: 10 }}>50% upfront, 50% on delivery</h2>
+            <p style={{ color: "var(--ink3)", fontSize: 15, lineHeight: 1.65, marginBottom: 20 }}>
+              All packages follow the same payment structure. The first payment kicks off the engagement. The second is
+              due on the day of your final training session and system handoff.
+            </p>
+            <p style={{ fontSize: 14, color: "var(--ink3)" }}>
+              Not sure which package is right?{" "}
+              <Link style={{ color: "var(--accent)", fontWeight: 600 }} href="/contact">
+                Book a call and I&apos;ll tell you exactly what fits.
+              </Link>
+            </p>
+          </div>
+        </div>
       </section>
 
-      <CtaBanner
-        title="Need help choosing the right package?"
-        description="I will recommend the best fit based on your complexity, timeline, and internal team bandwidth."
-      />
+      <div className="final-cta">
+        <div className="container">
+          <h2>Ready to pick your package?</h2>
+          <p>Book a 30-minute call and we will figure out the right fit together.</p>
+          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+            Book a Call →
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

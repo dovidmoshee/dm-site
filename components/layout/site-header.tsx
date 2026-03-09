@@ -1,85 +1,136 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Workflow } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navLinks } from "@/lib/site";
-import { cn } from "@/lib/utils";
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = "mobile-menu";
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur">
-      <Container className="flex h-18 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Workflow className="h-4 w-4" aria-hidden />
-          </span>
-          <span>Calibrate Media</span>
-        </Link>
+    <>
+      <header className="site-header">
+        <div className="nav-inner">
+          <Link href="/" className="nav-logo">
+            Calibrate <span>Media</span>
+          </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+          <nav className="nav-links" aria-label="Main navigation">
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.href);
 
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                  isActive && "text-foreground",
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`nav-link ${active ? "nav-link-active" : ""}`.trim()}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Button asChild variant="ghost" className="rounded-full">
-            <Link href="/contact#checklist">Get checklist</Link>
-          </Button>
-          <Button asChild className="rounded-full px-5">
-            <Link href="/contact#book-call">Book a call</Link>
-          </Button>
+          <div className="nav-ctas">
+            <Link href="/contact#checklist" className="btn btn-ghost">
+              Get the Checklist
+            </Link>
+            <Link href="/contact" className="btn btn-primary">
+              Book a Call
+            </Link>
+          </div>
+
+          <button
+            className="nav-mobile-toggle"
+            type="button"
+            aria-label="Toggle mobile menu"
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            ☰
+          </button>
         </div>
+      </header>
 
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon" className="rounded-full" aria-label="Open navigation menu">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[320px]">
-            <SheetHeader>
-              <SheetTitle>Calibrate Media</SheetTitle>
-              <SheetDescription>Choose a page to continue.</SheetDescription>
-            </SheetHeader>
-            <div className="mt-8 flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Button key={link.href} asChild variant="ghost" className="justify-start text-base">
-                  <Link href={link.href}>{link.label}</Link>
-                </Button>
-              ))}
+      {menuOpen ? (
+        <>
+          <button
+            type="button"
+            className="mobile-menu-backdrop"
+            aria-label="Close mobile menu"
+            onClick={() => setMenuOpen(false)}
+          />
+          <div id={menuId} className="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+            <div className="mobile-menu-inner">
+              <button
+                type="button"
+                className="mobile-menu-close"
+                aria-label="Close mobile menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                ×
+              </button>
+
+              {navLinks.map((link) => {
+                const active = isActive(pathname, link.href);
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`nav-link ${active ? "nav-link-active" : ""}`.trim()}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+
+              <div className="mobile-menu-ctas">
+                <Link href="/contact#checklist" className="btn btn-ghost" onClick={() => setMenuOpen(false)}>
+                  Get the Checklist
+                </Link>
+                <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
+                  Book a Call
+                </Link>
+              </div>
             </div>
-            <div className="mt-6 flex flex-col gap-2">
-              <Button asChild variant="outline" className="rounded-full">
-                <Link href="/contact#checklist">Get checklist</Link>
-              </Button>
-              <Button asChild className="rounded-full">
-                <Link href="/contact#book-call">Book a call</Link>
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
-      </Container>
-    </header>
+          </div>
+        </>
+      ) : null}
+    </>
   );
 }

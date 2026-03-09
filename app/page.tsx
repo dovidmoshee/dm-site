@@ -1,315 +1,361 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  CircleDot,
-  Clock3,
-} from "lucide-react";
 
-import { Container } from "@/components/layout/container";
-import { FadeIn } from "@/components/sections/fade-in";
-import { SectionHeading } from "@/components/sections/section-heading";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
-import { deliverables, faqItems, measurableOutcomes, packages, processPhases, testimonials } from "@/lib/site";
+import { deliverables, measurableOutcomes, packages, processTimeline, testimonials } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Calibrate Media",
   description:
-    "In 30 days, simplify your tools, workflows, automations, and AI.",
+    "Install the operating system your business runs on. In 30 days I streamline your tools, workflows, automations, and AI.",
   path: "/",
 });
 
 const problemCards = [
   {
-    title: "Chaos",
-    description: "Work is scattered and ownership is unclear.",
+    title: "Operational chaos",
+    description: "Every process lives in someone's head. Things get dropped. Nothing is documented.",
   },
   {
-    title: "Manual work",
-    description: "Your team repeats steps that should be automatic.",
+    title: "Endless manual work",
+    description: "Your team copies data between tools, re-enters information, and chases updates manually.",
   },
   {
     title: "Tool sprawl",
-    description: "Too many tools, not enough process.",
+    description: "Twelve subscriptions that don't talk to each other. No clear owner. No clear purpose.",
   },
 ] as const;
 
 const outcomeCards = [
   {
-    title: "Clear workflows",
-    description: "Each core process has clear steps and owners.",
+    title: "Clear, documented workflows",
+    description: "Every process is mapped, owned, and easy to hand off. New hires get up to speed fast.",
   },
   {
     title: "Automated handoffs",
-    description: "Key actions trigger the next step automatically.",
+    description: "Data moves between your tools automatically. No copy-paste. No dropped leads.",
   },
   {
     title: "Single source of truth",
-    description: "Everyone knows where work and decisions live.",
+    description: "One place to see pipeline, tasks, and customer status. Your team always knows the answer.",
+  },
+] as const;
+
+const trustedBy = ["Meridian Labs", "Stackwave", "Lumen Agency", "Forgepoint"] as const;
+
+const previewFaq = [
+  {
+    question: "Who is this engagement for?",
+    answer:
+      "SaaS startups and agencies with 3 to 20 people who are growing but running on manual processes, disconnected tools, and tribal knowledge. If your team is capable but your systems are the bottleneck, this is for you.",
+  },
+  {
+    question: "How much time will you need from us?",
+    answer:
+      "Plan for two to three hours per week from your side. That includes the initial audit call, tool access setup, and review checkpoints. I do the heavy lifting. You stay informed without being pulled in constantly.",
+  },
+  {
+    question: "What if we already have tools set up?",
+    answer:
+      "That's fine, and it's common. We start with a full audit of your current stack and build from what's already working. Nothing gets ripped out without a clear reason and a better replacement ready to go.",
   },
 ] as const;
 
 export default function HomePage() {
   return (
     <>
-      <section className="section-space pt-14 sm:pt-18">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <FadeIn className="space-y-6">
-              <Badge variant="secondary" className="rounded-full px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em]">
-                Business OS
-              </Badge>
-              <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl">
-                Simplify how your business runs.
-              </h1>
-              <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-                In 30 days, I simplify your tools and workflows so your team moves faster with less manual work.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild size="lg" className="rounded-full px-7">
-                  <Link href="/contact#book-call">Book a call</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full px-7">
-                  <Link href="/contact#checklist">Get checklist</Link>
-                </Button>
+      <section className="hero">
+        <div className="hero-bg" />
+        <div className="container">
+          <div className="hero-grid">
+            <div>
+              <div className="hero-eyebrow">
+                <span className="hero-eyebrow-dot" />
+                Business OS Setup · 30-Day Engagement
               </div>
-              <div className="rounded-3xl border border-border/70 bg-white/80 p-5 shadow-sm">
-                <p className="text-sm font-medium text-muted-foreground">Trusted by teams</p>
-                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {["North Harbor", "Arcwell", "Lanebridge", "Pilot Ridge"].map((logo) => (
-                    <div
-                      key={logo}
-                      className="flex h-14 items-center justify-center rounded-2xl border border-border/70 bg-muted/30 px-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground"
-                    >
-                      {logo}
+              <h1>
+                Install the operating system your <em>business runs on.</em>
+              </h1>
+              <p className="hero-sub">
+                In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less
+                manual work.
+              </p>
+              <div className="hero-ctas">
+                <Link className="btn btn-primary btn-lg" href="/contact">
+                  Book a Call
+                </Link>
+                <Link className="btn btn-ghost btn-lg" href="/contact#checklist">
+                  Get the Checklist
+                </Link>
+              </div>
+
+              <div className="hero-proof">
+                <div className="hero-proof-label">Trusted by founders and teams</div>
+                <div className="logo-strip">
+                  {trustedBy.map((name) => (
+                    <div key={name} className="logo-pill">
+                      {name}
                     </div>
                   ))}
                 </div>
               </div>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.1} className="relative">
-              <div className="absolute -left-6 -top-6 h-28 w-28 rounded-full bg-teal-100/80 blur-2xl" />
-              <div className="glass-card relative overflow-hidden rounded-[2rem] p-5">
-                <Image
-                  src="/workflow-nodes-1.svg"
-                  alt="Abstract illustration of connected workflow nodes"
-                  width={620}
-                  height={500}
-                  className="h-auto w-full"
-                  priority
-                />
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space">
-        <Container className="space-y-10">
-          <SectionHeading
-            eyebrow="Before / After"
-            title="From drag to flow"
-            description="You do not need more tools. You need a clear system."
-          />
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {problemCards.map((card) => (
-              <Card key={card.title} className="rounded-3xl border-rose-100 bg-rose-50/60">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <CircleDot className="h-5 w-5 text-rose-500" />
-                    {card.title}
-                  </CardTitle>
-                  <CardDescription className="text-base text-slate-600">{card.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {outcomeCards.map((card) => (
-              <Card key={card.title} className="rounded-3xl border-emerald-100 bg-emerald-50/60">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600" />
-                    {card.title}
-                  </CardTitle>
-                  <CardDescription className="text-base text-slate-600">{card.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container>
-          <Card className="rounded-3xl border-border/70 bg-white/85 shadow-sm">
-            <CardHeader className="space-y-4">
-              <Badge variant="outline" className="w-fit rounded-full px-3 py-1 text-xs uppercase tracking-[0.16em]">
-                Business OS
-              </Badge>
-              <CardTitle className="text-3xl">A focused 30-day build for simpler operations</CardTitle>
-              <CardDescription className="max-w-3xl text-base">
-                For founder-led teams that want a practical system they can run right away.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
-              <Button asChild className="rounded-full">
-                <Link href="/offer">
-                  See the Offer <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full">
-                <Link href="/contact#book-call">Book a call</Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="What you get" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {deliverables.map((item) => (
-              <Card key={item} className="rounded-3xl border-border/70 bg-white/85">
-                <CardContent className="flex items-center gap-3 p-5">
-                  <CheckCircle2 className="h-5 w-5 text-teal-600" />
-                  <p className="font-medium">{item}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading
-            title="How implementation works"
-            description="Four phases. Clear progress. No surprises."
-          />
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {processPhases.map((phase, index) => (
-              <Card key={phase.name} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <div className="font-mono text-sm text-muted-foreground">0{index + 1}</div>
-                  <CardTitle className="text-xl">{phase.name}</CardTitle>
-                  <CardDescription className="text-base">{phase.summary}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-          <Button asChild variant="outline" className="rounded-full">
-            <Link href="/process">
-              See the Full Process <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Results" />
-          <div className="grid gap-4 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <Card key={item.name} className="rounded-3xl border-border/70 bg-white/85">
-                <CardContent className="space-y-4 p-6">
-                  <p className="text-base">“{item.quote}”</p>
-                  <div>
-                    <p className="font-semibold">{item.name}</p>
-                    <p className="text-sm text-muted-foreground">{item.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {measurableOutcomes.map((item) => (
-              <Card key={item} className="rounded-3xl border-teal-100 bg-teal-50/70">
-                <CardContent className="flex items-center gap-3 p-5">
-                  <Clock3 className="h-5 w-5 text-teal-700" />
-                  <p className="font-semibold">{item}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Packages" description="Pick the package that fits your team." />
-          <div className="grid gap-4 md:grid-cols-3">
-            {packages.map((item) => (
-              <Card key={item.name} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader className="space-y-2">
-                  <div className="flex items-center justify-between gap-3">
-                    <CardTitle>{item.name}</CardTitle>
-                    {item.popular ? (
-                      <Badge className="rounded-full bg-amber-100 text-amber-900 hover:bg-amber-100">Most popular</Badge>
-                    ) : null}
-                  </div>
-                  <p className="text-2xl font-semibold">{item.price}</p>
-                  <CardDescription>{item.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-          <Button asChild variant="outline" className="rounded-full">
-            <Link href="/pricing">
-              Compare Packages <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container className="space-y-8">
-          <SectionHeading title="Frequently asked questions" />
-          <div className="grid gap-4 md:grid-cols-3">
-            {faqItems.slice(0, 3).map((item) => (
-              <Card key={item.question} className="rounded-3xl border-border/70 bg-white/85">
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.question}</CardTitle>
-                  <CardDescription className="text-base">{item.answer}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-          <Button asChild variant="outline" className="rounded-full">
-            <Link href="/faq">
-              Read All FAQs <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </Container>
-      </section>
-
-      <section className="section-space pt-0">
-        <Container>
-          <div className="rounded-3xl border border-border/70 bg-gradient-to-br from-slate-50 via-white to-teal-50 p-10 shadow-sm sm:p-12">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="space-y-3">
-                <h2 className="text-3xl font-semibold sm:text-4xl">Ready for simpler operations?</h2>
-                <p className="max-w-xl text-muted-foreground">
-                  Let us build a system your team can trust every day.
-                </p>
-              </div>
-              <Button asChild size="lg" className="rounded-full px-7">
-                <Link href="/contact#book-call">
-                  Book a call <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="hero-visual" aria-hidden>
+              <Image
+                src="/workflow-nodes-1.svg"
+                alt="Workflow system illustration"
+                width={460}
+                height={440}
+                className="hero-visual-asset"
+                priority
+              />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
+
+      <section className="problem-section" style={{ padding: "80px 0" }}>
+        <div className="container">
+          <div className="section-head" style={{ marginBottom: 40 }}>
+            <div className="tag">The Shift</div>
+            <h2>From chaos to calm, in 30 days.</h2>
+          </div>
+
+          <div className="po-grid">
+            <div>
+              <div className="po-col-label bad">Where you are now →</div>
+              <div className="po-cards">
+                {problemCards.map((card) => (
+                  <div key={card.title} className="po-card bad">
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="po-col-label good">Where you will be →</div>
+              <div className="po-cards">
+                {outcomeCards.map((card) => (
+                  <div key={card.title} className="po-card good">
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="offer-summary-grid">
+            <div>
+              <div className="tag">Business OS Setup</div>
+              <h2 style={{ fontSize: "clamp(30px,4vw,44px)", marginBottom: 16 }}>
+                A structured engagement to architect and install your business infrastructure.
+              </h2>
+              <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 24 }}>
+                Most small teams have the right ambition but the wrong scaffolding. You&apos;re growing fast, but your
+                internal systems haven&apos;t kept up. The Business OS Setup gives you a complete operating layer: mapped
+                workflows, the right tools, automations that connect them, and AI where it actually saves time.
+              </p>
+              <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
+                This is built for SaaS startups and agencies with 3 to 20 people who are serious about scaling without
+                hiring more coordinators to manage the mess.
+              </p>
+              <Link className="btn btn-primary" href="/offer">
+                See Full Offer Details →
+              </Link>
+            </div>
+
+            <div>
+              <div className="offer-summary-badge">
+                <div className="mono" style={{ color: "rgba(255,255,255,0.8)", marginBottom: 8 }}>
+                  Business OS Setup
+                </div>
+                <h3>30-Day Structured Engagement</h3>
+                <p>Everything you need to make your business run cleanly, without you in every loop.</p>
+
+                <div className="badge-stat">
+                  <div className="badge-stat-label">Starting from</div>
+                  <div className="badge-stat-value">$6,000</div>
+                </div>
+                <div className="badge-stat">
+                  <div className="badge-stat-label">Duration</div>
+                  <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
+                    3 to 4 weeks
+                  </div>
+                </div>
+                <div className="badge-stat">
+                  <div className="badge-stat-label">Phases</div>
+                  <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
+                    Map, Design, Build, Train
+                  </div>
+                </div>
+                <Link
+                  className="btn btn-primary"
+                  style={{ width: "100%", marginTop: 24, background: "var(--lime)", color: "var(--ink)" }}
+                  href="/contact"
+                >
+                  Book a Free Audit Call
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="deliverables-section">
+        <div className="container">
+          <div className="section-head">
+            <div className="tag" style={{ background: "rgba(200,255,0,0.1)", color: "var(--lime)" }}>
+              What You Get
+            </div>
+            <h2>Five deliverables. Yours to keep.</h2>
+            <p>Every engagement ends with documented, implemented systems that your team owns and can build on.</p>
+          </div>
+
+          <div className="deliv-grid">
+            {deliverables.map((item) => (
+              <div key={item.title} className="deliv-card">
+                <div className="deliv-num">{item.number}</div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="section-head">
+            <div className="tag">How It Works</div>
+            <h2>Four phases, 30 days, clear outcomes.</h2>
+            <p>A structured process means no ambiguity about what happens when.</p>
+          </div>
+
+          <div className="timeline">
+            {processTimeline.map((phase) => (
+              <div key={phase.title} className="timeline-step">
+                <div className={`timeline-dot ${phase.active ? "active" : ""}`.trim()}>{phase.icon}</div>
+                <h3>{phase.title}</h3>
+                <p>{phase.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: 40 }}>
+            <Link className="btn btn-ghost" href="/process">
+              See the Full Process →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="testimonials-section">
+        <div className="container">
+          <div className="section-head">
+            <div className="tag">Results</div>
+            <h2>What founders say after.</h2>
+          </div>
+
+          <div className="testi-grid">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.name} className="testi-card">
+                <div className="testi-stars">★★★★★</div>
+                <div className="testi-quote">&quot;{testimonial.quote}&quot;</div>
+                <div className="testi-author">
+                  <div className="testi-avatar">{testimonial.initials}</div>
+                  <div className="testi-meta">
+                    <strong>{testimonial.name}</strong>
+                    {testimonial.role}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="outcomes-strip">
+            {measurableOutcomes.map((outcome) => (
+              <div key={outcome} className="outcome-pill">
+                {outcome}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="section-head">
+            <div className="tag">Pricing</div>
+            <h2>Three clear packages.</h2>
+            <p>Choose the scope that fits your business. Every package delivers a complete, working system.</p>
+          </div>
+
+          <div className="pricing-grid">
+            {packages.map((item) => (
+              <div key={item.name} className={`pricing-card card-hover ${item.popular ? "popular" : ""}`.trim()}>
+                {item.popular ? <div className="pricing-badge">Most Popular</div> : null}
+                <div className="pricing-name">{item.name}</div>
+                <div className="pricing-price">{item.price}</div>
+                <div className="pricing-desc">{item.description}</div>
+                <ul className="pricing-features">
+                  {item.includes.slice(0, 4).map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <Link className={`btn ${item.popular ? "btn-primary" : "btn-ghost"}`} style={{ width: "100%" }} href={item.popular ? "/contact" : "/pricing"}>
+                  {item.popular ? "Book a Call" : "See Details"}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "var(--ink3)" }}>
+            Not sure which fits?{" "}
+            <Link style={{ color: "var(--accent)", fontWeight: 600 }} href="/contact">
+              Book a call and I&apos;ll recommend the right package.
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section style={{ background: "var(--bg2)", padding: "80px 0" }}>
+        <div className="container">
+          <div className="section-head">
+            <div className="tag">Common Questions</div>
+            <h2>Quick answers.</h2>
+          </div>
+
+          <FaqList items={previewFaq} className="home-faq-list" />
+
+          <div style={{ textAlign: "center", marginTop: 40 }}>
+            <Link className="btn btn-ghost" href="/faq">
+              See All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="final-cta">
+        <div className="container">
+          <h2>Ready for a calmer, faster business?</h2>
+          <p>
+            Book a free 30-minute audit call. We will look at your current systems and I will tell you exactly where
+            the leverage is.
+          </p>
+          <Link className="btn btn-primary btn-xl" href="/contact" style={{ background: "var(--lime)", color: "var(--ink)" }}>
+            Book a Call →
+          </Link>
+        </div>
+      </div>
     </>
   );
 }
