@@ -1,11 +1,14 @@
+const defaultSiteUrl = process.env.NODE_ENV === "production" ? "https://calibratemedia.ca" : "http://localhost:3000";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultSiteUrl).trim().replace(/\/$/, "");
+
 export const siteConfig = {
   name: "Calibrate Media",
   tagLine: "Install the operating system your business runs on.",
   description:
     "In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: siteUrl,
   ogImage: "/og-image.svg",
-  contactEmail: "hello@calibratemedia.co",
+  contactEmail: "info@calibratemedia.ca",
   calendlyPlaceholderUrl: "https://calendly.com/davidcalibrate/30-minute-info-session?hide_gdpr_banner=1",
 } as const;
 
@@ -22,7 +25,7 @@ export const navLinks = [
 export const socialLinks = [
   { href: "#", label: "LinkedIn" },
   { href: "#", label: "X" },
-  { href: "mailto:hello@calibratemedia.co", label: "Email" },
+  { href: "mailto:info@calibratemedia.ca", label: "Email" },
 ] as const;
 
 export const deliverables = [

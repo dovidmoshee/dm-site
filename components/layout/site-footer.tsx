@@ -20,7 +20,7 @@ export function SiteFooter() {
               <span className="footer-social" aria-hidden="true" title="Twitter/X">
                 𝕏
               </span>
-              <Link className="footer-social" title="Email" href="mailto:hello@calibratemedia.co" aria-label="Email">
+              <Link className="footer-social" title="Email" href="mailto:info@calibratemedia.ca" aria-label="Email">
                 @
               </Link>
             </div>
@@ -95,7 +95,7 @@ export function SiteFooter() {
 
         <div className="footer-bottom">
           <span>© 2025 Calibrate Media. All rights reserved.</span>
-          <span>hello@calibratemedia.co</span>
+          <span>info@calibratemedia.ca</span>
         </div>
       </div>
     </footer>

@@ -57,7 +57,7 @@ export default function TermsPage() {
         </p>
 
         <h2>Contact</h2>
-        <p>For questions about these terms, contact us at hello@calibratemedia.co.</p>
+        <p>For questions about these terms, contact us at info@calibratemedia.ca.</p>
       </div>
     </div>
   );

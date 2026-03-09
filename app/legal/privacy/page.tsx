@@ -44,11 +44,11 @@ export default function PrivacyPage() {
         <h2>Your rights</h2>
         <p>
           You have the right to request access to, correction of, or deletion of any personal data we hold about you.
-          To make such a request, contact us at hello@calibratemedia.co.
+          To make such a request, contact us at info@calibratemedia.ca.
         </p>
 
         <h2>Contact</h2>
-        <p>For any privacy-related questions, reach us at hello@calibratemedia.co.</p>
+        <p>For any privacy-related questions, reach us at info@calibratemedia.ca.</p>
       </div>
     </div>
   );
