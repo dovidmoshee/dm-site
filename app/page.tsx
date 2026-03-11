@@ -175,7 +175,7 @@ export default function HomePage() {
 
             <div>
               <div className="offer-summary-badge">
-                <div className="mono" style={{ color: "rgba(255,255,255,0.8)", marginBottom: 8 }}>
+                <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
                   Business OS Setup
                 </div>
                 <h3>30-Day Structured Engagement</h3>
@@ -199,7 +199,7 @@ export default function HomePage() {
                 </div>
                 <Link
                   className="btn btn-primary"
-                  style={{ width: "100%", marginTop: 24, background: "var(--lime)", color: "var(--ink)" }}
+                  style={{ width: "100%", marginTop: 24, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
                   Book a Free Audit Call
@@ -213,7 +213,7 @@ export default function HomePage() {
       <section className="deliverables-section">
         <div className="container">
           <div className="section-head">
-            <div className="tag" style={{ background: "rgba(200,255,0,0.1)", color: "var(--lime)" }}>
+            <div className="tag" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
               What You Get
             </div>
             <h2>Five deliverables. Yours to keep.</h2>
@@ -351,7 +351,7 @@ export default function HomePage() {
             Book a free 30-minute audit call. We will look at your current systems and I will tell you exactly where
             the leverage is.
           </p>
-          <Link className="btn btn-primary btn-xl" href="/contact" style={{ background: "var(--lime)", color: "var(--ink)" }}>
+          <Link className="btn btn-primary btn-xl" href="/contact" style={{ background: "var(--accent-fill)", color: "var(--on-accent)" }}>
             Book a Call →
           </Link>
         </div>

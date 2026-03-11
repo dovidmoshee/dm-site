@@ -172,21 +172,21 @@ export default function OfferPage() {
 
             <div>
               <div className="offer-summary-badge">
-                <div className="mono" style={{ color: "rgba(255,255,255,0.8)", marginBottom: 8 }}>
+                <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
                   Business OS Setup
                 </div>
                 <h3>Ready to get started?</h3>
                 <p>Book a free 30-minute audit call. No pitch, no pressure. Just a clear look at your systems.</p>
                 <Link
                   className="btn btn-primary"
-                  style={{ width: "100%", marginBottom: 12, background: "var(--lime)", color: "var(--ink)" }}
+                  style={{ width: "100%", marginBottom: 12, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
                   Book a Free Audit Call
                 </Link>
                 <Link
                   className="btn btn-ghost"
-                  style={{ width: "100%", color: "rgba(255,255,255,0.88)", borderColor: "rgba(255,255,255,0.45)" }}
+                  style={{ width: "100%", color: "var(--on-strong)", borderColor: "var(--strong-border)" }}
                   href="/contact#checklist"
                 >
                   Get the Free Checklist
@@ -197,7 +197,7 @@ export default function OfferPage() {
                 </div>
                 <div className="badge-stat">
                   <div className="badge-stat-label">Payment terms</div>
-                  <div className="badge-stat-value" style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.88)" }}>
+                  <div className="badge-stat-value" style={{ fontSize: 14, fontWeight: 400, color: "var(--on-strong-muted)" }}>
                     50% upfront, 50% on delivery
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default function OfferPage() {
         <div className="container">
           <h2>Let&apos;s build your business OS.</h2>
           <p>Book a free audit call and leave with a clear picture of where your systems need work.</p>
-          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+          <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →
           </Link>
         </div>

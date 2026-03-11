@@ -24,14 +24,28 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `(() => {
+  try {
+    const key = "calibrate-theme-preference";
+    const stored = window.localStorage.getItem(key);
+    const preference =
+      stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolved = preference === "system" ? (prefersDark ? "dark" : "light") : preference;
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.dataset.themePreference = preference;
+  } catch {}
+})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <GoogleTagManager gtmId="GTM-KJ8HDKJ" />
         <a href="#main-content" className="skip-link">
           Skip to main content

@@ -81,7 +81,7 @@ export default function ProcessPage() {
                 <div className="metric">10+ hrs</div>
                 <p>Saved per week through automation of repetitive tasks</p>
               </div>
-              <div className="success-item" style={{ background: "var(--ink)" }}>
+              <div className="success-item" style={{ background: "var(--surface-strong)", color: "var(--on-strong)" }}>
                 <div className="metric" style={{ color: "var(--lime)" }}>
                   50%
                 </div>
@@ -100,7 +100,7 @@ export default function ProcessPage() {
         <div className="container">
           <h2>See how this applies to your business.</h2>
           <p>Book a free audit call and we will walk through your specific situation together.</p>
-          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+          <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →
           </Link>
         </div>

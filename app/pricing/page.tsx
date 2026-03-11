@@ -62,7 +62,7 @@ export default function PricingPage() {
         <div className="container">
           <h2>Ready to pick your package?</h2>
           <p>Book a 30-minute call and we will figure out the right fit together.</p>
-          <Link className="btn btn-xl" style={{ background: "var(--lime)", color: "var(--ink)", fontWeight: 600 }} href="/contact">
+          <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →
           </Link>
         </div>

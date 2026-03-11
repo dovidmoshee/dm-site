@@ -73,7 +73,7 @@ export function SiteFooter() {
               <div
                 style={{
                   fontSize: 12,
-                  color: "rgba(255,255,255,0.8)",
+                  color: "var(--on-strong-muted)",
                   marginBottom: 6,
                   fontFamily: "var(--mono)",
                   letterSpacing: "0.1em",
@@ -84,7 +84,7 @@ export function SiteFooter() {
               </div>
               <Link
                 className="btn btn-primary"
-                style={{ background: "var(--lime)", color: "var(--ink)", fontSize: 13 }}
+                style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontSize: 13 }}
                 href="/contact"
               >
                 Book a Call

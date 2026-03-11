@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/blog";
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section>
         <div className="container">
           <article className="article-content">
-            <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
           </article>
 
           {post.cta ? (

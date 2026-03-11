@@ -95,7 +95,7 @@ export default function AboutPage() {
 
             <div>
               <div className="about-sidebar-card">
-                <div className="mono" style={{ color: "rgba(255,255,255,0.8)", marginBottom: 8 }}>
+                <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
                   Background
                 </div>
                 <h3>Business Systems Architect</h3>
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 </ul>
                 <Link
                   className="btn btn-primary"
-                  style={{ width: "100%", marginTop: 24, background: "var(--lime)", color: "var(--ink)" }}
+                  style={{ width: "100%", marginTop: 24, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
                   Book a Free Audit Call
