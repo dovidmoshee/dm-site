@@ -1,9 +1,5 @@
 "use server";
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-
-import nodemailer from "nodemailer";
 import { redirect } from "next/navigation";
 
 type Submission = {
@@ -36,27 +32,38 @@ function hasHubSpotConfig() {
   return Boolean(process.env.HUBSPOT_ACCESS_TOKEN);
 }
 
-async function writeSubmissionToFile(submission: Submission) {
-  const isVercel = Boolean(process.env.VERCEL);
-  const dataDir = isVercel ? "/tmp" : path.join(process.cwd(), "data");
-  const filePath = path.join(dataDir, "contact-submissions.json");
-
-  await mkdir(dataDir, { recursive: true });
-
-  let existing: Submission[] = [];
-
+async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
   try {
-    const content = await readFile(filePath, "utf-8");
-    const parsed = JSON.parse(content);
-    if (Array.isArray(parsed)) {
-      existing = parsed;
-    }
-  } catch {
-    existing = [];
-  }
+    const [{ mkdir, readFile, writeFile }, pathModule] = await Promise.all([
+      import("node:fs/promises"),
+      import("node:path"),
+    ]);
 
-  existing.push(submission);
-  await writeFile(filePath, `${JSON.stringify(existing, null, 2)}\n`, "utf-8");
+    const isVercel = Boolean(process.env.VERCEL);
+    const dataDir = isVercel ? "/tmp" : pathModule.join(process.cwd(), "data");
+    const filePath = pathModule.join(dataDir, "contact-submissions.json");
+
+    await mkdir(dataDir, { recursive: true });
+
+    let existing: Submission[] = [];
+
+    try {
+      const content = await readFile(filePath, "utf-8");
+      const parsed = JSON.parse(content);
+      if (Array.isArray(parsed)) {
+        existing = parsed;
+      }
+    } catch {
+      existing = [];
+    }
+
+    existing.push(submission);
+    await writeFile(filePath, `${JSON.stringify(existing, null, 2)}\n`, "utf-8");
+    return true;
+  } catch (error) {
+    console.error("Failed to persist contact submission to file fallback.", error);
+    return false;
+  }
 }
 
 function escapeHtml(value: string): string {
@@ -69,6 +76,7 @@ function escapeHtml(value: string): string {
 }
 
 async function sendEmailSubmission(submission: Submission) {
+  const nodemailer = (await import("nodemailer")).default;
   const port = Number(process.env.SMTP_PORT);
   const secure = Number.isFinite(port) && port === 465;
 
@@ -232,17 +240,40 @@ export async function submitContactForm(formData: FormData) {
   const hubSpotConfigured = hasHubSpotConfig();
 
   if (!emailConfigured && !hubSpotConfigured) {
-    await writeSubmissionToFile(submission);
-  } else {
-    try {
-      await Promise.all([
-        emailConfigured ? sendEmailSubmission(submission) : Promise.resolve(),
-        hubSpotConfigured ? sendHubSpotLead(submission) : Promise.resolve(),
-      ]);
-    } catch (error) {
-      console.error("Failed to deliver contact submission.", error);
-      await writeSubmissionToFile(submission);
+    const persisted = await writeSubmissionToFile(submission);
+    if (!persisted) {
       redirect("/contact?error=delivery-failed");
+    }
+  } else {
+    const deliveries = await Promise.allSettled([
+      emailConfigured ? sendEmailSubmission(submission) : Promise.resolve(),
+      hubSpotConfigured ? sendHubSpotLead(submission) : Promise.resolve(),
+    ]);
+
+    const successfulDeliveries = deliveries.filter((result) => result.status === "fulfilled").length;
+
+    if (successfulDeliveries === 0) {
+      console.error("Failed to deliver contact submission.", deliveries);
+      const persisted = await writeSubmissionToFile(submission);
+      if (!persisted) {
+        redirect("/contact?error=delivery-failed");
+      }
+
+      redirect("/contact?error=delivery-failed");
+    }
+
+    for (const result of deliveries) {
+      if (result.status === "rejected") {
+        console.error("A delivery channel failed for contact submission.", result.reason);
+      }
+    }
+
+    if (successfulDeliveries > 0) {
+      const failedDeliveries = deliveries.length - successfulDeliveries;
+      if (failedDeliveries > 0) {
+        // Persist a copy for troubleshooting when one channel fails.
+        await writeSubmissionToFile(submission);
+      }
     }
   }
 
