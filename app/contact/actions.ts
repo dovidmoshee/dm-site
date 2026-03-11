@@ -32,6 +32,10 @@ function hasEmailConfig() {
   );
 }
 
+function hasHubSpotConfig() {
+  return Boolean(process.env.HUBSPOT_ACCESS_TOKEN);
+}
+
 async function writeSubmissionToFile(submission: Submission) {
   const isVercel = Boolean(process.env.VERCEL);
   const dataDir = isVercel ? "/tmp" : path.join(process.cwd(), "data");
@@ -114,6 +118,87 @@ async function sendEmailSubmission(submission: Submission) {
   });
 }
 
+function splitName(fullName: string) {
+  const parts = fullName
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  return {
+    firstName: parts[0] ?? "",
+    lastName: parts.slice(1).join(" "),
+  };
+}
+
+function addHubSpotProperty(
+  properties: Record<string, string>,
+  propertyName: string | undefined,
+  value: string,
+) {
+  if (!propertyName || !value || value === "Not provided") {
+    return;
+  }
+
+  properties[propertyName] = value;
+}
+
+async function sendHubSpotLead(submission: Submission) {
+  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN;
+  if (!accessToken) {
+    return;
+  }
+
+  const { firstName, lastName } = splitName(submission.name);
+  const properties: Record<string, string> = {
+    email: submission.email,
+    lifecyclestage: "lead",
+  };
+
+  if (firstName) {
+    properties.firstname = firstName;
+  }
+
+  if (lastName) {
+    properties.lastname = lastName;
+  }
+
+  if (submission.company !== "Not provided") {
+    properties.company = submission.company;
+  }
+
+  addHubSpotProperty(properties, process.env.HUBSPOT_TEAM_SIZE_PROPERTY, submission.teamSize);
+  addHubSpotProperty(properties, process.env.HUBSPOT_BOTTLENECK_PROPERTY, submission.bottleneck);
+  addHubSpotProperty(properties, process.env.HUBSPOT_MESSAGE_PROPERTY, submission.message);
+  addHubSpotProperty(
+    properties,
+    process.env.HUBSPOT_CHECKLIST_PROPERTY,
+    submission.wantsChecklist ? "true" : "false",
+  );
+
+  const response = await fetch("https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      inputs: [
+        {
+          idProperty: "email",
+          id: submission.email,
+          properties,
+        },
+      ],
+    }),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`HubSpot contact upsert failed (${response.status}): ${details}`);
+  }
+}
+
 export async function submitContactForm(formData: FormData) {
   const name = getStringValue(formData, "name");
   const email = getStringValue(formData, "email");
@@ -143,10 +228,22 @@ export async function submitContactForm(formData: FormData) {
     wantsChecklist,
   };
 
-  if (hasEmailConfig()) {
-    await sendEmailSubmission(submission);
-  } else {
+  const emailConfigured = hasEmailConfig();
+  const hubSpotConfigured = hasHubSpotConfig();
+
+  if (!emailConfigured && !hubSpotConfigured) {
     await writeSubmissionToFile(submission);
+  } else {
+    try {
+      await Promise.all([
+        emailConfigured ? sendEmailSubmission(submission) : Promise.resolve(),
+        hubSpotConfigured ? sendHubSpotLead(submission) : Promise.resolve(),
+      ]);
+    } catch (error) {
+      console.error("Failed to deliver contact submission.", error);
+      await writeSubmissionToFile(submission);
+      redirect("/contact?error=delivery-failed");
+    }
   }
 
   const query = wantsChecklist ? "?checklist=1" : "";

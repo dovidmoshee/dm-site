@@ -42,22 +42,43 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.com
 
 If not set, the site defaults to `http://localhost:3000`.
 
-### Optional SMTP email sending
+### Optional SMTP email sending (Google Workspace compatible)
 
-If all values below are set, form submissions are emailed via nodemailer:
+If all values below are set, form submissions are emailed via nodemailer.
+For Google Workspace (`@your-domain.com` on Gmail), use Gmail SMTP with an App Password:
 
 ```bash
-SMTP_HOST=smtp.your-provider.com
+SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_password
-SMTP_FROM="Calibrate Media <hello@your-domain.com>"
+SMTP_USER=hello@your-domain.com
+SMTP_PASS=your_google_app_password
+SMTP_FROM="Calibrate Media <hello@your-domain.com>"  # must match the mailbox or an allowed alias
 SMTP_TO=hello@your-domain.com
 ```
 
 Behavior:
 - With SMTP vars: sends email notifications.
-- Without SMTP vars: saves submissions to JSON.
+- With HubSpot vars (below): creates/updates a HubSpot contact as a lead.
+- Without either SMTP or HubSpot vars: saves submissions to JSON.
+
+### Optional HubSpot lead sync
+
+If `HUBSPOT_ACCESS_TOKEN` is set, each submission is upserted to HubSpot Contacts using email as the unique key and `lifecyclestage=lead`.
+
+```bash
+HUBSPOT_ACCESS_TOKEN=your_hubspot_private_app_token
+```
+
+Optional: map extra form fields into your own HubSpot custom contact properties:
+
+```bash
+HUBSPOT_TEAM_SIZE_PROPERTY=team_size
+HUBSPOT_BOTTLENECK_PROPERTY=biggest_bottleneck
+HUBSPOT_MESSAGE_PROPERTY=inquiry_message
+HUBSPOT_CHECKLIST_PROPERTY=wants_checklist
+```
+
+If these custom properties are not created in HubSpot, leave these env vars unset.
 
 Fallback storage location:
 - Local dev: `data/contact-submissions.json`

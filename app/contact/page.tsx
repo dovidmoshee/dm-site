@@ -25,6 +25,10 @@ function getErrorMessage(errorValue?: string | string[]) {
     return "Please enter your name and email before submitting.";
   }
 
+  if (error === "delivery-failed") {
+    return "We could not deliver your message right now. Please try again, or email us directly.";
+  }
+
   return null;
 }
 
