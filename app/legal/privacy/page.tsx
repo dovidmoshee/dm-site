@@ -2,7 +2,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "Privacy policy for Calibrate Media.",
+  description: "Privacy policy for Cohevo.",
   path: "/legal/privacy",
 });
 
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         <span className="mono">Last updated: January 2025</span>
 
         <p>
-          Calibrate Media (&quot;we&quot;, &quot;us&quot;) is committed to protecting your personal information. This
+          Cohevo (&quot;we&quot;, &quot;us&quot;) is committed to protecting your personal information. This
           policy explains what data we collect, how we use it, and your rights.
         </p>
 
@@ -44,11 +44,11 @@ export default function PrivacyPage() {
         <h2>Your rights</h2>
         <p>
           You have the right to request access to, correction of, or deletion of any personal data we hold about you.
-          To make such a request, contact us at info@calibratemedia.ca.
+          To make such a request, contact us at hi@cohevo.co.
         </p>
 
         <h2>Contact</h2>
-        <p>For any privacy-related questions, reach us at info@calibratemedia.ca.</p>
+        <p>For any privacy-related questions, reach us at hi@cohevo.co.</p>
       </div>
     </div>
   );

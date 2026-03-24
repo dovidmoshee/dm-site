@@ -2,7 +2,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Terms of Service",
-  description: "Terms of service for Calibrate Media.",
+  description: "Terms of service for Cohevo.",
   path: "/legal/terms",
 });
 
@@ -14,13 +14,13 @@ export default function TermsPage() {
         <span className="mono">Last updated: January 2025</span>
 
         <p>
-          These terms apply to all visitors and clients of Calibrate Media. By using this website or engaging our
+          These terms apply to all visitors and clients of Cohevo. By using this website or engaging our
           services, you agree to the following.
         </p>
 
         <h2>Services</h2>
         <p>
-          Calibrate Media provides business systems consulting, workflow design, automation implementation, and related
+          Cohevo provides business systems consulting, workflow design, automation implementation, and related
           services. The specific scope of each engagement is defined in a separate Statement of Work agreed upon before
           work begins.
         </p>
@@ -34,7 +34,7 @@ export default function TermsPage() {
         <h2>Intellectual property</h2>
         <p>
           All deliverables created as part of an engagement become the property of the client upon receipt of final
-          payment. Calibrate Media retains the right to reference the type of work performed in general portfolio
+          payment. Cohevo retains the right to reference the type of work performed in general portfolio
           descriptions without disclosing confidential client information.
         </p>
 
@@ -57,7 +57,7 @@ export default function TermsPage() {
         </p>
 
         <h2>Contact</h2>
-        <p>For questions about these terms, contact us at info@calibratemedia.ca.</p>
+        <p>For questions about these terms, contact us at hi@cohevo.co.</p>
       </div>
     </div>
   );

@@ -1088,15 +1088,9 @@ section {
 }
 
 .footer-brand-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: var(--on-strong);
   margin-bottom: 8px;
 }
 
-.footer-brand-name span {
-  color: var(--lime);
-}
 
 .footer-tagline {
   font-size: 13px;
@@ -2036,3 +2030,4 @@ section {
     padding-top: 20px;
   }
 }
+

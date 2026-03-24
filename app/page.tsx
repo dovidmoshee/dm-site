@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { deliverables, measurableOutcomes, packages, processTimeline, testimonials } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Calibrate Media",
+  title: "Cohevo",
   description:
     "Install the operating system your business runs on. In 30 days I streamline your tools, workflows, automations, and AI.",
   path: "/",

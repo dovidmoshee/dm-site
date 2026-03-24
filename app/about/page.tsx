@@ -61,7 +61,7 @@ export default function AboutPage() {
             <div className="about-text">
               <h2>The gap between business goals and technical execution is where most teams get stuck.</h2>
               <p>
-                I started Calibrate Media because I kept seeing the same problem: capable teams running on broken
+                I started Cohevo because I kept seeing the same problem: capable teams running on broken
                 infrastructure. Good people spending hours on manual tasks that should take seconds. Smart founders who
                 couldn&apos;t see the bottlenecks because they were too close to the day-to-day.
               </p>

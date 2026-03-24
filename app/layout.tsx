@@ -10,8 +10,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Calibrate Media",
-    template: "%s | Calibrate Media",
+    default: "Cohevo",
+    template: "%s | Cohevo",
   },
   description: siteConfig.description,
   openGraph: {

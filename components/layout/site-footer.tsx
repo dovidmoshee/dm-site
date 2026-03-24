@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function SiteFooter() {
@@ -7,7 +8,7 @@ export function SiteFooter() {
         <div className="footer-grid">
           <div>
             <div className="footer-brand-name">
-              Calibrate <span>Media</span>
+              <Image src="/cohevo-logo-dark.svg" alt="Cohevo" height={32} width={120} />
             </div>
             <div className="footer-tagline">
               I design and install the operating system that runs your business. Systems mapping, automation, and AI
@@ -20,7 +21,7 @@ export function SiteFooter() {
               <span className="footer-social" aria-hidden="true" title="Twitter/X">
                 𝕏
               </span>
-              <Link className="footer-social" title="Email" href="mailto:info@calibratemedia.ca" aria-label="Email">
+              <Link className="footer-social" title="Email" href="mailto:hi@cohevo.co" aria-label="Email">
                 @
               </Link>
             </div>
@@ -94,8 +95,8 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2025 Calibrate Media. All rights reserved.</span>
-          <span>info@calibratemedia.ca</span>
+          <span>© 2025 Cohevo. All rights reserved.</span>
+          <span>hi@cohevo.co</span>
         </div>
       </div>
     </footer>

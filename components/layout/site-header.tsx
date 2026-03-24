@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -86,6 +87,24 @@ export function SiteHeader() {
   }, [themePreference, resolvedTheme]);
 
   useEffect(() => {
+    // Fix: our CSS sets color-scheme: dark on :root[data-theme="dark"], which HubSpot
+    // detects and uses to add a white background to its chat iframe. Override it with
+    // an inline 'normal' so HubSpot doesn't see dark mode when it initialises.
+    // Our actual dark mode uses data-theme + CSS variables so this is safe.
+    function fixHubspotColorScheme() {
+      const computed = window.getComputedStyle(document.documentElement).colorScheme;
+      if (computed === "dark") {
+        document.documentElement.style.colorScheme = "normal";
+      }
+    }
+    window.hsConversationsOnReady = [fixHubspotColorScheme];
+    // Also run immediately in case HubSpot already loaded before this effect
+    if ((window as any).HubSpotConversations) {
+      fixHubspotColorScheme();
+    }
+  }, []);
+
+  useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
@@ -117,8 +136,14 @@ export function SiteHeader() {
     <>
       <header className="site-header">
         <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            Calibrate <span>Media</span>
+          <Link href="/" className="nav-logo" aria-label="Cohevo">
+            <Image
+              src={resolvedTheme === "dark" ? "/cohevo-logo-dark.svg" : "/cohevo-logo-light.svg"}
+              alt="Cohevo"
+              height={32}
+              width={120}
+              priority
+            />
           </Link>
 
           <nav className="nav-links" aria-label="Main navigation">
