@@ -10,7 +10,8 @@ import { navLinks } from "@/lib/site";
 type ThemePreference = "system" | "light" | "dark";
 type ResolvedTheme = "light" | "dark";
 
-const THEME_STORAGE_KEY = "calibrate-theme-preference";
+const THEME_STORAGE_KEY = "cohevo-theme-preference";
+const LEGACY_THEME_STORAGE_KEY = "calibrate-theme-preference";
 const themeOrder: ThemePreference[] = ["system", "light", "dark"];
 const themeLabels: Record<ThemePreference, string> = {
   system: "Auto",
@@ -35,7 +36,8 @@ function getStoredThemePreference(): ThemePreference {
     return "system";
   }
 
-  const storedPreference = window.localStorage.getItem(THEME_STORAGE_KEY);
+  const storedPreference =
+    window.localStorage.getItem(THEME_STORAGE_KEY) ?? window.localStorage.getItem(LEGACY_THEME_STORAGE_KEY);
 
   if (storedPreference === "light" || storedPreference === "dark" || storedPreference === "system") {
     return storedPreference;
@@ -82,6 +84,7 @@ export function SiteHeader() {
     }
 
     window.localStorage.setItem(THEME_STORAGE_KEY, themePreference);
+    window.localStorage.removeItem(LEGACY_THEME_STORAGE_KEY);
     document.documentElement.dataset.theme = resolvedTheme;
     document.documentElement.dataset.themePreference = themePreference;
   }, [themePreference, resolvedTheme]);

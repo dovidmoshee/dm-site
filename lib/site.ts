@@ -1,4 +1,4 @@
-const defaultSiteUrl = process.env.NODE_ENV === "production" ? "https://calibratemedia.ca" : "http://localhost:3000";
+const defaultSiteUrl = process.env.NODE_ENV === "production" ? "https://cohevo.co" : "http://localhost:3000";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultSiteUrl).trim().replace(/\/$/, "");
 
 export const siteConfig = {
@@ -9,7 +9,7 @@ export const siteConfig = {
   url: siteUrl,
   ogImage: "/og-image.svg",
   contactEmail: "hi@cohevo.co",
-  calendlyPlaceholderUrl: "https://calendly.com/davidcalibrate/30-minute-info-session?hide_gdpr_banner=1",
+  calendlyPlaceholderUrl: "https://calendly.com/cohevo",
 } as const;
 
 export const navLinks = [

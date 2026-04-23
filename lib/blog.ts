@@ -3,6 +3,7 @@ import path from "node:path";
 
 import matter from "gray-matter";
 import generatedBlogPostsData from "@/content/blog/posts.generated.json";
+import { fetchAllSanityPosts, fetchSanityPostBySlug } from "@/lib/sanity/queries";
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -60,11 +61,23 @@ export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const sanityPost = await fetchSanityPostBySlug(slug);
+
+  if (sanityPost) {
+    return sanityPost;
+  }
+
   const posts = await getBlogPosts();
   return posts.find((post) => post.slug === slug);
 }
 
 async function getBlogPosts(): Promise<BlogPost[]> {
+  const sanityPosts = await fetchAllSanityPosts();
+
+  if (sanityPosts !== null && sanityPosts.length > 0) {
+    return sanityPosts;
+  }
+
   const fileSystemPosts = await getFileSystemPosts();
 
   if (fileSystemPosts !== null) {

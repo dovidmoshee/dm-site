@@ -12,7 +12,6 @@ const routes = [
   "/blog",
   "/faq",
   "/contact",
-  "/thank-you",
   "/legal/privacy",
   "/legal/terms",
 ];

@@ -1,4 +1,4 @@
-# Calibrate Media Website
+# Cohevo Website
 
 Production-ready marketing site built with Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, lucide-react, and Framer Motion.
 
@@ -37,10 +37,10 @@ Create a `.env.local` file in project root.
 ### Required for production metadata
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
+NEXT_PUBLIC_SITE_URL=https://cohevo.co
 ```
 
-If not set, the site defaults to `http://localhost:3000`.
+If not set, the site defaults to `https://cohevo.co` in production and `http://localhost:3000` in development.
 
 ### Optional SMTP email sending (Google Workspace compatible)
 
@@ -52,7 +52,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=hello@your-domain.com
 SMTP_PASS=your_google_app_password
-SMTP_FROM="Calibrate Media <hello@your-domain.com>"  # must match the mailbox or an allowed alias
+SMTP_FROM="Cohevo <hello@your-domain.com>"  # must match the mailbox or an allowed alias
 SMTP_TO=hello@your-domain.com
 ```
 
@@ -86,13 +86,13 @@ Fallback storage location:
 
 For persistent production handling, set SMTP env vars.
 
-## Calendly Placeholder
+## Calendly Link
 
-The booking placeholder link is configured in:
+The contact page booking link is configured in:
 
 - `lib/site.ts` → `calendlyPlaceholderUrl`
 
-Update that value to your real scheduling URL.
+Update that value if your Calendly handle or event URLs change.
 
 ## Editing Copy and Content
 

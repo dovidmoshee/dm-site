@@ -26,10 +26,13 @@ export const metadata: Metadata = {
 
 const themeInitScript = `(() => {
   try {
-    const key = "calibrate-theme-preference";
-    const stored = window.localStorage.getItem(key);
+    const key = "cohevo-theme-preference";
+    const legacyKey = "calibrate-theme-preference";
+    const stored = window.localStorage.getItem(key) ?? window.localStorage.getItem(legacyKey);
     const preference =
       stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+    window.localStorage.setItem(key, preference);
+    window.localStorage.removeItem(legacyKey);
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const resolved = preference === "system" ? (prefersDark ? "dark" : "light") : preference;
     document.documentElement.dataset.theme = resolved;

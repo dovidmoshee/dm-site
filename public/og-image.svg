@@ -6,13 +6,13 @@
   <rect x="120" y="120" width="960" height="390" rx="38" fill="white" stroke="#D4E5EA" stroke-width="4"/>
 
   <text x="180" y="260" fill="#134B49" font-family="Arial" font-size="64" font-weight="700">
-    Calibrate Media
+    Cohevo
   </text>
   <text x="180" y="340" fill="#2A6663" font-family="Arial" font-size="38">
-    Simplify how your business
+    Install the operating system
   </text>
   <text x="180" y="392" fill="#2A6663" font-family="Arial" font-size="38">
-    runs.
+    your business runs on.
   </text>
 
   <circle cx="930" cy="250" r="58" fill="#BFE0D8"/>
