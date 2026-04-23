@@ -37,10 +37,10 @@ Create a `.env.local` file in project root.
 ### Required for production metadata
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://cohevo.co
+NEXT_PUBLIC_SITE_URL=https://www.cohevo.co
 ```
 
-If not set, the site defaults to `https://cohevo.co` in production and `http://localhost:3000` in development.
+If not set, the site defaults to `https://www.cohevo.co` in production and `http://localhost:3000` in development. If you accidentally set the apex domain, the app normalizes SEO-facing URLs back to `www`.
 
 ### Optional SMTP email sending (Google Workspace compatible)
 

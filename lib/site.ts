@@ -1,5 +1,27 @@
-const defaultSiteUrl = process.env.NODE_ENV === "production" ? "https://cohevo.co" : "http://localhost:3000";
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultSiteUrl).trim().replace(/\/$/, "");
+const defaultSiteUrl =
+  process.env.NODE_ENV === "production" ? "https://www.cohevo.co" : "http://localhost:3000";
+
+function normalizeSiteUrl(value: string) {
+  const trimmedValue = value.trim().replace(/\/$/, "");
+
+  try {
+    const url = new URL(trimmedValue);
+
+    // Production traffic is forced onto the www host, so SEO-facing outputs
+    // should always advertise the same canonical origin.
+    if (url.hostname === "cohevo.co") {
+      url.hostname = "www.cohevo.co";
+    }
+
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return trimmedValue;
+  }
+}
+
+const siteUrl = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultSiteUrl,
+);
 
 export const siteConfig = {
   name: "Cohevo",
