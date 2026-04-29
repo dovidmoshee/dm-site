@@ -60,6 +60,27 @@ export async function getAllBlogPosts(): Promise<BlogPostSummary[]> {
     }));
 }
 
+export function getRelatedPosts(
+  currentSlug: string,
+  currentTags: string[],
+  allPosts: BlogPostSummary[],
+  limit = 3
+): BlogPostSummary[] {
+  return allPosts
+    .filter((p) => p.slug !== currentSlug)
+    .map((post) => ({
+      post,
+      score: post.tags.filter((t) => currentTags.includes(t)).length,
+    }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        new Date(b.post.publishedAt).getTime() - new Date(a.post.publishedAt).getTime()
+    )
+    .slice(0, limit)
+    .map(({ post }) => post);
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
   const sanityPost = await fetchSanityPostBySlug(slug);
 
