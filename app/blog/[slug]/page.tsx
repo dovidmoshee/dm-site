@@ -3,9 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type { Components } from "react-markdown";
 
 import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
+import { extractToc, slugifyHeading } from "@/lib/toc";
+import { TableOfContents } from "./table-of-contents";
+import { ReadingProgress } from "./reading-progress";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -65,6 +69,43 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
+function childrenToText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
+  if (Array.isArray(children)) return children.map(childrenToText).join("");
+  if (children && typeof children === "object" && "props" in (children as object)) {
+    return childrenToText(
+      (children as React.ReactElement<{ children?: React.ReactNode }>).props.children
+    );
+  }
+  return "";
+}
+
+function makeHeadingComponents(): Components {
+  function Heading({ level, children }: { level: 2 | 3 | 4; children: React.ReactNode }) {
+    const Tag = `h${level}` as "h2" | "h3" | "h4";
+    const text = childrenToText(children);
+    const id = slugifyHeading(text);
+
+    return (
+      <Tag id={id} className="article-heading">
+        <a href={`#${id}`} className="heading-anchor" aria-hidden="true" tabIndex={-1}>
+          #
+        </a>
+        {children}
+      </Tag>
+    );
+  }
+
+  return {
+    h2: ({ children }) => <Heading level={2}>{children}</Heading>,
+    h3: ({ children }) => <Heading level={3}>{children}</Heading>,
+    h4: ({ children }) => <Heading level={4}>{children}</Heading>,
+  };
+}
+
+const mdComponents = makeHeadingComponents();
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
@@ -72,6 +113,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const tocEntries = extractToc(post.content);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -101,7 +144,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <ReadingProgress />
 
       <section className="inner-hero article-hero">
         <div className="container">
@@ -111,8 +158,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </Link>
             <span className="mono">{formatDate(post.publishedAt)}</span>
           </div>
+          <ul className="blog-tag-list article-hero-tags" aria-label="Topics">
+            {post.tags.map((tag) => (
+              <li key={tag} className="blog-tag">
+                {tag}
+              </li>
+            ))}
+          </ul>
           <h1>{post.title}</h1>
-          <p>{post.excerpt}</p>
+          <p className="article-hero-excerpt">{post.excerpt}</p>
           <div className="article-byline">
             <span>
               By {post.author.name}, {post.author.role}
@@ -122,11 +176,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section>
 
-      <section>
+      <section className="article-section">
         <div className="container">
-          <article className="article-content">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
-          </article>
+          <div className="article-layout">
+            <article className="article-content">
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+                {post.content}
+              </ReactMarkdown>
+            </article>
+            <TableOfContents entries={tocEntries} />
+          </div>
 
           {post.cta ? (
             <div className="article-cta">
