@@ -31,7 +31,6 @@ export const siteConfig = {
   url: siteUrl,
   ogImage: "/og-image.svg",
   contactEmail: "hi@cohevo.co",
-  calendlyPlaceholderUrl: "https://calendly.com/cohevo",
 } as const;
 
 export const navLinks = [

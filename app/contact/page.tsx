@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/seo";
 import { bottleneckOptions, siteConfig, teamSizeOptions } from "@/lib/site";
 
+import { CalBooking } from "./cal-booking";
 import { submitContactForm } from "./actions";
 
 export const metadata = buildMetadata({
@@ -58,12 +59,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 A free 30-minute call to walk through your current setup. No pitch. Just a clear picture of where the
                 leverage is.
               </p>
-              <iframe
-                className="calendly-frame"
-                src={siteConfig.calendlyPlaceholderUrl}
-                title="Book a free audit call"
-                loading="lazy"
-              />
+              <CalBooking />
               <div
                 style={{
                   marginTop: 32,
