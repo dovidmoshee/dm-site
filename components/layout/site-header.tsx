@@ -102,7 +102,7 @@ export function SiteHeader() {
     }
     window.hsConversationsOnReady = [fixHubspotColorScheme];
     // Also run immediately in case HubSpot already loaded before this effect
-    if ((window as any).HubSpotConversations) {
+    if ((window as Window & { HubSpotConversations?: unknown }).HubSpotConversations) {
       fixHubspotColorScheme();
     }
   }, []);

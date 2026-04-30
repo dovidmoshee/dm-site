@@ -156,7 +156,7 @@ export default function HomePage() {
           <div className="offer-summary-grid">
             <div>
               <div className="tag">Business OS Setup</div>
-              <h2 style={{ fontSize: "clamp(30px,4vw,44px)", marginBottom: 16 }}>
+              <h2 className="offer-summary-title">
                 A structured engagement to architect and install your business infrastructure.
               </h2>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 24 }}>
