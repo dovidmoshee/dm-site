@@ -1,33 +1,34 @@
-# Calibrate Media Messaging Framework
+# Cohevo Messaging Framework
 
 ## One-line pitch
-Calibrate Media builds simple growth and operations systems that help teams move faster with less manual work.
+Cohevo installs the operating system your business runs on — in 60 days.
 
 ## 30-second pitch
-Most teams do not need more tools. They need better systems. Calibrate Media maps your workflow, removes friction, and installs clear handoffs and automations so sales and delivery run smoothly.
+Most small teams have the right ambition but the wrong scaffolding. You're growing fast, but your internal systems haven't kept up. I map your workflows, design the right tool stack, build automations that connect everything, and layer in AI where it actually saves time. In 60 days you have a complete operating layer — documented, implemented, and owned by your team.
 
-## Homepage headline ideas
-- Simplify how your business runs.
-- Build a business that runs cleanly.
-- Replace operational drag with clear execution.
+## Homepage headline
+Install the operating system your business runs on.
+
+## Homepage subheadline
+In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.
 
 ## Problem statements
-- Your work is scattered.
-- Your team repeats manual steps.
-- Your reporting is inconsistent.
+- Every process lives in someone's head. Things get dropped. Nothing is documented.
+- Your team copies data between tools, re-enters information, and chases updates manually.
+- Twelve subscriptions that don't talk to each other. No clear owner. No clear purpose.
 
 ## Outcome statements
-- One clear source of truth.
-- Faster handoffs between teams.
-- Better execution with less effort.
+- Every process is mapped, owned, and easy to hand off. New hires get up to speed fast.
+- Data moves between your tools automatically. No copy-paste. No dropped leads.
+- One place to see pipeline, tasks, and customer status. Your team always knows the answer.
 
 ## Proof points
-- Reduced manual admin hours
-- Faster onboarding and delivery cycles
-- Cleaner reporting and pipeline visibility
+- Saved 10+ hours per week through automation
+- Cut onboarding time in half
+- Reduced tool costs by 20%
 
 ## CTA library
-- Book a strategy call
-- Get the systems checklist
-- See service packages
-- Start your 30-day setup
+- Book a Free Audit Call
+- Get the Free Checklist
+- See Full Offer Details
+- Book a Call

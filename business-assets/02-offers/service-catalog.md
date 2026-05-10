@@ -1,34 +1,42 @@
-# Calibrate Media Service Catalog
+# Cohevo Service Catalog
 
-## Core offer: 30-Day Systems Setup
+## Core offer: Business OS Setup
 
-### Scope
-- Workflow mapping
-- Tool stack simplification
-- Automation setup
-- Reporting framework
-- Team handoff documentation
+### Overview
+A 60-day structured engagement to map, design, build, and hand off a complete operating infrastructure for your business.
+
+### Best for
+- SaaS startups and agencies with 3 to 20 people
+- Teams using 5 or more tools that don't connect to each other
+- New hires taking too long to get up to speed because nothing is documented
+- Founders who want to scale without hiring a full-time ops person right now
+- Businesses with existing revenue and a team that is growing
 
 ### Deliverables
-- Systems map
-- Prioritized implementation plan
-- Automation library (v1)
-- KPI dashboard spec
-- SOP pack for daily operations
+1. **Business Systems Map** — A visual audit of every workflow, tool, and handoff point in the business
+2. **Tool Stack Architecture** — A documented recommendation for tooling, every choice justified and tied to actual needs
+3. **Automation Layer** — Live, tested automations built with Zapier, Make, or n8n (lead forms to CRM, CRM to onboarding, notifications and handoffs)
+4. **AI Workflow Layer** — AI integrated into day-to-day work: meeting summaries, support reply drafting, reporting, and research tasks
+5. **Documentation and Training** — Written SOPs for every new workflow plus a live training session with the team
+
+### Not included
+- Custom software development or code-heavy integrations
+- Ongoing management or monitoring after handoff (available as an add-on)
+- Tool licensing costs (client owns and pays for their own subscriptions)
+- Marketing campaigns or demand generation strategy
+
+### Four phases
+- **Phase 1 — Discover and Map:** Full audit call, tool access, workflow interviews. Deliver Business Systems Map.
+- **Phase 2 — Architecture and Sign-off:** Present Tool Stack Architecture and automation logic. Align on priorities. Get approval before building.
+- **Phase 3 — Build and Automate:** Build, configure, and test all automations and AI workflows. Mid-phase check-in.
+- **Phase 4 — Document and Handoff:** Write SOPs, run training session, hand over the full system.
 
 ## Add-on services
-- Ongoing systems stewardship (monthly)
-- Funnel and CRM optimization
-- Dashboard implementation
-- Team training workshops
 
-## Suggested package tiers
+### Ongoing Stewardship
+Monthly check-ins, automation maintenance, and system updates as the business evolves.
+From $1,200 / month
 
-### Foundation
-Best for teams needing strategy and architecture.
-
-### Build
-Best for teams needing end-to-end implementation.
-
-### Scale
-Best for teams needing advanced automations and ongoing support.
+### Advanced Automations
+Complex multi-step workflows, custom API integrations, and advanced AI pipeline setup.
+From $2,500

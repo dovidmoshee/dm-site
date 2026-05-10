@@ -1,13 +1,13 @@
-# Invoice Template - Calibrate Media
+# Invoice Template — Cohevo
 
 Invoice Number: [INV-0001]
 Issue Date: [Date]
 Due Date: [Date]
 
 From:
-Calibrate Media
-[Address]
-[Email]
+Cohevo
+hi@cohevo.co
+cohevo.com
 
 Bill To:
 [Client Name]
@@ -22,8 +22,8 @@ Total: [Amount]
 Amount Due: [Amount]
 
 ## Payment terms
-- Net [15/30]
-- Late fee: [X%] after [X] days
-- Payment method: [Bank transfer/Stripe]
+- 50% upfront to start / 50% due on final training and handoff day
+- Payment method: Bank transfer or Stripe invoice
+- No late fees on milestone-based payments if timeline shifts are mutual
 
 Thank you for your business.

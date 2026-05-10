@@ -1,4 +1,4 @@
-# Service Delivery SOP - Calibrate Media
+# Service Delivery SOP — Cohevo
 
 ## Cadence
 - Monday: Plan sprint and confirm priorities

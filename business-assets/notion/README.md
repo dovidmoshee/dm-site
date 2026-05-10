@@ -1,9 +1,9 @@
-# Calibrate Media Notion Workspace Pack
+# Cohevo Notion Workspace Pack
 
 This folder is ready for Notion import.
 
 ## Import order
-1. Import `workspace-map.md` into a new top-level page called `Calibrate Media OS`.
+1. Import `workspace-map.md` into a new top-level page called `Cohevo OS`.
 2. Import CSV files as databases.
 3. Link databases inside the workspace pages.
 4. Add relation fields between `Clients`, `Projects`, and `Invoices`.

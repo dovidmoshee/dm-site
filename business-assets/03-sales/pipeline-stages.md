@@ -1,4 +1,4 @@
-# Calibrate Media Sales Pipeline
+# Cohevo Sales Pipeline
 
 ## Pipeline stages
 1. New lead

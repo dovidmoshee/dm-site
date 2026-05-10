@@ -1,4 +1,4 @@
-# Legal Document Checklist - Calibrate Media
+# Legal Document Checklist — Cohevo
 
 Use this list before taking paid clients.
 

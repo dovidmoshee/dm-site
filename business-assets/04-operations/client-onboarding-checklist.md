@@ -1,4 +1,4 @@
-# Client Onboarding Checklist - Calibrate Media
+# Client Onboarding Checklist — Cohevo
 
 ## Pre-kickoff
 - Signed agreement received

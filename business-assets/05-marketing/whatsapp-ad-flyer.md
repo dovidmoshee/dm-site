@@ -1,39 +1,41 @@
 ---
-title: "CALIBRATE MEDIA"
-subtitle: "30-Day Business Systems Setup"
+title: "COHEVO"
+subtitle: "60-Day Business OS Setup"
 fontsize: 10pt
 geometry: margin=0.5in
 ---
 
-# Is your business running on messy spreadsheets, Slack threads, and manual follow-ups?
+# Is your business running on disconnected tools, manual follow-ups, and processes that live in people's heads?
 
-## We fix that in 30 days.
+## I fix that in 60 days.
 
-**Calibrate Media** helps founder-led teams build a clean operating system for growth.
+**Cohevo** installs a complete operating system for growing SaaS startups and agencies — mapped workflows, the right tools, automations that connect them, and AI where it actually saves time.
 
 ### Best fit
 
-- B2B service companies and agencies
-- Teams of 5-50 people
-- Teams with tool chaos, slow handoffs, and manual busywork
+- SaaS startups and agencies with 3 to 20 people
+- Teams using 5 or more tools that don't talk to each other
+- Founders who are the bottleneck in their own operations
+- Teams with existing revenue who are serious about scaling
 
-### What we set up
+### What I deliver
 
-- Clear workflows and ownership
-- Automated handoffs between sales and delivery
-- One source of truth for tasks and pipeline
-- Better visibility into performance
+- Business Systems Map — visual audit of every workflow and handoff
+- Tool Stack Architecture — justified tool recommendations tied to your needs
+- Automation Layer — live automations built with Zapier, Make, or n8n
+- AI Workflow Layer — AI for meeting summaries, support drafts, and reporting
+- Documentation and Training — SOPs and a live team training session
 
 ### Typical outcomes
 
 - Save 10+ hours per week
-- Faster onboarding and project delivery
-- Fewer dropped tasks
-- Less tool sprawl and rework
+- Cut onboarding time in half
+- Reduce tool costs by 20%
+- 100% of workflows documented and owned by your team
 
-## Want a faster, cleaner way to run your business?
+## Ready to build your business OS?
 
-**Book a strategy call:** calibratemedia.com/contact  
-**Email:** hello@calibratemedia.com
+**Book a free audit call:** cohevo.com/contact  
+**Email:** hi@cohevo.co
 
-*Simpler systems. Better performance.*
+*Install the operating system your business runs on.*

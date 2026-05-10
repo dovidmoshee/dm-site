@@ -1,7 +1,7 @@
 # Contact Form Email Sequence
-**Calibrate Media — Post-Form Nurture**
+**Cohevo — Post-Form Nurture**
 
-Triggered when someone submits the contact form at calibratemedia.com/contact.
+Triggered when someone submits the contact form at cohevo.com/contact.
 Sequence goal: move them from "interested" to "audit call booked" within 9 days.
 
 ---
@@ -12,7 +12,7 @@ Sequence goal: move them from "interested" to "audit call booked" within 9 days.
 |---|-------------|--------------|------|
 | 1 | Immediately | Got your message — here's what happens next | Confirm, deliver value, set expectation |
 | 2 | Day 2 | The real reason your team feels stretched | Build trust with insight |
-| 3 | Day 4 | What 30 days actually looks like | Make the outcome concrete |
+| 3 | Day 4 | What 60 days actually looks like | Make the outcome concrete |
 | 4 | Day 6 | Is now the right time? | Handle the "not yet" objection |
 | 5 | Day 9 | Closing the loop | Final nudge, no pressure |
 
@@ -45,7 +45,7 @@ In the meantime, if something feels urgent or you'd rather just get straight to 
 
 Talk soon,
 David
-Calibrate Media
+Cohevo | hi@cohevo.co
 
 ---
 
@@ -77,43 +77,43 @@ If you haven't booked yet, here's the link:
 No obligation. You'll leave with a clear picture of where the leverage is, regardless of whether we work together.
 
 David
-Calibrate Media
+Cohevo
 
 ---
 
 ## Email 3 — Day 4: Make the outcome concrete
 
-**Subject:** What 30 days actually looks like
+**Subject:** What 60 days actually looks like
 **Preview text:** Specific deliverables. No ambiguity about what you're getting.
 
 ---
 
 Hi {{first_name}},
 
-A question I get asked a lot: what exactly do you deliver in 30 days?
+A question I get asked a lot: what exactly do you deliver in 60 days?
 
 Here's the short version.
 
-**Week 1 — Audit and map**
-We look at how work currently moves through your business. Sales intake, handoffs, delivery, reporting. We identify the friction points and prioritize by impact.
+**Phase 1 — Discover and Map**
+Full audit call, tool access, workflow interviews. Deliver the Business Systems Map showing where work flows, stalls, and falls through the cracks.
 
-**Week 2 — Clean up and connect**
-We simplify the workflows that are costing the most time. That usually means standardizing handoffs, consolidating tools, and setting up one source of truth for reporting.
+**Phase 2 — Architecture and Sign-off**
+Present the Tool Stack Architecture and automation logic. Align on priorities. Nothing gets built without your approval.
 
-**Week 3 — Automate the repetitive parts**
-Once the process is clean, we layer in automations. Follow-up sequences, task creation, reporting dashboards. Things that run without someone triggering them manually.
+**Phase 3 — Build and Automate**
+Build, configure, and test all automations and AI workflows. Lead capture to CRM. CRM to onboarding. Meeting summaries. Support drafts. Everything tested end-to-end.
 
-**Week 4 — Handoff and document**
-Everything is documented so your team can maintain it. No black box. No dependency on us for things to keep running.
+**Phase 4 — Document and Handoff**
+Write SOPs for every new workflow. Run a live team training session. Hand over the full system. Your team owns it completely from here.
 
-By the end: your team spends less time on admin, handoffs don't fall through the cracks, and you can see pipeline and delivery status without chasing anyone for an update.
+By the end: less admin, no dropped handoffs, clear pipeline and delivery visibility without chasing anyone for an update.
 
 If that sounds useful, the audit call is the right first step.
 
 [Book the 30-minute audit call →]
 
 David
-Calibrate Media
+Cohevo
 
 ---
 
@@ -134,7 +134,7 @@ That's the problem.
 
 When the system is broken, the team is stuck in it. Every week you run on the current setup is another week of manual work, missed handoffs, and reporting that someone has to rebuild from scratch. The business doesn't slow down so you can fix it.
 
-The teams that move forward aren't the ones who found extra time. They're the ones who decided the cost of waiting was higher than the cost of 30 days of focused work.
+The teams that move forward aren't the ones who found extra time. They're the ones who decided the cost of waiting was higher than the cost of 60 days of focused work.
 
 If that resonates, the audit call is 30 minutes. I'll tell you honestly whether this is the right fit and what the quickest path forward looks like.
 
@@ -143,7 +143,7 @@ If that resonates, the audit call is 30 minutes. I'll tell you honestly whether 
 If now genuinely isn't right, no pressure. You can always come back when it is.
 
 David
-Calibrate Media
+Cohevo
 
 ---
 
@@ -165,7 +165,7 @@ If the timing isn't right or you've gone another direction — no problem at all
 Either way, feel free to reach out whenever it makes sense. The link above is always current.
 
 David
-Calibrate Media
+Cohevo | hi@cohevo.co
 
 ---
 
@@ -187,3 +187,4 @@ All "Book the audit call" links should go to the Calendly booking page, not the 
 - Write like a person, not a marketing team.
 - One CTA per email. No secondary links except the checklist in Email 1.
 - Plain text format performs best for this audience — avoid heavy HTML templates.
+- Sign off as David, not "The Cohevo Team."

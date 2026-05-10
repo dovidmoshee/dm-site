@@ -1,4 +1,4 @@
-# Privacy Policy Template - Calibrate Media
+# Privacy Policy Template — Cohevo
 
 Important: Draft only. Review with legal counsel.
 
@@ -14,7 +14,7 @@ Important: Draft only. Review with legal counsel.
 - Send relevant service communications
 
 ## Data sharing
-Calibrate Media does not sell personal data. Data may be shared with trusted service providers needed to operate the business.
+Cohevo does not sell personal data. Data may be shared with trusted service providers needed to operate the business.
 
 ## Data retention
 Data is retained only as long as needed for business or legal purposes.
@@ -23,4 +23,4 @@ Data is retained only as long as needed for business or legal purposes.
 Depending on your jurisdiction, you may request access, correction, deletion, or restriction of your personal data.
 
 ## Contact
-For privacy requests, email: hello@calibratemedia.com
+For privacy requests, email: hi@cohevo.co
