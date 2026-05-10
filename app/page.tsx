@@ -188,7 +188,7 @@ export default function HomePage() {
                 <div className="badge-stat">
                   <div className="badge-stat-label">Duration</div>
                   <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
-                    3 to 4 weeks
+                    60 days
                   </div>
                 </div>
                 <div className="badge-stat">

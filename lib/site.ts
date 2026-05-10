@@ -110,7 +110,7 @@ export const processPhases = [
     phase: "Phase One",
     title: "Discover and Map",
     description:
-      "The first week is about understanding how your business actually works, not how you think it works. I audit tools, run a workflow interview, and map every handoff.",
+      "This phase is about understanding how your business actually works, not how you think it works. I audit tools, run a workflow interview, and map every handoff.",
     whatIDo: [
       "90-minute kickoff and workflow interview",
       "Full audit of tools, integrations, and data flows",
@@ -160,7 +160,7 @@ export const processPhases = [
     ],
     whatINeed: [
       "Admin access to the relevant tools",
-      "Quick async replies during build week (under 1 hr/day)",
+      "Quick async replies during build phase (under 1 hr/day)",
       "Test data to run automations against",
     ],
     artifact:
@@ -285,7 +285,7 @@ export const faqItems = [
   {
     question: "How much time will you need from us?",
     answer:
-      "Plan for two to three hours per week. The kickoff call takes 90 minutes. The architecture review takes 45 minutes. The training session takes 90 minutes. Outside of those touchpoints, async communication should be under one hour per day during the build week. I do the heavy lifting so you can stay focused on running your business.",
+      "Plan for two to three hours per week. The kickoff call takes 90 minutes. The architecture review takes 45 minutes. The training session takes 90 minutes. Outside of those touchpoints, async communication should be under one hour per day during the build phase. I do the heavy lifting so you can stay focused on running your business.",
   },
   {
     question: "What if we already have tools set up?",
