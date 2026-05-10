@@ -72,7 +72,7 @@ export default function HomePage() {
             <div>
               <div className="hero-eyebrow">
                 <span className="hero-eyebrow-dot" />
-                Business OS Setup · 30-Day Engagement
+                Business OS Setup · 60-Day Engagement
               </div>
               <h1>
                 Install the operating system your <em>business runs on.</em>
@@ -178,7 +178,7 @@ export default function HomePage() {
                 <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
                   Business OS Setup
                 </div>
-                <h3>30-Day Structured Engagement</h3>
+                <h3>60-Day Structured Engagement</h3>
                 <p>Everything you need to make your business run cleanly, without you in every loop.</p>
 
                 <div className="badge-stat">
