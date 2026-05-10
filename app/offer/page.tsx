@@ -54,25 +54,25 @@ const notIncluded = [
 
 const weekByWeek = [
   {
-    week: "Week 1",
+    week: "Phase 1",
     title: "Discovery and Mapping",
     description:
-      "Full audit call, tool access, workflow interviews. Deliver the Business Systems Map by end of week.",
+      "Full audit call, tool access, workflow interviews. Deliver the Business Systems Map at the close of this phase.",
   },
   {
-    week: "Week 2",
+    week: "Phase 2",
     title: "Architecture and Sign-off",
     description:
       "Present the Tool Stack Architecture and automation logic. Align on priorities. Get your approval before building.",
   },
   {
-    week: "Week 3",
+    week: "Phase 3",
     title: "Build and Automate",
     description:
-      "Build, configure, and test all automations and AI workflows. Mid-week check-in to flag anything unexpected.",
+      "Build, configure, and test all automations and AI workflows. Mid-phase check-in to flag anything unexpected.",
   },
   {
-    week: "Week 4",
+    week: "Phase 4",
     title: "Documentation and Handoff",
     description:
       "Write the SOPs, run the training session, and hand over the full system. You own it completely from here.",
@@ -145,7 +145,7 @@ export default function OfferPage() {
               </ul>
 
               <div className="tag">Timeline</div>
-              <h2 style={{ fontSize: 32, marginBottom: 24 }}>Week by week</h2>
+              <h2 style={{ fontSize: 32, marginBottom: 24 }}>Phase by phase</h2>
               <div className="offer-timeline">
                 {weekByWeek.map((item) => (
                   <div key={item.week} className="week-item">
