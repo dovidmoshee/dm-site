@@ -8,7 +8,7 @@ import { deliverables, measurableOutcomes, packages, processTimeline, testimonia
 export const metadata = buildMetadata({
   title: "Cohevo",
   description:
-    "Install the operating system your business runs on. In 30 days I streamline your tools, workflows, automations, and AI.",
+    "Install the operating system your business runs on. In 60 days I streamline your tools, workflows, automations, and AI.",
   path: "/",
 });
 
@@ -78,7 +78,7 @@ export default function HomePage() {
                 Install the operating system your <em>business runs on.</em>
               </h1>
               <p className="hero-sub">
-                In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less
+                In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less
                 manual work.
               </p>
               <div className="hero-ctas">
@@ -120,7 +120,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head" style={{ marginBottom: 40 }}>
             <div className="tag">The Shift</div>
-            <h2>From chaos to calm, in 30 days.</h2>
+            <h2>From chaos to calm, in 60 days.</h2>
           </div>
 
           <div className="po-grid">
@@ -236,7 +236,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div className="tag">How It Works</div>
-            <h2>Four phases, 30 days, clear outcomes.</h2>
+            <h2>Four phases, 60 days, clear outcomes.</h2>
             <p>A structured process means no ambiguity about what happens when.</p>
           </div>
 

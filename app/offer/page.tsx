@@ -100,7 +100,7 @@ export default function OfferPage() {
           <div className="tag">Business OS Setup</div>
           <h1>The system your business needs to grow without adding headcount.</h1>
           <p>
-            A 30-day structured engagement to map, design, build, and hand off a complete operating infrastructure for
+            A 60-day structured engagement to map, design, build, and hand off a complete operating infrastructure for
             your team.
           </p>
         </div>

@@ -27,7 +27,7 @@ export const siteConfig = {
   name: "Cohevo",
   tagLine: "Install the operating system your business runs on.",
   description:
-    "In 30 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
+    "In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
   url: siteUrl,
   ogImage: "/og-image.svg",
   contactEmail: "hi@cohevo.co",
@@ -253,14 +253,14 @@ export const packages = [
     name: "Scale",
     price: "$14,000",
     description:
-      "Advanced automations, analytics dashboards, and 30 days of post-launch support. Built for teams that want to move fast and stay fast.",
+      "Advanced automations, analytics dashboards, and 60 days of post-launch support. Built for teams that want to move fast and stay fast.",
     popular: false,
     includes: [
       "Everything in Build",
       "Advanced multi-step automation sequences",
       "Custom analytics dashboard setup",
       "API integrations and custom webhook logic",
-      "30-day post-launch stewardship period",
+      "60-day post-launch stewardship period",
       "Monthly ops review at end of support period",
     ],
   },
