@@ -1,4 +1,4 @@
-# Case Study Template - Calibrate Media
+# Case Study Template — Cohevo
 
 ## Client snapshot
 - Company: [Name]
@@ -11,10 +11,11 @@ Describe the exact workflow and execution bottlenecks.
 ## Goal
 Define the measurable business outcomes needed.
 
-## What Calibrate Media implemented
+## What Cohevo implemented
 - [System change]
 - [Automation]
-- [Reporting change]
+- [AI workflow]
+- [Documentation and training]
 
 ## Results
 - [Metric 1]

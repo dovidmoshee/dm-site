@@ -1,4 +1,4 @@
-# Weekly Client Update Template - Calibrate Media
+# Weekly Client Update Template — Cohevo
 
 ## Week of [Date]
 

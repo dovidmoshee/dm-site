@@ -1,4 +1,4 @@
-# KPI Dashboard Template - Calibrate Media
+# KPI Dashboard Template — Cohevo
 
 ## Weekly KPIs
 - New leads

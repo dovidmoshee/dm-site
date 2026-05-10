@@ -1,4 +1,4 @@
-# Project Kickoff Agenda - Calibrate Media
+# Project Kickoff Agenda — Cohevo
 
 ## Meeting goal
 Align on outcomes, scope, timeline, owners, and communication cadence.

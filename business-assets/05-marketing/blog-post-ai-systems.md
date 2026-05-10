@@ -1,6 +1,6 @@
 # Your Team Doesn't Need More AI Tools. It Needs a Better Operating System.
 
-*By Calibrate Media*
+*By Cohevo*
 
 ---
 
@@ -73,7 +73,7 @@ Then simplify it before you automate it. Remove the steps that exist out of habi
 
 Then, and only then, decide what role AI plays in it.
 
-This process doesn't take months. Done with focus and an outside perspective, most teams can get the core of their operating system clean in 30 days. The compounding benefit of that — faster execution, less manual overhead, better visibility — lasts far longer.
+This process doesn't take months. Done with focus and an outside perspective, most teams can get the core of their operating system clean in 60 days. The compounding benefit of that — faster execution, less manual overhead, better visibility — lasts far longer.
 
 ---
 
@@ -85,6 +85,6 @@ The foundation matters. Build it before you automate it.
 
 ---
 
-*Calibrate Media helps founder-led teams simplify their growth and operations systems — mapped workflows, the right tools, and automation that actually connects them. Delivered in 30 days.*
+*Cohevo installs the operating system your business runs on — mapped workflows, the right tools, automations that connect them, and AI where it actually saves time. Delivered in 60 days.*
 
-*[Book a strategy call](#) · [Get the systems checklist](#)*
+*[Book a free audit call](https://cohevo.com/contact) · [Get the systems checklist](https://cohevo.com/contact#checklist)*

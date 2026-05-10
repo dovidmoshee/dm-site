@@ -1,6 +1,6 @@
-# Calibrate Media Business Asset Kit
+# Cohevo Business Asset Kit
 
-This folder contains the core assets to run Calibrate Media as a service business.
+This folder contains the core assets to run Cohevo as a service business.
 
 ## How to use this kit
 

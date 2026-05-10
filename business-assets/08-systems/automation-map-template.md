@@ -1,4 +1,4 @@
-# Automation Map Template - Calibrate Media
+# Automation Map Template — Cohevo
 
 ## Automation inventory
 

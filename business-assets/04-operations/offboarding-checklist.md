@@ -1,4 +1,4 @@
-# Client Offboarding Checklist - Calibrate Media
+# Client Offboarding Checklist — Cohevo
 
 - Final handoff meeting completed
 - SOP library delivered

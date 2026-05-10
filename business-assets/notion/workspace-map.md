@@ -1,4 +1,4 @@
-# Calibrate Media OS (Notion Structure)
+# Cohevo OS (Notion Structure)
 
 ## Dashboard
 - Weekly scorecard

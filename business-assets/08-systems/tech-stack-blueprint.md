@@ -1,4 +1,4 @@
-# Tech Stack Blueprint - Calibrate Media
+# Tech Stack Blueprint — Cohevo
 
 ## Core stack
 - Website: Next.js

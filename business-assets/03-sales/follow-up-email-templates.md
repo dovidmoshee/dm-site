@@ -1,4 +1,4 @@
-# Follow-up Email Templates - Calibrate Media
+# Follow-up Email Templates — Cohevo
 
 ## Post-discovery follow-up
 Subject: Next steps for [Company Name]
@@ -7,42 +7,43 @@ Hi [Name],
 
 Great speaking with you today. Based on our call, I will send a proposal focused on [top pain point], [top pain point], and [top pain point].
 
-You can expect:
-- Clear scope
-- 30-day timeline
-- Fixed investment
+The proposal will include:
+- Clear scope and deliverables
+- Package recommendation and investment
+- 60-day phase-by-phase timeline
 
 I will send this by [date].
 
-Best,
-[Your Name]
-Calibrate Media
+David
+Cohevo | hi@cohevo.co
+
+---
 
 ## Proposal sent
 Subject: Proposal for [Company Name]
 
 Hi [Name],
 
-Sharing the proposal here: [link]
+Here is the proposal: [link]
 
-It includes:
-- Goals and outcomes
-- Scope and deliverables
-- Timeline and investment
+It covers:
+- What is in scope and what is not
+- Deliverables for each of the four phases
+- Investment and payment terms
 
-If useful, we can review it live this week.
+Happy to walk through it live if that is easier. Let me know what works.
 
-Best,
-[Your Name]
+David
+
+---
 
 ## Gentle nudge
 Subject: Quick check-in
 
 Hi [Name],
 
-Checking in on the proposal. Happy to answer questions or adjust scope based on priorities.
+Checking in on the proposal. Happy to answer questions, adjust scope, or schedule a short call to review it together.
 
-Would [option 1] or [option 2] work for a short review call?
+Would [option 1] or [option 2] work?
 
-Best,
-[Your Name]
+David
