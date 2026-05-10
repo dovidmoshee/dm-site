@@ -122,9 +122,13 @@ export const processPhases = [
       "90 minutes for the kickoff call",
       "Your three biggest pain points in writing",
     ],
-    artifact:
-      "[ Business Systems Map Artifact — Visual workflow diagram showing your leads, sales, onboarding, and support flows with identified gaps ]",
-    artifactHeight: 160,
+    artifact: {
+      src: "/process-systems-map.svg",
+      alt: "Business systems map showing leads, sales, onboarding, delivery, and support flows with gap callouts.",
+      width: 1200,
+      height: 520,
+    },
+    artifactHeight: 260,
   },
   {
     number: "02",
@@ -163,9 +167,13 @@ export const processPhases = [
       "Quick async replies during build phase (under 1 hr/day)",
       "Test data to run automations against",
     ],
-    artifact:
-      "[ Automation Flow Screenshot — Example Zapier or Make scenario showing lead form to CRM to onboarding sequence ]",
-    artifactHeight: 140,
+    artifact: {
+      src: "/process-automation-flow.svg",
+      alt: "Automation flow connecting a lead form trigger to CRM update, AI summary, and onboarding sequence.",
+      width: 1200,
+      height: 460,
+    },
+    artifactHeight: 240,
   },
   {
     number: "04",

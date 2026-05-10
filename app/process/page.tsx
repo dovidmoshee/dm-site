@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
@@ -63,8 +64,14 @@ export default function ProcessPage() {
 
               {phase.artifact ? (
                 <div style={{ marginTop: 28 }}>
-                  <div className="artifact-placeholder" style={{ height: phase.artifactHeight }}>
-                    {phase.artifact}
+                  <div className="artifact-graphic-wrap" style={{ minHeight: phase.artifactHeight }}>
+                    <Image
+                      className="artifact-graphic"
+                      src={phase.artifact.src}
+                      alt={phase.artifact.alt}
+                      width={phase.artifact.width}
+                      height={phase.artifact.height}
+                    />
                   </div>
                 </div>
               ) : null}
