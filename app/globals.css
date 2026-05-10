@@ -1371,19 +1371,23 @@ section {
   font-family: var(--sans);
 }
 
-.artifact-placeholder {
+.artifact-graphic-wrap {
   background: var(--bg2);
-  border: 1px dashed var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 40px;
+  padding: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink2);
-  font-size: 13px;
-  font-family: var(--mono);
-  text-align: center;
-  line-height: 1.6;
+  overflow: hidden;
+}
+
+.artifact-graphic {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: calc(var(--r) - 8px);
+  box-shadow: 0 18px 50px rgba(15, 33, 42, 0.08);
 }
 
 .success-grid {
