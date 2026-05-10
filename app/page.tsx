@@ -78,7 +78,7 @@ export default function HomePage() {
                 Install the operating system your <em>business runs on.</em>
               </h1>
               <p className="hero-sub">
-                In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less
+                In 60 days, I streamline your tools, workflows, automations, and AI so your team moves faster with less
                 manual work.
               </p>
               <div className="hero-ctas">
@@ -90,7 +90,7 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="hero-proof">
+              {/* <div className="hero-proof">
                 <div className="hero-proof-label">Trusted by founders and teams</div>
                 <div className="logo-strip">
                   {trustedBy.map((name) => (
@@ -99,7 +99,7 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="hero-visual" aria-hidden>
@@ -157,16 +157,13 @@ export default function HomePage() {
             <div>
               <div className="tag">Business OS Setup</div>
               <h2 className="offer-summary-title">
-                A structured engagement to architect and install your business infrastructure.
+                Architect and install your business infrastructure.
               </h2>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 24 }}>
-                Most small teams have the right ambition but the wrong scaffolding. You&apos;re growing fast, but your
-                internal systems haven&apos;t kept up. The Business OS Setup gives you a complete operating layer: mapped
-                workflows, the right tools, automations that connect them, and AI where it actually saves time.
+                Most small teams have the right ambition but the wrong scaffolding. The Business OS Setup gives you a complete operating layer: mapped workflows, integrated tools, automations, and AI where it actually saves time.
               </p>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
-                This is built for SaaS startups and agencies with 3 to 20 people who are serious about scaling without
-                hiring more coordinators to manage the mess.
+                For SaaS startups and agencies of 3–20 people scaling without adding coordinators to manage the mess.
               </p>
               <Link className="btn btn-primary" href="/offer">
                 See Full Offer Details →
@@ -217,7 +214,7 @@ export default function HomePage() {
               What You Get
             </div>
             <h2>Five deliverables. Yours to keep.</h2>
-            <p>Every engagement ends with documented, implemented systems that your team owns and can build on.</p>
+            <p>Every engagement ends with documented & implemented systems that your team owns and can build on.</p>
           </div>
 
           <div className="deliv-grid">
