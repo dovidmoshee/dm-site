@@ -20,7 +20,7 @@ export function SiteFooter() {
               <Link
                 className="footer-social"
                 title="LinkedIn"
-                href="https://www.linkedin.com/company/hicohevo/about"
+                href="https://www.linkedin.com/company/hicohevo"
                 aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
