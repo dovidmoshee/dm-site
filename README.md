@@ -44,22 +44,27 @@ If not set, the site defaults to `https://www.cohevo.co` in production and `http
 
 ### Optional SMTP email sending (Google Workspace compatible)
 
-If all values below are set, form submissions are emailed via nodemailer.
-For Google Workspace (`@your-domain.com` on Gmail), use Gmail SMTP with an App Password:
+Form submissions are emailed via nodemailer when `SMTP_USER` and `SMTP_PASS` are set.
+For Google Workspace on Gmail, create a Google App Password for the sending mailbox and add these variables in your host (for example, Vercel):
+
+```bash
+SMTP_USER=hi@cohevo.co
+SMTP_PASS=your_google_app_password
+```
+
+By default the app uses Gmail SMTP (`smtp.gmail.com:587`), sends from `Cohevo <SMTP_USER>`, and sends notifications to `david@cohevo.co`. Override any of those defaults only if needed:
 
 ```bash
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=hello@your-domain.com
-SMTP_PASS=your_google_app_password
-SMTP_FROM="Cohevo <hello@your-domain.com>"  # must match the mailbox or an allowed alias
-SMTP_TO=hello@your-domain.com
+SMTP_FROM="Cohevo <hi@cohevo.co>"  # must match the mailbox or an allowed Gmail alias
+SMTP_TO=david@cohevo.co
 ```
 
 Behavior:
-- With SMTP vars: sends email notifications.
+- With `SMTP_USER` and `SMTP_PASS`: sends email notifications.
 - With HubSpot vars (below): creates/updates a HubSpot contact as a lead.
-- Without either SMTP or HubSpot vars: saves submissions to JSON.
+- Without either SMTP credentials or HubSpot vars: saves submissions to JSON.
 
 ### Optional HubSpot lead sync
 
