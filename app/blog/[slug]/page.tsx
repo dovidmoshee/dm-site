@@ -46,13 +46,20 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       modifiedTime: post.updatedAt ?? post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: `${post.title} preview` }],
+      images: [
+        {
+          url: siteConfig.ogImages.blogAndServicePages,
+          width: 1200,
+          height: 630,
+          alt: `${post.title} preview`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: post.excerpt,
-      images: [siteConfig.ogImage],
+      images: [siteConfig.ogImages.blogAndServicePages],
     },
   };
 }

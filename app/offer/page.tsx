@@ -1,12 +1,15 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Business OS Setup",
   description:
     "The system your business needs to grow without adding headcount. See deliverables, scope, timeline, and optional add-ons.",
   path: "/offer",
+  ogImage: siteConfig.ogImages.blogAndServicePages,
+  ogImageAlt: "Cohevo Business OS service preview",
 });
 
 const fitItems = [

@@ -1,12 +1,14 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
-import { packages } from "@/lib/site";
+import { packages, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Pricing",
   description: "Clear packages. No surprises. Choose Foundation, Build, or Scale.",
   path: "/pricing",
+  ogImage: siteConfig.ogImages.blogAndServicePages,
+  ogImageAlt: "Cohevo Business OS service preview",
 });
 
 export default function PricingPage() {

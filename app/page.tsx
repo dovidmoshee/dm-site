@@ -3,13 +3,15 @@ import Link from "next/link";
 
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
-import { deliverables, measurableOutcomes, packages, processTimeline, testimonials } from "@/lib/site";
+import { deliverables, measurableOutcomes, packages, processTimeline, siteConfig, testimonials } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Cohevo",
   description:
     "Install the operating system your business runs on. In 60 days I streamline your tools, workflows, automations, and AI.",
   path: "/",
+  ogImage: siteConfig.ogImages.homepageDefault,
+  ogImageAlt: "Cohevo Business OS Setup preview",
 });
 
 const problemCards = [

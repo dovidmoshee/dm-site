@@ -2,13 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
-import { processPhases } from "@/lib/site";
+import { processPhases, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "How It Works",
   description:
     "Transparent, structured delivery in four phases: discover, design, implement, and train.",
   path: "/process",
+  ogImage: siteConfig.ogImages.blogAndServicePages,
+  ogImageAlt: "Cohevo Business OS service preview",
 });
 
 export default function ProcessPage() {

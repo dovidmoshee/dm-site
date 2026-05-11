@@ -1,9 +1,12 @@
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
   description: "Privacy policy for Cohevo.",
   path: "/legal/privacy",
+  ogImage: siteConfig.ogImages.homepageAlt,
+  ogImageAlt: "Cohevo Business OS Setup overview",
 });
 
 export default function PrivacyPage() {

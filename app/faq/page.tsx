@@ -2,12 +2,14 @@ import Link from "next/link";
 
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
-import { faqItems } from "@/lib/site";
+import { faqItems, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "FAQ",
   description: "Honest answers to common questions about fit, process, scope, security, and pricing.",
   path: "/faq",
+  ogImage: siteConfig.ogImages.homepageAlt,
+  ogImageAlt: "Cohevo Business OS Setup overview",
 });
 
 export default function FaqPage() {

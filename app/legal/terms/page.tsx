@@ -1,9 +1,12 @@
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Terms of Service",
   description: "Terms of service for Cohevo.",
   path: "/legal/terms",
+  ogImage: siteConfig.ogImages.homepageAlt,
+  ogImageAlt: "Cohevo Business OS Setup overview",
 });
 
 export default function TermsPage() {

@@ -9,6 +9,8 @@ export const metadata = buildMetadata({
   description:
     "Book a free 30-minute audit call or send a message to get a clear recommendation for your systems setup.",
   path: "/contact",
+  ogImage: siteConfig.ogImages.splitLime,
+  ogImageAlt: "Cohevo free audit call preview",
 });
 
 type ContactPageProps = {

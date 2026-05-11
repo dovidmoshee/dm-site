@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo";
 import { getAllBlogPosts } from "@/lib/blog";
+import { siteConfig } from "@/lib/site";
 import { BlogPosts } from "./blog-posts";
 
 export const metadata = buildMetadata({
@@ -7,6 +8,8 @@ export const metadata = buildMetadata({
   description:
     "Authoritative articles on business systems, automation, workflow design, and operations for growing teams.",
   path: "/blog",
+  ogImage: siteConfig.ogImages.blogAndServicePages,
+  ogImageAlt: "Cohevo business systems articles preview",
 });
 
 export default async function BlogPage() {

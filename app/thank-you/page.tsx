@@ -1,12 +1,15 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Thank You",
   description: "Message received.",
   path: "/thank-you",
   noIndex: true,
+  ogImage: siteConfig.ogImages.splitLime,
+  ogImageAlt: "Cohevo Business OS Setup preview",
 });
 
 type ThankYouPageProps = {

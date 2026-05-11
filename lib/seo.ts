@@ -7,6 +7,8 @@ type BuildMetadataInput = {
   description: string;
   path?: string;
   noIndex?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
 };
 
 export function buildMetadata({
@@ -14,6 +16,8 @@ export function buildMetadata({
   description,
   path = "/",
   noIndex = false,
+  ogImage = siteConfig.ogImage,
+  ogImageAlt = `${siteConfig.name} preview`,
 }: BuildMetadataInput): Metadata {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   const url = `${siteConfig.url}${normalizedPath}`;
@@ -33,10 +37,10 @@ export function buildMetadata({
       type: "website",
       images: [
         {
-          url: siteConfig.ogImage,
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} preview`,
+          alt: ogImageAlt,
         },
       ],
     },
@@ -44,7 +48,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [siteConfig.ogImage],
+      images: [ogImage],
     },
     robots: noIndex ? { index: false, follow: false } : undefined,
   };

@@ -29,7 +29,13 @@ export const siteConfig = {
   description:
     "In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
   url: siteUrl,
-  ogImage: "/og-image.svg",
+  ogImage: "/og/homepage-default.png",
+  ogImages: {
+    homepageDefault: "/og/homepage-default.png",
+    homepageAlt: "/og/homepage-alt.png",
+    splitLime: "/og/split-lime.png",
+    blogAndServicePages: "/og/blog-and-service-pages.png",
+  },
   contactEmail: "hi@cohevo.co",
 } as const;
 

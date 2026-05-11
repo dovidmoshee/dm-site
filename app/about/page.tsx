@@ -1,12 +1,15 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "About",
   description:
     "I build operating infrastructure for growing businesses with systems mapping, automation, and AI workflows.",
   path: "/about",
+  ogImage: siteConfig.ogImages.homepageAlt,
+  ogImageAlt: "Cohevo Business OS Setup overview",
 });
 
 const principles = [
