@@ -19,7 +19,6 @@ function getStringValue(formData: FormData, key: string): string {
 
 const defaultSmtpHost = "smtp.gmail.com";
 const defaultSmtpPort = 587;
-const defaultContactSender = "Cohevo <hi@cohevo.co>";
 const defaultContactRecipient = "david@cohevo.co";
 
 function getSmtpPort() {
@@ -45,7 +44,7 @@ function getEmailConfig() {
     port: getSmtpPort(),
     user,
     pass,
-    from: process.env.SMTP_FROM?.trim() || defaultContactSender,
+    from: process.env.SMTP_FROM?.trim() || `Cohevo <${user}>`,
     to: process.env.SMTP_TO?.trim() || defaultContactRecipient,
   };
 }
