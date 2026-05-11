@@ -57,6 +57,10 @@ function hasHubSpotConfig() {
   return Boolean(process.env.HUBSPOT_ACCESS_TOKEN);
 }
 
+function shouldUseFileFallback() {
+  return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
+}
+
 async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
   try {
     const [{ mkdir, readFile, writeFile }, pathModule] = await Promise.all([
@@ -113,6 +117,7 @@ async function sendEmailSubmission(submission: Submission) {
     host: emailConfig.host,
     port: emailConfig.port,
     secure,
+    requireTLS: !secure,
     auth: {
       user: emailConfig.user,
       pass: emailConfig.pass,
@@ -269,6 +274,13 @@ export async function submitContactForm(formData: FormData) {
   const hubSpotConfigured = hasHubSpotConfig();
 
   if (!emailConfigured && !hubSpotConfigured) {
+    if (!shouldUseFileFallback()) {
+      console.error(
+        "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure HubSpot.",
+      );
+      redirect("/contact?error=delivery-failed");
+    }
+
     const persisted = await writeSubmissionToFile(submission);
     if (!persisted) {
       redirect("/contact?error=delivery-failed");
