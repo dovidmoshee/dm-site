@@ -12,7 +12,8 @@ Production-ready marketing site built with Next.js App Router, TypeScript, Tailw
 - Framer Motion (subtle reveal animations)
 - Contact form server action with:
   - `nodemailer` email delivery when SMTP env vars are set
-  - JSON file fallback storage when SMTP env vars are not set
+  - Attio person record upsert when Attio env vars are set
+  - JSON file fallback storage for local development when delivery env vars are not set
 
 ## Local Development
 
@@ -44,47 +45,56 @@ If not set, the site defaults to `https://www.cohevo.co` in production and `http
 
 ### Optional SMTP email sending (Google Workspace compatible)
 
-If all values below are set, form submissions are emailed via nodemailer.
-For Google Workspace (`@your-domain.com` on Gmail), use Gmail SMTP with an App Password:
+MX records only let Google Workspace receive mail for the domain. The website still needs SMTP credentials so the server can send the contact-form notification.
+
+Form submissions are emailed via nodemailer when `SMTP_USER` and `SMTP_PASS` are set. For Google Workspace on Gmail, create a Google App Password for the actual Google account you sign in with and add these variables in your host (for example, Vercel):
+
+```bash
+SMTP_USER=david@calibratemedia.ca
+SMTP_PASS=your_google_app_password
+```
+
+If `cohevo.co` is a secondary domain or alias on the `calibratemedia.ca` workspace, `SMTP_USER` is usually the primary Google Workspace login, while `SMTP_FROM` can be the verified Gmail send-as alias. By default the app uses Gmail SMTP (`smtp.gmail.com:587`), sends from `Cohevo <hi@cohevo.co>`, and sends notifications to `david@cohevo.co`. Set `SMTP_TO` to the exact inbox you check if needed:
 
 ```bash
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=hello@your-domain.com
-SMTP_PASS=your_google_app_password
-SMTP_FROM="Cohevo <hello@your-domain.com>"  # must match the mailbox or an allowed alias
-SMTP_TO=hello@your-domain.com
+SMTP_FROM="Cohevo <hi@cohevo.co>"  # must match the mailbox or an allowed Gmail send-as alias
+SMTP_TO=david@calibratemedia.ca
 ```
 
 Behavior:
-- With SMTP vars: sends email notifications.
-- With HubSpot vars (below): creates/updates a HubSpot contact as a lead.
-- Without either SMTP or HubSpot vars: saves submissions to JSON.
+- With `SMTP_USER` and `SMTP_PASS`: sends email notifications.
+- With Attio vars (below): creates or updates an Attio person record using the submitter's email address.
+- Without SMTP credentials or Attio vars in production: shows the delivery error instead of pretending the message was sent.
+- Without SMTP credentials or Attio vars in local development: saves submissions to JSON.
 
-### Optional HubSpot lead sync
+### Optional Attio lead sync
 
-If `HUBSPOT_ACCESS_TOKEN` is set, each submission is upserted to HubSpot Contacts using email as the unique key and `lifecyclestage=lead`.
-
-```bash
-HUBSPOT_ACCESS_TOKEN=your_hubspot_private_app_token
-```
-
-Optional: map extra form fields into your own HubSpot custom contact properties:
+If `ATTIO_ACCESS_TOKEN` is set, each submission is asserted to Attio People using `email_addresses` as the matching attribute. This creates the person if they do not exist yet and updates the existing person if they submit again. The token needs Attio's `record_permission:read-write` and `object_configuration:read` scopes.
 
 ```bash
-HUBSPOT_TEAM_SIZE_PROPERTY=team_size
-HUBSPOT_BOTTLENECK_PROPERTY=biggest_bottleneck
-HUBSPOT_MESSAGE_PROPERTY=inquiry_message
-HUBSPOT_CHECKLIST_PROPERTY=wants_checklist
+ATTIO_ACCESS_TOKEN=your_attio_access_token
 ```
 
-If these custom properties are not created in HubSpot, leave these env vars unset.
+By default the integration sends the visitor's name, email, and a `description` containing the full form submission. Optional: map extra form fields into your own Attio custom person attributes by setting the attribute slugs or IDs:
+
+```bash
+ATTIO_COMPANY_ATTRIBUTE=company_name
+ATTIO_TEAM_SIZE_ATTRIBUTE=team_size
+ATTIO_BOTTLENECK_ATTRIBUTE=biggest_bottleneck
+ATTIO_MESSAGE_ATTRIBUTE=inquiry_message
+ATTIO_CHECKLIST_ATTRIBUTE=wants_checklist
+ATTIO_SOURCE_ATTRIBUTE=lead_source
+```
+
+If these custom attributes are not created in Attio, leave these env vars unset.
 
 Fallback storage location:
 - Local dev: `data/contact-submissions.json`
 - Vercel runtime: `/tmp/contact-submissions.json` (ephemeral)
 
-For persistent production handling, set SMTP env vars.
+For persistent production handling, set SMTP and/or Attio env vars.
 
 ## Calendly Link
 
