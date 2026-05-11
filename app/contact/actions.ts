@@ -62,6 +62,10 @@ function shouldUseFileFallback() {
   return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
 }
 
+function shouldUseFileFallback() {
+  return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
+}
+
 async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
   try {
     const [{ mkdir, readFile, writeFile }, pathModule] = await Promise.all([
@@ -285,6 +289,14 @@ export async function submitContactForm(formData: FormData) {
     if (!shouldUseFileFallback()) {
       console.error(
         "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure Attio.",
+      );
+      redirect("/contact?error=delivery-failed");
+    }
+
+  if (!emailConfigured && !hubSpotConfigured) {
+    if (!shouldUseFileFallback()) {
+      console.error(
+        "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure HubSpot.",
       );
       redirect("/contact?error=delivery-failed");
     }

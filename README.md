@@ -45,22 +45,21 @@ If not set, the site defaults to `https://www.cohevo.co` in production and `http
 
 ### Optional SMTP email sending (Google Workspace compatible)
 
-MX records only let Google Workspace receive mail for the domain. The website still needs SMTP credentials so the server can send the contact-form notification.
-
-Form submissions are emailed via nodemailer when `SMTP_USER` and `SMTP_PASS` are set. For Google Workspace on Gmail, create a Google App Password for the actual Google account you sign in with and add these variables in your host (for example, Vercel):
+Form submissions are emailed via nodemailer when `SMTP_USER` and `SMTP_PASS` are set.
+For Google Workspace on Gmail, create a Google App Password for the sending mailbox and add these variables in your host (for example, Vercel):
 
 ```bash
-SMTP_USER=david@calibratemedia.ca
+SMTP_USER=hi@cohevo.co
 SMTP_PASS=your_google_app_password
 ```
 
-If `cohevo.co` is a secondary domain or alias on the `calibratemedia.ca` workspace, `SMTP_USER` is usually the primary Google Workspace login, while `SMTP_FROM` can be the verified Gmail send-as alias. By default the app uses Gmail SMTP (`smtp.gmail.com:587`), sends from `Cohevo <hi@cohevo.co>`, and sends notifications to `david@cohevo.co`. Set `SMTP_TO` to the exact inbox you check if needed:
+By default the app uses Gmail SMTP (`smtp.gmail.com:587`), sends from `Cohevo <SMTP_USER>`, and sends notifications to `david@cohevo.co`. Override any of those defaults only if needed:
 
 ```bash
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_FROM="Cohevo <hi@cohevo.co>"  # must match the mailbox or an allowed Gmail send-as alias
-SMTP_TO=david@calibratemedia.ca
+SMTP_FROM="Cohevo <hi@cohevo.co>"  # must match the mailbox or an allowed Gmail alias
+SMTP_TO=david@cohevo.co
 ```
 
 Behavior:
