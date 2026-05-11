@@ -17,19 +17,49 @@ function getStringValue(formData: FormData, key: string): string {
   return String(formData.get(key) ?? "").trim();
 }
 
-function hasEmailConfig() {
-  return Boolean(
-    process.env.SMTP_HOST &&
-      process.env.SMTP_PORT &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS &&
-      process.env.SMTP_FROM &&
-      process.env.SMTP_TO,
-  );
+const defaultSmtpHost = "smtp.gmail.com";
+const defaultSmtpPort = 587;
+const defaultContactSender = "Cohevo <hi@cohevo.co>";
+const defaultContactRecipient = "david@cohevo.co";
+
+function getSmtpPort() {
+  const rawPort = process.env.SMTP_PORT?.trim();
+  if (!rawPort) {
+    return defaultSmtpPort;
+  }
+
+  const configuredPort = Number(rawPort);
+  return Number.isFinite(configuredPort) ? configuredPort : defaultSmtpPort;
 }
 
-function hasHubSpotConfig() {
-  return Boolean(process.env.HUBSPOT_ACCESS_TOKEN);
+function getEmailConfig() {
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS?.trim();
+
+  if (!user || !pass) {
+    return null;
+  }
+
+  return {
+    host: process.env.SMTP_HOST?.trim() || defaultSmtpHost,
+    port: getSmtpPort(),
+    user,
+    pass,
+    from: process.env.SMTP_FROM?.trim() || defaultContactSender,
+    to: process.env.SMTP_TO?.trim() || defaultContactRecipient,
+  };
+}
+
+function hasEmailConfig() {
+  return Boolean(getEmailConfig());
+}
+
+function hasAttioConfig() {
+  return Boolean(process.env.ATTIO_ACCESS_TOKEN);
+}
+
+function shouldUseFileFallback() {
+  return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
 }
 
 async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
@@ -76,17 +106,22 @@ function escapeHtml(value: string): string {
 }
 
 async function sendEmailSubmission(submission: Submission) {
+  const emailConfig = getEmailConfig();
+  if (!emailConfig) {
+    return;
+  }
+
   const nodemailer = (await import("nodemailer")).default;
-  const port = Number(process.env.SMTP_PORT);
-  const secure = Number.isFinite(port) && port === 465;
+  const secure = emailConfig.port === 465;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port,
+    host: emailConfig.host,
+    port: emailConfig.port,
     secure,
+    requireTLS: !secure,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: emailConfig.user,
+      pass: emailConfig.pass,
     },
   });
 
@@ -117,8 +152,8 @@ async function sendEmailSubmission(submission: Submission) {
   `;
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to: process.env.SMTP_TO,
+    from: emailConfig.from,
+    to: emailConfig.to,
     replyTo: submission.email,
     subject: `New inquiry from ${submission.name}`,
     text: textBody,
@@ -138,72 +173,79 @@ function splitName(fullName: string) {
   };
 }
 
-function addHubSpotProperty(
-  properties: Record<string, string>,
-  propertyName: string | undefined,
-  value: string,
+function buildSubmissionSummary(submission: Submission) {
+  return [
+    "Contact form submission from cohevo.co",
+    "",
+    `Submitted at: ${submission.createdAt}`,
+    `Company: ${submission.company}`,
+    `Team size: ${submission.teamSize}`,
+    `Biggest bottleneck: ${submission.bottleneck}`,
+    `Checklist requested: ${submission.wantsChecklist ? "Yes" : "No"}`,
+    "",
+    "Message:",
+    submission.message,
+  ].join("\n");
+}
+
+function addAttioAttribute(
+  values: Record<string, unknown>,
+  attributeName: string | undefined,
+  value: string | boolean,
 ) {
-  if (!propertyName || !value || value === "Not provided") {
+  if (!attributeName || value === "" || value === "Not provided") {
     return;
   }
 
-  properties[propertyName] = value;
+  values[attributeName] = value;
 }
 
-async function sendHubSpotLead(submission: Submission) {
-  const accessToken = process.env.HUBSPOT_ACCESS_TOKEN;
+async function sendAttioLead(submission: Submission) {
+  const accessToken = process.env.ATTIO_ACCESS_TOKEN;
   if (!accessToken) {
     return;
   }
 
   const { firstName, lastName } = splitName(submission.name);
-  const properties: Record<string, string> = {
-    email: submission.email,
-    lifecyclestage: "lead",
+  const values: Record<string, unknown> = {
+    email_addresses: [submission.email],
+    name: [
+      {
+        first_name: firstName,
+        last_name: lastName,
+        full_name: submission.name,
+      },
+    ],
+    description: buildSubmissionSummary(submission),
   };
 
-  if (firstName) {
-    properties.firstname = firstName;
-  }
+  addAttioAttribute(values, process.env.ATTIO_COMPANY_ATTRIBUTE, submission.company);
+  addAttioAttribute(values, process.env.ATTIO_TEAM_SIZE_ATTRIBUTE, submission.teamSize);
+  addAttioAttribute(values, process.env.ATTIO_BOTTLENECK_ATTRIBUTE, submission.bottleneck);
+  addAttioAttribute(values, process.env.ATTIO_MESSAGE_ATTRIBUTE, submission.message);
+  addAttioAttribute(values, process.env.ATTIO_CHECKLIST_ATTRIBUTE, submission.wantsChecklist);
+  addAttioAttribute(values, process.env.ATTIO_SOURCE_ATTRIBUTE, "Website contact form");
 
-  if (lastName) {
-    properties.lastname = lastName;
-  }
-
-  if (submission.company !== "Not provided") {
-    properties.company = submission.company;
-  }
-
-  addHubSpotProperty(properties, process.env.HUBSPOT_TEAM_SIZE_PROPERTY, submission.teamSize);
-  addHubSpotProperty(properties, process.env.HUBSPOT_BOTTLENECK_PROPERTY, submission.bottleneck);
-  addHubSpotProperty(properties, process.env.HUBSPOT_MESSAGE_PROPERTY, submission.message);
-  addHubSpotProperty(
-    properties,
-    process.env.HUBSPOT_CHECKLIST_PROPERTY,
-    submission.wantsChecklist ? "true" : "false",
-  );
-
-  const response = await fetch("https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      inputs: [
-        {
-          idProperty: "email",
-          id: submission.email,
-          properties,
+  const response = await fetch(
+    "https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses",
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          values,
         },
-      ],
-    }),
-    cache: "no-store",
-  });
+      }),
+      cache: "no-store",
+    },
+  );
 
   if (!response.ok) {
     const details = await response.text();
-    throw new Error(`HubSpot contact upsert failed (${response.status}): ${details}`);
+    throw new Error(`Attio person upsert failed (${response.status}): ${details}`);
   }
 }
 
@@ -237,19 +279,32 @@ export async function submitContactForm(formData: FormData) {
   };
 
   const emailConfigured = hasEmailConfig();
-  const hubSpotConfigured = hasHubSpotConfig();
+  const attioConfigured = hasAttioConfig();
 
-  if (!emailConfigured && !hubSpotConfigured) {
+  if (!emailConfigured && !attioConfigured) {
+    if (!shouldUseFileFallback()) {
+      console.error(
+        "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure Attio.",
+      );
+      redirect("/contact?error=delivery-failed");
+    }
+
     const persisted = await writeSubmissionToFile(submission);
     if (!persisted) {
       redirect("/contact?error=delivery-failed");
     }
   } else {
-    const deliveries = await Promise.allSettled([
-      emailConfigured ? sendEmailSubmission(submission) : Promise.resolve(),
-      hubSpotConfigured ? sendHubSpotLead(submission) : Promise.resolve(),
-    ]);
+    const deliveryTasks: Promise<void>[] = [];
 
+    if (emailConfigured) {
+      deliveryTasks.push(sendEmailSubmission(submission));
+    }
+
+    if (attioConfigured) {
+      deliveryTasks.push(sendAttioLead(submission));
+    }
+
+    const deliveries = await Promise.allSettled(deliveryTasks);
     const successfulDeliveries = deliveries.filter((result) => result.status === "fulfilled").length;
 
     if (successfulDeliveries === 0) {
@@ -275,8 +330,3 @@ export async function submitContactForm(formData: FormData) {
         await writeSubmissionToFile(submission);
       }
     }
-  }
-
-  const query = wantsChecklist ? "?checklist=1" : "";
-  redirect(`/thank-you${query}`);
-}
