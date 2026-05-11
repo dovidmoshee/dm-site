@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run generate:blog-cache && next dev",
-    "generate:blog-cache": "node scripts/generate-blog-cache.mjs",
-    "build": "npm run generate:blog-cache && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -15,10 +14,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.0",
-    "gray-matter": "^4.0.3",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
-    "next-mdx-remote": "^6.0.0",
     "next-sanity": "^12.3.0",
     "nodemailer": "^8.0.1",
     "radix-ui": "^1.4.3",

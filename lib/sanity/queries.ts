@@ -51,7 +51,7 @@ function fromSanityPost(post: SanityPost): BlogPost {
   }
 }
 
-export async function fetchAllSanityPosts(): Promise<BlogPost[] | null> {
+export async function fetchAllSanityPosts(): Promise<BlogPost[]> {
   try {
     const posts = await sanityClient.fetch<SanityPost[]>(
       `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) { ${POST_FIELDS} }`,
@@ -59,7 +59,7 @@ export async function fetchAllSanityPosts(): Promise<BlogPost[] | null> {
 
     return posts.map(fromSanityPost)
   } catch {
-    return null
+    return []
   }
 }
 
