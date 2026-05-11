@@ -330,3 +330,5 @@ export async function submitContactForm(formData: FormData) {
         await writeSubmissionToFile(submission);
       }
     }
+  }
+}
