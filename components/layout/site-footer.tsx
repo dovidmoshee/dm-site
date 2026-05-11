@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function SiteFooter() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -15,9 +17,16 @@ export function SiteFooter() {
               for growing teams.
             </div>
             <div className="footer-socials" aria-label="Social">
-              <span className="footer-social" aria-hidden="true" title="LinkedIn">
+              <Link
+                className="footer-social"
+                title="LinkedIn"
+                href="https://www.linkedin.com/company/hicohevo/about"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 in
-              </span>
+              </Link>
               <span className="footer-social" aria-hidden="true" title="Twitter/X">
                 𝕏
               </span>
@@ -95,7 +104,7 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2025 Cohevo. All rights reserved.</span>
+          <span>© {currentYear} Cohevo. All rights reserved.</span>
           <span>hi@cohevo.co</span>
         </div>
       </div>
