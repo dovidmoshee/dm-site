@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas, serviceSchema } from "@/lib/schema";
 import { deliverables, measurableOutcomes, packages, processTimeline, siteConfig, testimonials } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -67,6 +68,17 @@ const previewFaq = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/",
+            title: "Cohevo",
+            description:
+              "Install the operating system your business runs on. In 60 days I streamline your tools, workflows, automations, and AI.",
+          }),
+          serviceSchema(),
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" />
         <div className="container">

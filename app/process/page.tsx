@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas, processSchema } from "@/lib/schema";
 import { processPhases, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -16,6 +17,21 @@ export const metadata = buildMetadata({
 export default function ProcessPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/process",
+            title: "How It Works",
+            description:
+              "Transparent, structured delivery in four phases: discover, design, implement, and train.",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Process", path: "/process" },
+            ],
+          }),
+          processSchema(),
+        ]}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">The Process</div>

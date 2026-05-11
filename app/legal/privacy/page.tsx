@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -11,10 +12,22 @@ export const metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <div className="container">
-      <div className="legal-content">
-        <h1>Privacy Policy</h1>
-        <span className="mono">Last updated: January 2025</span>
+    <>
+      <JsonLd
+        data={pageSchemas({
+          path: "/legal/privacy",
+          title: "Privacy Policy",
+          description: "Privacy policy for Cohevo.",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Privacy Policy", path: "/legal/privacy" },
+          ],
+        })}
+      />
+      <div className="container">
+        <div className="legal-content">
+          <h1>Privacy Policy</h1>
+          <span className="mono">Last updated: January 2025</span>
 
         <p>
           Cohevo (&quot;we&quot;, &quot;us&quot;) is committed to protecting your personal information. This
@@ -52,7 +65,8 @@ export default function PrivacyPage() {
 
         <h2>Contact</h2>
         <p>For any privacy-related questions, reach us at hi@cohevo.co.</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

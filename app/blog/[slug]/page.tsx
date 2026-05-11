@@ -7,6 +7,7 @@ import type { Components } from "react-markdown";
 import { codeToHtml } from "shiki";
 
 import { getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from "@/lib/blog";
+import { articleSchema, JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 import { extractToc, slugifyHeading } from "@/lib/toc";
 import { TableOfContents } from "./table-of-contents";
@@ -161,28 +162,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const related = getRelatedPosts(post.slug, post.tags, allPosts);
   const mdComponents = buildMdComponents(codeHighlights);
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt ?? post.publishedAt,
-    author: { "@type": "Person", name: post.author.name },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      logo: { "@type": "ImageObject", url: `${siteConfig.url}${siteConfig.ogImage}` },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteConfig.url}/blog/${post.slug}` },
-    keywords: post.tags.join(", "),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: `/blog/${post.slug}`,
+            title: post.title,
+            description: post.excerpt,
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ],
+          }),
+          articleSchema(post),
+        ]}
       />
       <ReadingProgress />
 

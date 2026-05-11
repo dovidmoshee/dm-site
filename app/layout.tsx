@@ -4,6 +4,7 @@ import { DM_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { JsonLd, organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
@@ -77,6 +78,7 @@ export default function RootLayout({
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <GoogleTagManager gtmId="GTM-KJ8HDKJ" />
         <a href="#main-content" className="skip-link">
           Skip to main content

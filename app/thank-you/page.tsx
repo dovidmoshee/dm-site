@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -25,14 +26,22 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
   const requestedChecklist = checklist === "1";
 
   return (
-    <div className="thankyou-center">
-      <div>
-        <div className="thankyou-icon">✓</div>
-        <h1>Message received.</h1>
-        <p>
-          Thank you for reaching out. I will review your message and get back to you within one business day with some
-          initial thoughts and a link to book time if it makes sense.
-        </p>
+    <>
+      <JsonLd
+        data={pageSchemas({
+          path: "/thank-you",
+          title: "Thank You",
+          description: "Message received.",
+        })}
+      />
+      <div className="thankyou-center">
+        <div>
+          <div className="thankyou-icon">✓</div>
+          <h1>Message received.</h1>
+          <p>
+            Thank you for reaching out. I will review your message and get back to you within one business day with some
+            initial thoughts and a link to book time if it makes sense.
+          </p>
 
         {requestedChecklist ? (
           <p style={{ fontSize: 15, marginTop: -4, marginBottom: 28, color: "var(--accent)" }}>
@@ -48,7 +57,8 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
             Read the Offer Details
           </Link>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

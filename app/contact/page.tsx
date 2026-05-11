@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas } from "@/lib/schema";
 import { bottleneckOptions, siteConfig, teamSizeOptions } from "@/lib/site";
 
 import { CalBooking } from "./cal-booking";
@@ -41,6 +42,19 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
   return (
     <>
+      <JsonLd
+        data={pageSchemas({
+          path: "/contact",
+          title: "Contact Cohevo",
+          description:
+            "Book a free 30-minute audit call or send a message to get a clear recommendation for your systems setup.",
+          type: "ContactPage",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ],
+        })}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">Get in Touch</div>

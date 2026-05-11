@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -11,10 +12,22 @@ export const metadata = buildMetadata({
 
 export default function TermsPage() {
   return (
-    <div className="container">
-      <div className="legal-content">
-        <h1>Terms of Service</h1>
-        <span className="mono">Last updated: January 2025</span>
+    <>
+      <JsonLd
+        data={pageSchemas({
+          path: "/legal/terms",
+          title: "Terms of Service",
+          description: "Terms of service for Cohevo.",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "Terms of Service", path: "/legal/terms" },
+          ],
+        })}
+      />
+      <div className="container">
+        <div className="legal-content">
+          <h1>Terms of Service</h1>
+          <span className="mono">Last updated: January 2025</span>
 
         <p>
           These terms apply to all visitors and clients of Cohevo. By using this website or engaging our
@@ -61,7 +74,8 @@ export default function TermsPage() {
 
         <h2>Contact</h2>
         <p>For questions about these terms, contact us at hi@cohevo.co.</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

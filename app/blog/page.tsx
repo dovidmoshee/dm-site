@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo";
 import { getAllBlogPosts } from "@/lib/blog";
+import { blogSchema, JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 import { BlogPosts } from "./blog-posts";
 
@@ -17,6 +18,22 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/blog",
+            title: "Blog",
+            description:
+              "Authoritative articles on business systems, automation, workflow design, and operations for growing teams.",
+            type: "CollectionPage",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+            ],
+          }),
+          blogSchema(posts),
+        ]}
+      />
       <section className="inner-hero blog-hero">
         <div className="container">
           <div className="tag">Insights</div>

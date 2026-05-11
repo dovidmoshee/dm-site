@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas, pricingSchema } from "@/lib/schema";
 import { packages, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -14,6 +15,20 @@ export const metadata = buildMetadata({
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/pricing",
+            title: "Pricing",
+            description: "Clear packages. No surprises. Choose Foundation, Build, or Scale.",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Pricing", path: "/pricing" },
+            ],
+          }),
+          pricingSchema(),
+        ]}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">Pricing</div>

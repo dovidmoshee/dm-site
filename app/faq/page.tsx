@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
+import { faqSchema, JsonLd, pageSchemas } from "@/lib/schema";
 import { faqItems, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -15,6 +16,21 @@ export const metadata = buildMetadata({
 export default function FaqPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/faq",
+            title: "FAQ",
+            description: "Honest answers to common questions about fit, process, scope, security, and pricing.",
+            type: "FAQPage",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "FAQ", path: "/faq" },
+            ],
+          }),
+          faqSchema(),
+        ]}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">FAQ</div>

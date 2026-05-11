@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -47,6 +48,19 @@ const credentials = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={pageSchemas({
+          path: "/about",
+          title: "About Cohevo",
+          description:
+            "I build operating infrastructure for growing businesses with systems mapping, automation, and AI workflows.",
+          type: "AboutPage",
+          breadcrumbs: [
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ],
+        })}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">About</div>

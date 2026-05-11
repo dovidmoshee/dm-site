@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd, pageSchemas, serviceSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
@@ -98,6 +99,21 @@ const addOns = [
 export default function OfferPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          ...pageSchemas({
+            path: "/offer",
+            title: "Business OS Setup",
+            description:
+              "The system your business needs to grow without adding headcount. See deliverables, scope, timeline, and optional add-ons.",
+            breadcrumbs: [
+              { name: "Home", path: "/" },
+              { name: "Offer", path: "/offer" },
+            ],
+          }),
+          serviceSchema(),
+        ]}
+      />
       <div className="inner-hero">
         <div className="container">
           <div className="tag">Business OS Setup</div>
