@@ -17,19 +17,49 @@ function getStringValue(formData: FormData, key: string): string {
   return String(formData.get(key) ?? "").trim();
 }
 
+const defaultSmtpHost = "smtp.gmail.com";
+const defaultSmtpPort = 587;
+const defaultContactSender = "Cohevo <hi@cohevo.co>";
+const defaultContactRecipient = "david@cohevo.co";
+
+function getSmtpPort() {
+  const rawPort = process.env.SMTP_PORT?.trim();
+  if (!rawPort) {
+    return defaultSmtpPort;
+  }
+
+  const configuredPort = Number(rawPort);
+  return Number.isFinite(configuredPort) ? configuredPort : defaultSmtpPort;
+}
+
+function getEmailConfig() {
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS?.trim();
+
+  if (!user || !pass) {
+    return null;
+  }
+
+  return {
+    host: process.env.SMTP_HOST?.trim() || defaultSmtpHost,
+    port: getSmtpPort(),
+    user,
+    pass,
+    from: process.env.SMTP_FROM?.trim() || defaultContactSender,
+    to: process.env.SMTP_TO?.trim() || defaultContactRecipient,
+  };
+}
+
 function hasEmailConfig() {
-  return Boolean(
-    process.env.SMTP_HOST &&
-      process.env.SMTP_PORT &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS &&
-      process.env.SMTP_FROM &&
-      process.env.SMTP_TO,
-  );
+  return Boolean(getEmailConfig());
 }
 
 function hasHubSpotConfig() {
   return Boolean(process.env.HUBSPOT_ACCESS_TOKEN);
+}
+
+function shouldUseFileFallback() {
+  return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
 }
 
 async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
@@ -76,17 +106,22 @@ function escapeHtml(value: string): string {
 }
 
 async function sendEmailSubmission(submission: Submission) {
+  const emailConfig = getEmailConfig();
+  if (!emailConfig) {
+    return;
+  }
+
   const nodemailer = (await import("nodemailer")).default;
-  const port = Number(process.env.SMTP_PORT);
-  const secure = Number.isFinite(port) && port === 465;
+  const secure = emailConfig.port === 465;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port,
+    host: emailConfig.host,
+    port: emailConfig.port,
     secure,
+    requireTLS: !secure,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: emailConfig.user,
+      pass: emailConfig.pass,
     },
   });
 
@@ -117,8 +152,8 @@ async function sendEmailSubmission(submission: Submission) {
   `;
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to: process.env.SMTP_TO,
+    from: emailConfig.from,
+    to: emailConfig.to,
     replyTo: submission.email,
     subject: `New inquiry from ${submission.name}`,
     text: textBody,
@@ -240,16 +275,29 @@ export async function submitContactForm(formData: FormData) {
   const hubSpotConfigured = hasHubSpotConfig();
 
   if (!emailConfigured && !hubSpotConfigured) {
+    if (!shouldUseFileFallback()) {
+      console.error(
+        "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure HubSpot.",
+      );
+      redirect("/contact?error=delivery-failed");
+    }
+
     const persisted = await writeSubmissionToFile(submission);
     if (!persisted) {
       redirect("/contact?error=delivery-failed");
     }
   } else {
-    const deliveries = await Promise.allSettled([
-      emailConfigured ? sendEmailSubmission(submission) : Promise.resolve(),
-      hubSpotConfigured ? sendHubSpotLead(submission) : Promise.resolve(),
-    ]);
+    const deliveryTasks: Promise<void>[] = [];
 
+    if (emailConfigured) {
+      deliveryTasks.push(sendEmailSubmission(submission));
+    }
+
+    if (hubSpotConfigured) {
+      deliveryTasks.push(sendHubSpotLead(submission));
+    }
+
+    const deliveries = await Promise.allSettled(deliveryTasks);
     const successfulDeliveries = deliveries.filter((result) => result.status === "fulfilled").length;
 
     if (successfulDeliveries === 0) {
