@@ -12,7 +12,8 @@ Production-ready marketing site built with Next.js App Router, TypeScript, Tailw
 - Framer Motion (subtle reveal animations)
 - Contact form server action with:
   - `nodemailer` email delivery when SMTP env vars are set
-  - JSON file fallback storage when SMTP env vars are not set
+  - Attio person record upsert when Attio env vars are set
+  - JSON file fallback storage for local development when delivery env vars are not set
 
 ## Local Development
 
@@ -63,33 +64,36 @@ SMTP_TO=david@cohevo.co
 
 Behavior:
 - With `SMTP_USER` and `SMTP_PASS`: sends email notifications.
-- With HubSpot vars (below): creates/updates a HubSpot contact as a lead.
-- Without either SMTP credentials or HubSpot vars: saves submissions to JSON.
+- With Attio vars (below): creates or updates an Attio person record using the submitter's email address.
+- Without SMTP credentials or Attio vars in production: shows the delivery error instead of pretending the message was sent.
+- Without SMTP credentials or Attio vars in local development: saves submissions to JSON.
 
-### Optional HubSpot lead sync
+### Optional Attio lead sync
 
-If `HUBSPOT_ACCESS_TOKEN` is set, each submission is upserted to HubSpot Contacts using email as the unique key and `lifecyclestage=lead`.
-
-```bash
-HUBSPOT_ACCESS_TOKEN=your_hubspot_private_app_token
-```
-
-Optional: map extra form fields into your own HubSpot custom contact properties:
+If `ATTIO_ACCESS_TOKEN` is set, each submission is asserted to Attio People using `email_addresses` as the matching attribute. This creates the person if they do not exist yet and updates the existing person if they submit again. The token needs Attio's `record_permission:read-write` and `object_configuration:read` scopes.
 
 ```bash
-HUBSPOT_TEAM_SIZE_PROPERTY=team_size
-HUBSPOT_BOTTLENECK_PROPERTY=biggest_bottleneck
-HUBSPOT_MESSAGE_PROPERTY=inquiry_message
-HUBSPOT_CHECKLIST_PROPERTY=wants_checklist
+ATTIO_ACCESS_TOKEN=your_attio_access_token
 ```
 
-If these custom properties are not created in HubSpot, leave these env vars unset.
+By default the integration sends the visitor's name, email, and a `description` containing the full form submission. Optional: map extra form fields into your own Attio custom person attributes by setting the attribute slugs or IDs:
+
+```bash
+ATTIO_COMPANY_ATTRIBUTE=company_name
+ATTIO_TEAM_SIZE_ATTRIBUTE=team_size
+ATTIO_BOTTLENECK_ATTRIBUTE=biggest_bottleneck
+ATTIO_MESSAGE_ATTRIBUTE=inquiry_message
+ATTIO_CHECKLIST_ATTRIBUTE=wants_checklist
+ATTIO_SOURCE_ATTRIBUTE=lead_source
+```
+
+If these custom attributes are not created in Attio, leave these env vars unset.
 
 Fallback storage location:
 - Local dev: `data/contact-submissions.json`
 - Vercel runtime: `/tmp/contact-submissions.json` (ephemeral)
 
-For persistent production handling, set SMTP env vars.
+For persistent production handling, set SMTP and/or Attio env vars.
 
 ## Calendly Link
 
