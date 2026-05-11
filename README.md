@@ -12,7 +12,7 @@ Production-ready marketing site built with Next.js App Router, TypeScript, Tailw
 - Framer Motion (subtle reveal animations)
 - Contact form server action with:
   - `nodemailer` email delivery when SMTP env vars are set
-  - Attio person record upsert when Attio env vars are set
+  - Attio person/company upsert and deal creation when Attio env vars are set
   - JSON file fallback storage for local development when delivery env vars are not set
 
 ## Local Development
@@ -64,19 +64,35 @@ SMTP_TO=david@cohevo.co
 
 Behavior:
 - With `SMTP_USER` and `SMTP_PASS`: sends email notifications.
-- With Attio vars (below): creates or updates an Attio person record using the submitter's email address.
+- With Attio vars (below): creates or updates Attio person/company records and creates a new deal.
 - Without SMTP credentials or Attio vars in production: shows the delivery error instead of pretending the message was sent.
 - Without SMTP credentials or Attio vars in local development: saves submissions to JSON.
 
 ### Optional Attio lead sync
 
-If `ATTIO_ACCESS_TOKEN` is set, each submission is asserted to Attio People using `email_addresses` as the matching attribute. This creates the person if they do not exist yet and updates the existing person if they submit again. The token needs Attio's `record_permission:read-write` and `object_configuration:read` scopes.
+If `ATTIO_ACCESS_TOKEN` is set, each submission is synced to Attio:
+
+- Asserts a company using the submitter's work email domain as the matching domain.
+- Asserts a person using `email_addresses` as the matching attribute and links the company when available.
+- Creates a new deal in the `Lead` stage and links it to the person/company.
+
+The token needs Attio's `record_permission:read-write` and `object_configuration:read` scopes. The Deals object must be enabled in Attio.
 
 ```bash
 ATTIO_ACCESS_TOKEN=your_attio_access_token
+ATTIO_DEAL_OWNER_EMAIL=david@cohevo.co
 ```
 
-By default the integration sends the visitor's name, email, and a `description` containing the full form submission. Optional: map extra form fields into your own Attio custom person attributes by setting the attribute slugs or IDs:
+By default the integration sends the visitor's name, email, and a `description` containing the full form submission. Companies are matched with the email domain unless the submitter uses a common personal email domain such as Gmail, iCloud, Outlook, or Yahoo.
+
+Deals default to stage `Lead`. Override the owner or stage only if needed:
+
+```bash
+ATTIO_DEAL_OWNER_EMAIL=david@cohevo.co
+ATTIO_DEAL_STAGE=Lead
+```
+
+Optional: map extra form fields into your own Attio custom person attributes by setting the attribute slugs or IDs:
 
 ```bash
 ATTIO_COMPANY_ATTRIBUTE=company_name
@@ -88,6 +104,15 @@ ATTIO_SOURCE_ATTRIBUTE=lead_source
 ```
 
 If these custom attributes are not created in Attio, leave these env vars unset.
+
+Optional: map extra form fields into your own Attio custom deal attributes:
+
+```bash
+ATTIO_DEAL_SOURCE_ATTRIBUTE=lead_source
+ATTIO_DEAL_MESSAGE_ATTRIBUTE=inquiry_message
+ATTIO_DEAL_BOTTLENECK_ATTRIBUTE=biggest_bottleneck
+ATTIO_DEAL_TEAM_SIZE_ATTRIBUTE=team_size
+```
 
 Fallback storage location:
 - Local dev: `data/contact-submissions.json`

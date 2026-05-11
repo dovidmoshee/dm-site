@@ -62,10 +62,6 @@ function shouldUseFileFallback() {
   return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
 }
 
-function shouldUseFileFallback() {
-  return process.env.NODE_ENV !== "production" && !process.env.VERCEL;
-}
-
 async function writeSubmissionToFile(submission: Submission): Promise<boolean> {
   try {
     const [{ mkdir, readFile, writeFile }, pathModule] = await Promise.all([
@@ -204,13 +200,126 @@ function addAttioAttribute(
   values[attributeName] = value;
 }
 
-async function sendAttioLead(submission: Submission) {
-  const accessToken = process.env.ATTIO_ACCESS_TOKEN;
-  if (!accessToken) {
-    return;
+const personalEmailDomains = new Set([
+  "aol.com",
+  "gmail.com",
+  "googlemail.com",
+  "hotmail.com",
+  "icloud.com",
+  "live.com",
+  "mac.com",
+  "me.com",
+  "msn.com",
+  "outlook.com",
+  "proton.me",
+  "protonmail.com",
+  "yahoo.com",
+]);
+
+type AttioRecordResponse = {
+  data?: {
+    id?: {
+      record_id?: string;
+    };
+  };
+};
+
+function getEmailDomain(email: string) {
+  return email.split("@")[1]?.toLowerCase() ?? "";
+}
+
+function getCompanyDomain(submission: Submission) {
+  const domain = getEmailDomain(submission.email);
+  if (!domain || personalEmailDomains.has(domain)) {
+    return null;
   }
 
+  return domain;
+}
+
+function getAttioHeaders(accessToken: string) {
+  return {
+    Authorization: `Bearer ${accessToken}`,
+    "Content-Type": "application/json",
+  };
+}
+
+async function parseAttioResponse(response: Response, action: string): Promise<AttioRecordResponse> {
+  const body = await response.text();
+
+  if (!response.ok) {
+    throw new Error(`Attio ${action} failed (${response.status}): ${body}`);
+  }
+
+  return body ? (JSON.parse(body) as AttioRecordResponse) : {};
+}
+
+function buildCompanyReference(companyDomain: string | null, companyRecordId?: string) {
+  if (companyRecordId) {
+    return {
+      target_object: "companies",
+      target_record_id: companyRecordId,
+    };
+  }
+
+  if (!companyDomain) {
+    return null;
+  }
+
+  return {
+    target_object: "companies",
+    domains: [
+      {
+        domain: companyDomain,
+      },
+    ],
+  };
+}
+
+async function upsertAttioCompany(
+  submission: Submission,
+  accessToken: string,
+  companyDomain: string | null,
+) {
+  if (!companyDomain) {
+    return null;
+  }
+
+  const values: Record<string, unknown> = {
+    domains: [companyDomain],
+    description: buildSubmissionSummary(submission),
+  };
+
+  if (submission.company !== "Not provided") {
+    values.name = submission.company;
+  }
+
+  const response = await fetch(
+    "https://api.attio.com/v2/objects/companies/records?matching_attribute=domains",
+    {
+      method: "PUT",
+      headers: getAttioHeaders(accessToken),
+      body: JSON.stringify({
+        data: {
+          values,
+        },
+      }),
+      cache: "no-store",
+    },
+  );
+
+  const payload = await parseAttioResponse(response, "company upsert");
+  return payload.data?.id?.record_id ?? null;
+}
+
+async function upsertAttioPerson(
+  submission: Submission,
+  accessToken: string,
+  companyDomain: string | null,
+  companyRecordId: string | null,
+) {
   const { firstName, lastName } = splitName(submission.name);
+  const companyReference = buildCompanyReference(companyDomain, companyRecordId ?? undefined);
   const values: Record<string, unknown> = {
     email_addresses: [submission.email],
     name: [
@@ -223,6 +332,10 @@ async function sendAttioLead(submission: Submission) {
     description: buildSubmissionSummary(submission),
   };
 
+  if (companyReference) {
+    values.company = [companyReference];
+  }
+
   addAttioAttribute(values, process.env.ATTIO_COMPANY_ATTRIBUTE, submission.company);
   addAttioAttribute(values, process.env.ATTIO_TEAM_SIZE_ATTRIBUTE, submission.teamSize);
   addAttioAttribute(values, process.env.ATTIO_BOTTLENECK_ATTRIBUTE, submission.bottleneck);
@@ -234,10 +347,7 @@ async function sendAttioLead(submission: Submission) {
     "https://api.attio.com/v2/objects/people/records?matching_attribute=email_addresses",
     {
       method: "PUT",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
+      headers: getAttioHeaders(accessToken),
       body: JSON.stringify({
         data: {
           values,
@@ -247,10 +357,83 @@ async function sendAttioLead(submission: Submission) {
     },
   );
 
-  if (!response.ok) {
-    const details = await response.text();
-    throw new Error(`Attio person upsert failed (${response.status}): ${details}`);
+  const payload = await parseAttioResponse(response, "person upsert");
+  return payload.data?.id?.record_id ?? null;
+}
+
+function buildDealName(submission: Submission) {
+  const companyLabel = submission.company !== "Not provided" ? submission.company : getEmailDomain(submission.email);
+  return `Website inquiry - ${submission.name}${companyLabel ? ` (${companyLabel})` : ""}`;
+}
+
+async function createAttioDeal(
+  submission: Submission,
+  accessToken: string,
+  companyDomain: string | null,
+  companyRecordId: string | null,
+  personRecordId: string | null,
+) {
+  const owner = process.env.ATTIO_DEAL_OWNER_EMAIL?.trim() || getEmailConfig()?.to || defaultContactRecipient;
+  const stage = process.env.ATTIO_DEAL_STAGE?.trim() || "Lead";
+  const personReference = personRecordId
+    ? {
+        target_object: "people",
+        target_record_id: personRecordId,
+      }
+    : {
+        target_object: "people",
+        email_addresses: [
+          {
+            email_address: submission.email,
+          },
+        ],
+      };
+  const companyReference = buildCompanyReference(companyDomain, companyRecordId ?? undefined);
+  const values: Record<string, unknown> = {
+    name: buildDealName(submission),
+    stage,
+    owner,
+    associated_people: [personReference],
+  };
+
+  if (companyReference) {
+    values.associated_company = companyReference;
   }
+
+  addAttioAttribute(values, process.env.ATTIO_DEAL_SOURCE_ATTRIBUTE, "Website contact form");
+  addAttioAttribute(values, process.env.ATTIO_DEAL_MESSAGE_ATTRIBUTE, submission.message);
+  addAttioAttribute(values, process.env.ATTIO_DEAL_BOTTLENECK_ATTRIBUTE, submission.bottleneck);
+  addAttioAttribute(values, process.env.ATTIO_DEAL_TEAM_SIZE_ATTRIBUTE, submission.teamSize);
+
+  const response = await fetch("https://api.attio.com/v2/objects/deals/records", {
+    method: "POST",
+    headers: getAttioHeaders(accessToken),
+    body: JSON.stringify({
+      data: {
+        values,
+      },
+    }),
+    cache: "no-store",
+  });
+
+  await parseAttioResponse(response, "deal creation");
+}
+
+async function sendAttioLead(submission: Submission) {
+  const accessToken = process.env.ATTIO_ACCESS_TOKEN;
+  if (!accessToken) {
+    return;
+  }
+
+  const companyDomain = getCompanyDomain(submission);
+  const companyRecordId = await upsertAttioCompany(submission, accessToken, companyDomain);
+  const personRecordId = await upsertAttioPerson(
+    submission,
+    accessToken,
+    companyDomain,
+    companyRecordId,
+  );
+  await createAttioDeal(submission, accessToken, companyDomain, companyRecordId, personRecordId);
 }
 
 export async function submitContactForm(formData: FormData) {
@@ -289,14 +472,6 @@ export async function submitContactForm(formData: FormData) {
     if (!shouldUseFileFallback()) {
       console.error(
         "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure Attio.",
-      );
-      redirect("/contact?error=delivery-failed");
-    }
-
-  if (!emailConfigured && !hubSpotConfigured) {
-    if (!shouldUseFileFallback()) {
-      console.error(
-        "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure HubSpot.",
       );
       redirect("/contact?error=delivery-failed");
     }
