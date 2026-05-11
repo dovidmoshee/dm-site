@@ -44,7 +44,7 @@ export const navLinks = [
 ] as const;
 
 export const socialLinks = [
-  { href: "#", label: "LinkedIn" },
+  { href: "https://www.linkedin.com/company/hicohevo/about", label: "LinkedIn" },
   { href: "#", label: "X" },
   { href: "mailto:hi@cohevo.co", label: "Email" },
 ] as const;
