@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, pageSchemas, serviceSchema } from "@/lib/schema";
-import { deliverables, measurableOutcomes, packages, processTimeline, siteConfig, testimonials } from "@/lib/site";
+import { deliverables, packages, processTimeline, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Cohevo",
@@ -265,39 +265,6 @@ export default function HomePage() {
             <Link className="btn btn-ghost" href="/process">
               See the Full Process →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="testimonials-section">
-        <div className="container">
-          <div className="section-head">
-            <div className="tag">Results</div>
-            <h2>What founders say after.</h2>
-          </div>
-
-          <div className="testi-grid">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="testi-card">
-                <div className="testi-stars">★★★★★</div>
-                <div className="testi-quote">&quot;{testimonial.quote}&quot;</div>
-                <div className="testi-author">
-                  <div className="testi-avatar">{testimonial.initials}</div>
-                  <div className="testi-meta">
-                    <strong>{testimonial.name}</strong>
-                    {testimonial.role}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="outcomes-strip">
-            {measurableOutcomes.map((outcome) => (
-              <div key={outcome} className="outcome-pill">
-                {outcome}
-              </div>
-            ))}
           </div>
         </div>
       </section>
