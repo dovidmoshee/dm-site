@@ -444,6 +444,11 @@ export async function submitContactForm(formData: FormData) {
   const bottleneck = getStringValue(formData, "bottleneck");
   const message = getStringValue(formData, "message");
   const wantsChecklist = formData.get("checklist") === "on";
+  const honeypot = getStringValue(formData, "website");
+
+  if (honeypot) {
+    redirect("/thank-you");
+  }
 
   if (!name || !email) {
     redirect("/contact?error=missing-fields");

@@ -106,6 +106,26 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               ) : null}
 
               <form action={submitContactForm}>
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: 1,
+                    height: 1,
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="website">Website (leave blank)</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="form-row">
                   <div className="form-group">
                     <label className="form-label" htmlFor="name">
