@@ -45,8 +45,6 @@ const outcomeCards = [
   },
 ] as const;
 
-const trustedBy = ["Meridian Labs", "Stackwave", "Lumen Agency", "Forgepoint"] as const;
-
 const previewFaq = [
   {
     question: "Who is this engagement for?",
@@ -92,15 +90,15 @@ export default function HomePage() {
                 Install the operating system your <em>business runs on.</em>
               </h1>
               <p className="hero-sub">
-                In 60 days, I streamline your tools, workflows, automations, and AI so your team moves faster with less
-                manual work.
+                In 60 days, I turn the workflows living in your founder&apos;s head into documented systems,
+                automated handoffs, and one clear source of truth for the team.
               </p>
               <div className="hero-ctas">
                 <Link className="btn btn-primary btn-lg" href="/contact">
-                  Book a Call
+                  Get a Free Systems Audit
                 </Link>
                 <Link className="btn btn-ghost btn-lg" href="/contact#checklist">
-                  Get the Checklist
+                  Download the Checklist
                 </Link>
               </div>
 
@@ -213,7 +211,7 @@ export default function HomePage() {
                   style={{ width: "100%", marginTop: 24, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
-                  Book a Free Audit Call
+                  Get a Free Systems Audit
                 </Link>
               </div>
             </div>
@@ -269,6 +267,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section style={{ background: "var(--bg2)", padding: "80px 0" }}>
+        <div className="container">
+          <div className="offer-summary-grid">
+            <div>
+              <div className="tag">Free Systems Audit</div>
+              <h2 className="offer-summary-title">Find the workflow leaks before you hire another coordinator.</h2>
+              <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 20 }}>
+                For qualified SaaS teams and agencies, I will review your current sales, onboarding, reporting, or
+                internal ops flow and identify the 3–5 places where work is getting dropped, duplicated, or stuck in
+                the founder&apos;s head.
+              </p>
+              <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
+                If there is a clear implementation opportunity, I will show you exactly what I would install over the
+                next 30–60 days. No generic AI pitch. Just the operating leverage.
+              </p>
+              <Link className="btn btn-primary" href="/contact">
+                Get a Free Systems Audit →
+              </Link>
+            </div>
+            <div className="offer-summary-badge">
+              <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
+                Founding Client Sprint
+              </div>
+              <h3>First 3 implementation clients</h3>
+              <p>Preferred pricing in exchange for fast feedback, before/after metrics, and permission to create an anonymized case study.</p>
+              <div className="badge-stat">
+                <div className="badge-stat-label">Best fit</div>
+                <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
+                  3–20 person SaaS or agency
+                </div>
+              </div>
+              <div className="badge-stat">
+                <div className="badge-stat-label">Focus</div>
+                <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
+                  Leads, onboarding, reporting, ops
+                </div>
+              </div>
+              <Link
+                className="btn btn-primary"
+                style={{ width: "100%", marginTop: 24, background: "var(--accent-fill)", color: "var(--on-accent)" }}
+                href="/contact"
+              >
+                Apply for Founding Client Pricing
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="section-head">
+            <div className="tag">Example Workflow Teardown</div>
+            <h2>What gets fixed in a messy client onboarding flow.</h2>
+            <p>A concrete example of the before/after operating layer Cohevo installs.</p>
+          </div>
+
+          <div className="po-grid">
+            <div className="po-card bad">
+              <h3>Before</h3>
+              <p>Client signs → founder manually sends forms → PM creates folders → Slack channel gets created late → onboarding email is rewritten every time → status lives in someone&apos;s head.</p>
+            </div>
+            <div className="po-card good">
+              <h3>After</h3>
+              <p>Client signs → intake form sends automatically → CRM updates → project, folder, Slack channel, checklist, kickoff email, and team notification all trigger from one source of truth.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="container">
           <div className="section-head">
@@ -290,7 +358,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link className={`btn ${item.popular ? "btn-primary" : "btn-ghost"}`} style={{ width: "100%" }} href={item.popular ? "/contact" : "/pricing"}>
-                  {item.popular ? "Book a Call" : "See Details"}
+                  {item.popular ? "Get a Free Audit" : "See Details"}
                 </Link>
               </div>
             ))}
@@ -299,7 +367,7 @@ export default function HomePage() {
           <p style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "var(--ink3)" }}>
             Not sure which fits?{" "}
             <Link style={{ color: "var(--accent)", fontWeight: 600 }} href="/contact">
-              Book a call and I&apos;ll recommend the right package.
+              Get a free systems audit and I&apos;ll recommend the right package.
             </Link>
           </p>
         </div>
@@ -326,11 +394,11 @@ export default function HomePage() {
         <div className="container">
           <h2>Ready for a calmer, faster business?</h2>
           <p>
-            Book a free 30-minute audit call. We will look at your current systems and I will tell you exactly where
-            the leverage is.
+            Book a free 30-minute systems audit. You will leave with the 3–5 workflow leaks costing your
+            team time every week and the highest-ROI automations to fix first.
           </p>
           <Link className="btn btn-primary btn-xl" href="/contact" style={{ background: "var(--accent-fill)", color: "var(--on-accent)" }}>
-            Book a Call →
+            Get a Free Systems Audit →
           </Link>
         </div>
       </div>

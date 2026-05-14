@@ -180,10 +180,10 @@ export function SiteHeader() {
               <span>{themeStatusLabel}</span>
             </button>
             <Link href="/contact#checklist" className="btn btn-ghost">
-              Get the Checklist
+              Download Checklist
             </Link>
             <Link href="/contact" className="btn btn-primary">
-              Book a Call
+              Free Systems Audit
             </Link>
           </div>
 
@@ -237,10 +237,10 @@ export function SiteHeader() {
 
               <div className="mobile-menu-ctas">
                 <Link href="/contact#checklist" className="btn btn-ghost" onClick={() => setMenuOpen(false)}>
-                  Get the Checklist
+                  Download Checklist
                 </Link>
                 <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
-                  Book a Call
+                  Free Systems Audit
                 </Link>
                 <button
                   type="button"

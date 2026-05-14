@@ -20,10 +20,10 @@ export function CtaBanner({ title, description }: CtaBannerProps) {
             </div>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full px-7">
-                <Link href="/contact#book-call">Book a call</Link>
+                <Link href="/contact#book-call">Get a free audit</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full px-7">
-                <Link href="/contact#checklist">Get checklist</Link>
+                <Link href="/contact#checklist">Download checklist</Link>
               </Button>
             </div>
           </div>

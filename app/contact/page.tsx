@@ -6,12 +6,12 @@ import { CalBooking } from "./cal-booking";
 import { submitContactForm } from "./actions";
 
 export const metadata = buildMetadata({
-  title: "Contact",
+  title: "Free Systems Audit",
   description:
-    "Book a free 30-minute audit call or send a message to get a clear recommendation for your systems setup.",
+    "Get a free 30-minute systems audit and identify the workflow leaks costing your team time every week.",
   path: "/contact",
   ogImage: siteConfig.ogImages.splitLime,
-  ogImageAlt: "Cohevo free audit call preview",
+  ogImageAlt: "Cohevo free systems audit preview",
 });
 
 type ContactPageProps = {
@@ -45,9 +45,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       <JsonLd
         data={pageSchemas({
           path: "/contact",
-          title: "Contact Cohevo",
+          title: "Free Systems Audit | Cohevo",
           description:
-            "Book a free 30-minute audit call or send a message to get a clear recommendation for your systems setup.",
+            "Get a free 30-minute systems audit and identify the workflow leaks costing your team time every week.",
           type: "ContactPage",
           breadcrumbs: [
             { name: "Home", path: "/" },
@@ -57,11 +57,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       />
       <div className="inner-hero">
         <div className="container">
-          <div className="tag">Get in Touch</div>
-          <h1>Let&apos;s talk about your systems.</h1>
+          <div className="tag">Free Systems Audit</div>
+          <h1>Find the workflow leaks costing your team time.</h1>
           <p>
-            Book a free 30-minute audit call or send a message. Either way, you will get a straight answer about
-            whether this is the right fit.
+            Book a free 30-minute audit or send a message. You will get a straight answer on where the leverage is,
+            what to automate first, and whether Cohevo is the right fit to install it.
           </p>
         </div>
       </div>
@@ -70,10 +70,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <div className="container">
           <div className="contact-grid">
             <div>
-              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Audit Call</h2>
+              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Systems Audit</h2>
               <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
-                A free 30-minute call to walk through your current setup. No pitch. Just a clear picture of where the
-                leverage is.
+                A free 30-minute call for qualified SaaS teams and agencies. We will identify the 3–5 workflow leaks
+                costing your team time and the highest-ROI automations to fix first.
               </p>
               <CalBooking />
               <div
@@ -96,7 +96,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             <div id="checklist">
               <h2 style={{ fontSize: 24, marginBottom: 8 }}>Or send a message</h2>
               <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
-                Tell me about your situation and I will follow up with some initial thoughts and a link to book time.
+                Tell me where work is getting stuck and I will follow up with initial thoughts plus a link to book your audit.
               </p>
 
               {errorMessage ? (
@@ -208,7 +208,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                     id="message"
                     name="message"
                     className="form-textarea"
-                    placeholder="Tell me a bit about your current situation and what you are trying to fix."
+                    placeholder="Tell me what still runs through the founder, where handoffs break, and which tools feel messy."
                     rows={4}
                   />
                 </div>
