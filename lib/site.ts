@@ -7,10 +7,15 @@ function normalizeSiteUrl(value: string) {
   try {
     const url = new URL(trimmedValue);
 
-    // Production traffic is forced onto the www host, so SEO-facing outputs
-    // should always advertise the same canonical origin.
+    // Production traffic is forced onto the HTTPS www host, so SEO-facing outputs
+    // should always advertise the same canonical origin even if env vars use
+    // the apex domain or the wrong scheme.
     if (url.hostname === "cohevo.co") {
       url.hostname = "www.cohevo.co";
+    }
+
+    if (url.hostname === "www.cohevo.co") {
+      url.protocol = "https:";
     }
 
     return url.toString().replace(/\/$/, "");
