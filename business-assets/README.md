@@ -12,7 +12,7 @@ This folder contains the core assets to run Cohevo as a service business.
 
 ## Folder map
 
-- `01-brand/`: positioning, messaging, identity rules
+- `01-brand/`: positioning, messaging, identity rules, and the Cohevo explainer
 - `02-offers/`: offers, pricing, proposal template
 - `03-sales/`: scripts, pipeline, outreach templates
 - `04-operations/`: onboarding and delivery SOPs

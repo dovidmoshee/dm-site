@@ -1,24 +1,55 @@
 <svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="900" rx="52" fill="#F7FBFC"/>
-  <circle cx="250" cy="220" r="88" fill="#D9F2EF"/>
-  <circle cx="610" cy="190" r="76" fill="#CBE8F4"/>
-  <circle cx="920" cy="300" r="96" fill="#DDF3E6"/>
-  <circle cx="320" cy="600" r="90" fill="#E7EEF9"/>
-  <circle cx="700" cy="650" r="108" fill="#E8F7F4"/>
-  <circle cx="980" cy="580" r="72" fill="#D4ECF8"/>
+  <rect x="86" y="84" width="1028" height="732" rx="34" fill="#FFFFFF" stroke="#D7E5E2" stroke-width="3"/>
 
-  <path d="M328 247L534 210" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M686 223L843 272" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M284 290L323 510" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M611 266L681 542" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M880 370L971 513" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M410 628L592 651" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
-  <path d="M807 654L917 612" stroke="#4A8B87" stroke-width="12" stroke-linecap="round"/>
+  <text x="132" y="150" fill="#1E5F5B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="30" font-weight="700" letter-spacing="3">YOUR OPERATING LAYER</text>
+  <text x="132" y="194" fill="#62766F" font-family="Inter, Arial, sans-serif" font-size="28">Lead → CRM → onboarding → delivery → reporting</text>
 
-  <circle cx="250" cy="220" r="16" fill="#1E5F5B"/>
-  <circle cx="610" cy="190" r="16" fill="#1E5F5B"/>
-  <circle cx="920" cy="300" r="16" fill="#1E5F5B"/>
-  <circle cx="320" cy="600" r="16" fill="#1E5F5B"/>
-  <circle cx="700" cy="650" r="16" fill="#1E5F5B"/>
-  <circle cx="980" cy="580" r="16" fill="#1E5F5B"/>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0E1C18" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="18" markerHeight="18" refX="14" refY="9" orient="auto" markerUnits="strokeWidth">
+      <path d="M3 3L15 9L3 15" fill="none" stroke="#4A8B87" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <path d="M270 392H430" stroke="#4A8B87" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M550 392H710" stroke="#4A8B87" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M830 392H990" stroke="#4A8B87" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M600 482V586" stroke="#4A8B87" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="128" y="298" width="170" height="188" rx="24" fill="#E8F7F4" stroke="#BFE5DE" stroke-width="3"/>
+    <circle cx="170" cy="350" r="20" fill="#1E5F5B"/>
+    <text x="154" y="414" fill="#183B37" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">Lead</text>
+    <text x="154" y="452" fill="#62766F" font-family="Inter, Arial, sans-serif" font-size="20">forms + calls</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="408" y="298" width="170" height="188" rx="24" fill="#D9F2EF" stroke="#BFE5DE" stroke-width="3"/>
+    <circle cx="450" cy="350" r="20" fill="#1E5F5B"/>
+    <text x="434" y="414" fill="#183B37" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">CRM</text>
+    <text x="434" y="452" fill="#62766F" font-family="Inter, Arial, sans-serif" font-size="20">single truth</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="688" y="298" width="170" height="188" rx="24" fill="#E7EEF9" stroke="#CAD7EC" stroke-width="3"/>
+    <circle cx="730" cy="350" r="20" fill="#1E5F5B"/>
+    <text x="714" y="414" fill="#183B37" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">Onboard</text>
+    <text x="714" y="452" fill="#62766F" font-family="Inter, Arial, sans-serif" font-size="20">handoffs</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="968" y="298" width="170" height="188" rx="24" fill="#DDF3E6" stroke="#C1E6CF" stroke-width="3"/>
+    <circle cx="1010" cy="350" r="20" fill="#1E5F5B"/>
+    <text x="994" y="414" fill="#183B37" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">Deliver</text>
+    <text x="994" y="452" fill="#62766F" font-family="Inter, Arial, sans-serif" font-size="20">SOPs + tasks</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="392" y="610" width="416" height="118" rx="24" fill="#183B37"/>
+    <text x="440" y="682" fill="#D8F45F" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Weekly ops dashboard</text>
+    <circle cx="738" cy="668" r="12" fill="#D8F45F"/>
+  </g>
 </svg>
