@@ -116,8 +116,8 @@ export default function HomePage() {
 
             <div className="hero-visual" aria-hidden>
               <Image
-                src="/workflow-nodes-1.svg"
-                alt="Workflow system illustration"
+                src="/cohevo-business-os-hero.png"
+                alt="Business operating system map showing scattered tools organized into one calm workflow layer"
                 width={460}
                 height={440}
                 className="hero-visual-asset"

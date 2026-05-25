@@ -1,0 +1,142 @@
+<svg width="920" height="880" viewBox="0 0 920 880" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cohevo business operating system map</title>
+  <desc id="desc">A calm business systems map showing scattered tools being organized into one operating layer.</desc>
+  <defs>
+    <linearGradient id="panel" x1="160" y1="76" x2="748" y2="775" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEFCF4"/>
+      <stop offset="1" stop-color="#EEF6EA"/>
+    </linearGradient>
+    <linearGradient id="green" x1="223" y1="158" x2="680" y2="707" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DCEED7"/>
+      <stop offset="1" stop-color="#9EC69A"/>
+    </linearGradient>
+    <filter id="softShadow" x="42" y="32" width="836" height="826" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="28"/>
+      <feGaussianBlur stdDeviation="36"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.16 0 0 0 0 0.23 0 0 0 0 0.15 0 0 0 0.16 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    <filter id="cardShadow" x="0" y="0" width="920" height="880" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#233122" flood-opacity="0.11"/>
+    </filter>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" stroke="#DCE7D8" stroke-width="1" opacity="0.55"/>
+    </pattern>
+  </defs>
+
+  <rect x="86" y="66" width="748" height="748" rx="54" fill="url(#panel)" filter="url(#softShadow)"/>
+  <rect x="112" y="92" width="696" height="696" rx="38" fill="url(#grid)" opacity="0.5"/>
+  <circle cx="726" cy="142" r="68" fill="#DFEEDB" opacity="0.62"/>
+  <circle cx="181" cy="694" r="82" fill="#F6EBCB" opacity="0.55"/>
+
+  <g opacity="0.55" stroke="#AFC7AA" stroke-width="2">
+    <path d="M220 242C310 183 427 178 518 228C608 278 674 385 660 497"/>
+    <path d="M220 638C311 699 431 704 526 649C612 599 672 501 658 401"/>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="254" y="206" width="412" height="468" rx="34" fill="#FFFEF7" stroke="#CADCC6" stroke-width="2"/>
+    <rect x="282" y="234" width="356" height="78" rx="22" fill="#263427"/>
+    <text x="310" y="268" fill="#DCEED7" font-family="Georgia, 'Times New Roman', serif" font-size="23" letter-spacing="0.2">Business OS</text>
+    <text x="310" y="292" fill="#AFC7AA" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="1.8">INSTALLED OPERATING LAYER</text>
+
+    <rect x="286" y="340" width="348" height="76" rx="20" fill="#F3F8EF" stroke="#D5E6D2"/>
+    <circle cx="320" cy="378" r="11" fill="#6F9468"/>
+    <text x="348" y="371" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Mapped workflows</text>
+    <text x="348" y="394" fill="#697366" font-family="Inter, Arial, sans-serif" font-size="13">Every handoff has an owner and trigger</text>
+
+    <rect x="286" y="434" width="348" height="76" rx="20" fill="#F9F3DF" stroke="#E8DDB9"/>
+    <circle cx="320" cy="472" r="11" fill="#C8A84F"/>
+    <text x="348" y="465" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Connected tools</text>
+    <text x="348" y="488" fill="#697366" font-family="Inter, Arial, sans-serif" font-size="13">CRM, docs, calendar, tasks, inbox</text>
+
+    <rect x="286" y="528" width="348" height="76" rx="20" fill="#EFF6ED" stroke="#D5E6D2"/>
+    <circle cx="320" cy="566" r="11" fill="#6F9468"/>
+    <text x="348" y="559" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600">Automated handoffs</text>
+    <text x="348" y="582" fill="#697366" font-family="Inter, Arial, sans-serif" font-size="13">Updates move without founder chasing</text>
+
+    <path d="M310 642H610" stroke="#DDE8D9" stroke-width="2" stroke-linecap="round"/>
+    <path d="M310 642H494" stroke="#73986C" stroke-width="4" stroke-linecap="round"/>
+    <text x="310" y="630" fill="#697366" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="1.2">SOURCE OF TRUTH</text>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="112" y="184" width="210" height="108" rx="24" fill="#FFFEF7" stroke="#E4D7C1"/>
+    <text x="139" y="221" fill="#8E5A45" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="1.3">BEFORE</text>
+    <text x="139" y="250" fill="#293328" font-family="Georgia, 'Times New Roman', serif" font-size="24">Scattered work</text>
+    <path d="M140 269H246" stroke="#E8DDB9" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="96" y="360" width="188" height="72" rx="20" fill="#FFFEF7" stroke="#E8DDB9"/>
+    <circle cx="130" cy="396" r="12" fill="#F1DDA4"/>
+    <text x="158" y="389" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Inbox</text>
+    <text x="158" y="409" fill="#788174" font-family="Inter, Arial, sans-serif" font-size="12">manual follow-up</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="126" y="475" width="178" height="72" rx="20" fill="#FFFEF7" stroke="#E8DDB9"/>
+    <circle cx="160" cy="511" r="12" fill="#F1DDA4"/>
+    <text x="188" y="504" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">CRM</text>
+    <text x="188" y="524" fill="#788174" font-family="Inter, Arial, sans-serif" font-size="12">stale pipeline</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="170" y="594" width="176" height="72" rx="20" fill="#FFFEF7" stroke="#E8DDB9"/>
+    <circle cx="204" cy="630" r="12" fill="#F1DDA4"/>
+    <text x="232" y="623" fill="#293328" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Docs</text>
+    <text x="232" y="643" fill="#788174" font-family="Inter, Arial, sans-serif" font-size="12">tribal knowledge</text>
+  </g>
+
+  <g stroke="#9AAF92" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.75">
+    <path d="M284 396C326 394 354 381 386 362"/>
+    <path d="M304 511C343 501 365 489 397 474"/>
+    <path d="M346 630C377 614 398 596 420 570"/>
+    <path d="M374 362l13 0l-6 11"/>
+    <path d="M386 474l12-2l-4 11"/>
+    <path d="M410 573l10-4l-2 12"/>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="632" y="170" width="178" height="94" rx="24" fill="#263427"/>
+    <text x="664" y="207" fill="#DCEED7" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="1.4">AFTER</text>
+    <text x="664" y="236" fill="#FFFEF7" font-family="Georgia, 'Times New Roman', serif" font-size="25">Calm control</text>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="690" y="344" width="138" height="122" rx="24" fill="#FFFEF7" stroke="#D5E6D2"/>
+    <text x="720" y="378" fill="#6F9468" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="1.3">AUDIT</text>
+    <path d="M720 406H788" stroke="#DDE8D9" stroke-width="7" stroke-linecap="round"/>
+    <path d="M720 431H772" stroke="#DDE8D9" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="672" y="520" width="166" height="116" rx="24" fill="#FFFEF7" stroke="#D5E6D2"/>
+    <text x="704" y="555" fill="#6F9468" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="1.3">AUTOMATION</text>
+    <circle cx="716" cy="590" r="9" fill="#DCEED7"/>
+    <circle cx="759" cy="590" r="9" fill="#DCEED7"/>
+    <circle cx="802" cy="590" r="9" fill="#DCEED7"/>
+    <path d="M725 590H750M768 590H793" stroke="#8BAA84" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g stroke="#7F9C78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.78">
+    <path d="M634 380C657 375 674 378 690 389"/>
+    <path d="M634 564C653 574 665 579 672 581"/>
+    <path d="M679 386l11 3l-9 8"/>
+    <path d="M661 572l11 9l-13 3"/>
+  </g>
+
+  <g opacity="0.72">
+    <rect x="208" y="128" width="86" height="28" rx="14" fill="#FFFEF7" stroke="#DCE8D8"/>
+    <text x="232" y="147" fill="#6B7968" font-family="Inter, Arial, sans-serif" font-size="11">Map</text>
+    <rect x="326" y="112" width="106" height="28" rx="14" fill="#FFFEF7" stroke="#DCE8D8"/>
+    <text x="350" y="131" fill="#6B7968" font-family="Inter, Arial, sans-serif" font-size="11">Design</text>
+    <rect x="466" y="120" width="92" height="28" rx="14" fill="#FFFEF7" stroke="#DCE8D8"/>
+    <text x="492" y="139" fill="#6B7968" font-family="Inter, Arial, sans-serif" font-size="11">Build</text>
+    <rect x="590" y="132" width="102" height="28" rx="14" fill="#FFFEF7" stroke="#DCE8D8"/>
+    <text x="616" y="151" fill="#6B7968" font-family="Inter, Arial, sans-serif" font-size="11">Train</text>
+  </g>
+
+  <path d="M203 742C320 786 574 793 708 722" stroke="url(#green)" stroke-width="12" stroke-linecap="round" opacity="0.38"/>
+</svg>
