@@ -70,11 +70,21 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <div className="container">
           <div className="contact-grid">
             <div>
+              <div className="tag">Recommended</div>
               <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Systems Audit</h2>
-              <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
+              <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 20, lineHeight: 1.6 }}>
                 A free 30-minute call for qualified SaaS teams and agencies. We will identify the 3–5 workflow leaks
                 costing your team time and the highest-ROI automations to fix first.
               </p>
+              <a
+                className="btn btn-primary btn-lg"
+                href="https://cal.com/cohevo/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginBottom: 24 }}
+              >
+                Book the 30-min audit →
+              </a>
               <CalBooking />
               <div
                 style={{

@@ -177,7 +177,7 @@ export default function HomePage() {
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
                 For SaaS startups and agencies of 3–20 people scaling without adding coordinators to manage the mess.
               </p>
-              <Link className="btn btn-primary" href="/offer">
+              <Link className="btn btn-ghost" href="/offer">
                 See Full Offer Details →
               </Link>
             </div>
@@ -237,6 +237,26 @@ export default function HomePage() {
                 <p>{item.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="deliv-artifact">
+            <div className="deliv-artifact-copy">
+              <div className="deliv-num">Sample deliverable</div>
+              <h3>See exactly what you receive.</h3>
+              <p>
+                Every engagement starts with a Business Systems Map like this: a visual audit of every workflow, tool,
+                and handoff, with the gaps and bottlenecks called out.
+              </p>
+            </div>
+            <div className="deliv-artifact-frame">
+              <Image
+                className="deliv-artifact-img"
+                src="/process-systems-map.svg"
+                alt="Sample Business Systems Map showing leads moving through sales, onboarding, delivery, and support with gaps highlighted."
+                width={1200}
+                height={520}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -364,9 +384,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p style={{ textAlign: "center", marginTop: 24, fontSize: 14, color: "var(--ink3)" }}>
+          <p className="pricing-recommendation">
             Not sure which fits?{" "}
-            <Link style={{ color: "var(--accent)", fontWeight: 600 }} href="/contact">
+            <Link href="/contact">
               Get a free systems audit and I&apos;ll recommend the right package.
             </Link>
           </p>

@@ -137,6 +137,9 @@ body {
   left: 16px;
   top: -56px;
   z-index: 130;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   background: var(--surface-strong);
   color: var(--on-strong);
   padding: 10px 14px;
@@ -225,6 +228,13 @@ p {
   font-weight: 400;
   cursor: pointer;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.nav-logo img {
+  display: block;
 }
 
 .nav-logo span {
@@ -238,11 +248,14 @@ p {
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: 14.5px;
   font-weight: 500;
   line-height: 1.2;
   color: var(--ink2);
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 8px;
   transition: background 0.15s, color 0.15s;
   cursor: pointer;
@@ -270,13 +283,14 @@ p {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 9px 12px;
+  min-height: 44px;
+  padding: 10px 12px;
   border-radius: 10px;
   border: 1.5px solid var(--border);
   background: var(--card);
   color: var(--ink2);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
@@ -308,7 +322,8 @@ p {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 20px;
+  min-height: 44px;
+  padding: 12px 20px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
@@ -358,10 +373,16 @@ p {
 
 .nav-mobile-toggle {
   display: none;
-  padding: 8px;
-  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
   color: var(--ink2);
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
 }
 
@@ -370,10 +391,13 @@ p {
   top: var(--nav);
   left: 0;
   right: 0;
+  bottom: 0;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 24px 70px rgba(14, 28, 24, 0.18);
   z-index: 99;
-  padding: 16px 24px;
+  padding: 12px 24px 28px;
+  overflow-y: auto;
 }
 
 .mobile-menu-backdrop {
@@ -383,39 +407,70 @@ p {
   right: 0;
   bottom: 0;
   border: 0;
-  background: var(--overlay);
+  background: rgba(14, 28, 24, 0.34);
+  backdrop-filter: blur(2px);
   z-index: 98;
 }
 
 .mobile-menu-inner {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding-top: 6px;
 }
 
-.mobile-menu-close {
-  align-self: flex-end;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
+.mobile-menu-inner .nav-link {
+  width: 100%;
+  justify-content: space-between;
+  min-height: 54px;
+  padding: 14px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-inner .nav-link:last-of-type {
+  border-bottom: none;
+}
+
+.mobile-menu-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 0 4px;
+  border-top: 1px solid var(--border);
+}
+
+.mobile-secondary-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  line-height: 1;
-  color: var(--ink2);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: var(--ink3);
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.mobile-menu-close:hover {
+.mobile-secondary-link:hover,
+.mobile-secondary-link.nav-link-active {
   background: var(--bg2);
+  color: var(--ink);
 }
 
 .mobile-menu-ctas {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
 }
 
 .mobile-menu-ctas .btn {
@@ -771,6 +826,45 @@ section {
   line-height: 1.55;
 }
 
+.deliv-artifact {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--strong-card-border);
+}
+
+.deliv-artifact-copy h3 {
+  font-size: 26px;
+  color: var(--on-strong);
+  margin: 6px 0 12px;
+}
+
+.deliv-artifact-copy p {
+  font-size: 15px;
+  color: var(--on-strong-muted);
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+.deliv-artifact-frame {
+  background: var(--card);
+  border: 1px solid var(--strong-card-border);
+  border-radius: var(--r);
+  padding: 16px;
+  box-shadow: var(--shadow2);
+  overflow: hidden;
+}
+
+.deliv-artifact-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: calc(var(--r) - 8px);
+}
+
 /* Timeline */
 .timeline {
   display: flex;
@@ -1001,6 +1095,21 @@ section {
   margin-top: 1px;
 }
 
+.pricing-recommendation {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--ink3);
+}
+
+.pricing-recommendation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* FAQ */
 .faq-list {
   max-width: 760px;
@@ -1018,6 +1127,8 @@ section {
   align-items: center;
   gap: 16px;
   width: 100%;
+  min-height: 44px;
+  padding: 6px 0;
   text-align: left;
   background: transparent;
   border: 0;
@@ -1124,10 +1235,10 @@ section {
 }
 
 .footer-social {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1164,6 +1275,10 @@ section {
 
 .footer-links li a,
 .footer-links li span {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
@@ -2556,6 +2671,11 @@ section {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .deliv-artifact {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .testi-grid {
     grid-template-columns: 1fr;
   }
@@ -2618,6 +2738,9 @@ section {
 
   .nav-mobile-toggle {
     display: flex;
+    width: 44px !important;
+    min-width: 44px;
+    height: 44px;
   }
 
   .timeline {

@@ -13,6 +13,8 @@ type ResolvedTheme = "light" | "dark";
 const THEME_STORAGE_KEY = "cohevo-theme-preference";
 const LEGACY_THEME_STORAGE_KEY = "calibrate-theme-preference";
 const themeOrder: ThemePreference[] = ["system", "light", "dark"];
+const primaryNavLinks = navLinks.filter(({ href }) => ["/offer", "/process", "/pricing", "/faq"].includes(href));
+const secondaryNavLinks = navLinks.filter(({ href }) => !["/offer", "/process", "/pricing", "/faq"].includes(href));
 const themeLabels: Record<ThemePreference, string> = {
   system: "Auto",
   light: "Light",
@@ -145,12 +147,13 @@ export function SiteHeader() {
               alt="Cohevo"
               height={32}
               width={120}
+              style={{ width: 120, height: "auto" }}
               priority
             />
           </Link>
 
           <nav className="nav-links" aria-label="Main navigation">
-            {navLinks.map((link) => {
+            {primaryNavLinks.map((link) => {
               const active = isActive(pathname, link.href);
 
               return (
@@ -195,7 +198,7 @@ export function SiteHeader() {
             aria-controls={menuId}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            ☰
+            {menuOpen ? "×" : "☰"}
           </button>
         </div>
       </header>
@@ -210,16 +213,7 @@ export function SiteHeader() {
           />
           <div id={menuId} className="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
             <div className="mobile-menu-inner">
-              <button
-                type="button"
-                className="mobile-menu-close"
-                aria-label="Close mobile menu"
-                onClick={() => setMenuOpen(false)}
-              >
-                ×
-              </button>
-
-              {navLinks.map((link) => {
+              {primaryNavLinks.map((link) => {
                 const active = isActive(pathname, link.href);
 
                 return (
@@ -235,13 +229,32 @@ export function SiteHeader() {
                 );
               })}
 
+              <div className="mobile-menu-secondary" aria-label="Secondary navigation">
+                {secondaryNavLinks.map((link) => {
+                  const active = isActive(pathname, link.href);
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`mobile-secondary-link ${active ? "nav-link-active" : ""}`.trim()}
+                      aria-current={active ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
               <div className="mobile-menu-ctas">
+                <Link href="/contact" className="btn btn-primary btn-lg" onClick={() => setMenuOpen(false)}>
+                  Book a Free Systems Audit
+                </Link>
                 <Link href="/contact#checklist" className="btn btn-ghost" onClick={() => setMenuOpen(false)}>
                   Download Checklist
                 </Link>
-                <Link href="/contact" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
-                  Free Systems Audit
-                </Link>
+
                 <button
                   type="button"
                   className="theme-toggle theme-toggle-mobile"
