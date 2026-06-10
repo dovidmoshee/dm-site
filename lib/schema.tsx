@@ -121,16 +121,16 @@ export function serviceSchema() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${absoluteUrl("/offer")}#service`,
-    name: "Business OS Setup",
-    serviceType: "Business systems consulting and automation implementation",
+    name: "Cohevo Business Cleanup",
+    serviceType: "Small business operations cleanup and implementation",
     url: absoluteUrl("/offer"),
     description:
-      "A 60-day structured engagement to map, design, build, and hand off operating infrastructure for growing teams.",
+      "A 60-day engagement that helps small and medium businesses reduce owner dependence, clean up messy operations, and stop dropping important details.",
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: "Worldwide",
     audience: {
       "@type": "BusinessAudience",
-      audienceType: "SaaS startups, agencies, and growing service businesses",
+      audienceType: "Small and medium businesses with messy day-to-day operations",
     },
     hasOfferCatalog: offerCatalogSchema(),
   };
@@ -139,7 +139,7 @@ export function serviceSchema() {
 export function offerCatalogSchema() {
   return {
     "@type": "OfferCatalog",
-    name: "Business OS Setup packages",
+    name: "Cohevo business cleanup packages",
     itemListElement: packages.map((item) => ({
       "@type": "Offer",
       name: item.name,
@@ -150,8 +150,8 @@ export function offerCatalogSchema() {
       url: absoluteUrl("/pricing"),
       itemOffered: {
         "@type": "Service",
-        name: `${item.name} Business OS Setup`,
-        serviceType: "Business systems consulting and automation implementation",
+        name: `${item.name} Business Cleanup`,
+        serviceType: "Small business operations cleanup and implementation",
         provider: { "@id": `${siteConfig.url}/#organization` },
       },
     })),
@@ -187,7 +187,7 @@ export function processSchema() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": `${absoluteUrl("/process")}#process`,
-    name: "Business OS Setup delivery process",
+    name: "Cohevo business cleanup delivery process",
     itemListElement: processPhases.map((phase, index) => ({
       "@type": "ListItem",
       position: index + 1,

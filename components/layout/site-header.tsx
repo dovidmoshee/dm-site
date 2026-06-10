@@ -186,7 +186,7 @@ export function SiteHeader() {
               Download Checklist
             </Link>
             <Link href="/contact" className="btn btn-primary">
-              Free Systems Audit
+              Free Operations Audit
             </Link>
           </div>
 
@@ -249,7 +249,7 @@ export function SiteHeader() {
 
               <div className="mobile-menu-ctas">
                 <Link href="/contact" className="btn btn-primary btn-lg" onClick={() => setMenuOpen(false)}>
-                  Book a Free Systems Audit
+                  Book a Free Operations Audit
                 </Link>
                 <Link href="/contact#checklist" className="btn btn-ghost" onClick={() => setMenuOpen(false)}>
                   Download Checklist

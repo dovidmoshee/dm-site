@@ -9,39 +9,39 @@ import { deliverables, packages, processTimeline, siteConfig } from "@/lib/site"
 export const metadata = buildMetadata({
   title: "Cohevo",
   description:
-    "Install the operating system your business runs on. In 60 days I streamline your tools, workflows, automations, and AI.",
+    "Cohevo helps small and medium businesses bring order to messy day-to-day operations so the owner can stop chasing every detail.",
   path: "/",
   ogImage: siteConfig.ogImages.homepageDefault,
-  ogImageAlt: "Cohevo Business OS Setup preview",
+  ogImageAlt: "Cohevo operations cleanup preview",
 });
 
 const problemCards = [
   {
-    title: "Operational chaos",
-    description: "Every process lives in someone's head. Things get dropped. Nothing is documented.",
+    title: "Too much depends on one person",
+    description: "Orders, bookings, billing, vendor updates, and customer questions all seem to need the owner or one key employee to keep moving.",
   },
   {
-    title: "Endless manual work",
-    description: "Your team copies data between tools, re-enters information, and chases updates manually.",
+    title: "Important details fall through the cracks",
+    description: "A customer calls for status, an invoice is missed, a provider was never updated, or someone has to dig through texts to see what happened.",
   },
   {
-    title: "Tool sprawl",
-    description: "Twelve subscriptions that don't talk to each other. No clear owner. No clear purpose.",
+    title: "You are busy, but not in control",
+    description: "The team is working hard, but the business still feels reactive. Everyone is putting out fires instead of getting ahead of the week.",
   },
 ] as const;
 
 const outcomeCards = [
   {
-    title: "Clear, documented workflows",
-    description: "Every process is mapped, owned, and easy to hand off. New hires get up to speed fast.",
+    title: "Your team knows what to do next",
+    description: "The normal work has a clear home, a clear owner, and a clear next step. Fewer small questions come back to you.",
   },
   {
-    title: "Automated handoffs",
-    description: "Data moves between your tools automatically. No copy-paste. No dropped leads.",
+    title: "Nothing has to live in someone’s head",
+    description: "Customer status, provider notes, billing, booking details, and internal tasks are visible without hunting across chats and spreadsheets.",
   },
   {
-    title: "Single source of truth",
-    description: "One place to see pipeline, tasks, and customer status. Your team always knows the answer.",
+    title: "The business feels calmer to run",
+    description: "People stop scrambling, handoffs stop getting missed, and the owner gets back time for customers, growth, and higher-value work.",
   },
 ] as const;
 
@@ -49,7 +49,7 @@ const previewFaq = [
   {
     question: "Who is this engagement for?",
     answer:
-      "SaaS startups and agencies with 3 to 20 people who are growing but running on manual processes, disconnected tools, and tribal knowledge. If your team is capable but your systems are the bottleneck, this is for you.",
+      "Small to medium businesses with a real team, real customers, and too many details living in people’s heads. If bookings, billing, customer updates, vendor follow-up, or internal tasks keep getting messy, this is for you.",
   },
   {
     question: "How much time will you need from us?",
@@ -72,7 +72,7 @@ export default function HomePage() {
             path: "/",
             title: "Cohevo",
             description:
-              "Install the operating system your business runs on. In 60 days I streamline your tools, workflows, automations, and AI.",
+              "Cohevo helps small and medium businesses bring order to messy day-to-day operations so the owner can stop chasing every detail.",
           }),
           serviceSchema(),
         ]}
@@ -84,18 +84,17 @@ export default function HomePage() {
             <div>
               <div className="hero-eyebrow">
                 <span className="hero-eyebrow-dot" />
-                Business OS Setup · 60-Day Engagement
+                For businesses that have outgrown winging it
               </div>
               <h1>
-                Install the operating system your <em>business runs on.</em>
+                Bring order to the messy work that keeps <em>pulling you back in.</em>
               </h1>
               <p className="hero-sub">
-                In 60 days, I turn the workflows living in your founder&apos;s head into documented systems,
-                automated handoffs, and one clear source of truth for the team.
+                Cohevo helps small and medium businesses clean up the daily chaos: missed handoffs, unclear ownership, scattered customer details, billing gaps, and the constant need for the owner to check everything.
               </p>
               <div className="hero-ctas">
                 <Link className="btn btn-primary btn-lg" href="/contact">
-                  Get a Free Systems Audit
+                  Get a Free Operations Audit
                 </Link>
                 <Link className="btn btn-ghost btn-lg" href="/contact#checklist">
                   Download the Checklist
@@ -103,7 +102,7 @@ export default function HomePage() {
               </div>
 
               {/* <div className="hero-proof">
-                <div className="hero-proof-label">Trusted by founders and teams</div>
+                <div className="hero-proof-label">Trusted by owners and teams</div>
                 <div className="logo-strip">
                   {trustedBy.map((name) => (
                     <div key={name} className="logo-pill">
@@ -117,7 +116,7 @@ export default function HomePage() {
             <div className="hero-visual" aria-hidden>
               <Image
                 src="/cohevo-business-os-hero.png"
-                alt="Business operating system map showing scattered tools organized into one calm workflow layer"
+                alt="Operations map showing scattered handoffs organized into one clear team process"
                 width={460}
                 height={440}
                 className="hero-visual-asset"
@@ -132,7 +131,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head" style={{ marginBottom: 40 }}>
             <div className="tag">The Shift</div>
-            <h2>From chaos to calm, in 60 days.</h2>
+            <h2>From constant fires to a business that feels under control.</h2>
           </div>
 
           <div className="po-grid">
@@ -167,15 +166,15 @@ export default function HomePage() {
         <div className="container">
           <div className="offer-summary-grid">
             <div>
-              <div className="tag">Business OS Setup</div>
+              <div className="tag">Cohevo 60-Day Engagement</div>
               <h2 className="offer-summary-title">
-                Architect and install your business infrastructure.
+                Get the business organized enough that you can finally step back.
               </h2>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 24 }}>
-                Most small teams have the right ambition but the wrong scaffolding. The Business OS Setup gives you a complete operating layer: mapped workflows, integrated tools, automations, and AI where it actually saves time.
+                Most small businesses do not need another consultant handing over a deck. They need someone to get into the actual mess: the bookings, invoices, customer updates, vendor follow-ups, spreadsheets, and tools people are already using.
               </p>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
-                For SaaS startups and agencies of 3–20 people scaling without adding coordinators to manage the mess.
+                Cohevo helps turn that mess into a cleaner way to run the business, so your team knows what is happening, what is stuck, and who owns the next step.
               </p>
               <Link className="btn btn-ghost" href="/offer">
                 See Full Offer Details →
@@ -185,10 +184,10 @@ export default function HomePage() {
             <div>
               <div className="offer-summary-badge">
                 <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
-                  Business OS Setup
+                  Cohevo Engagement
                 </div>
-                <h3>60-Day Structured Engagement</h3>
-                <p>Everything you need to make your business run cleanly, without you in every loop.</p>
+                <h3>60-Day Business Cleanup</h3>
+                <p>For owners and operators who are tired of being the person every answer, update, and loose end depends on.</p>
 
                 <div className="badge-stat">
                   <div className="badge-stat-label">Starting from</div>
@@ -201,9 +200,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="badge-stat">
-                  <div className="badge-stat-label">Phases</div>
+                  <div className="badge-stat-label">What changes</div>
                   <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
-                    Map, Design, Build, Train
+                    Clarity, control, follow-through
                   </div>
                 </div>
                 <Link
@@ -211,7 +210,7 @@ export default function HomePage() {
                   style={{ width: "100%", marginTop: 24, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
-                  Get a Free Systems Audit
+                  Get a Free Operations Audit
                 </Link>
               </div>
             </div>
@@ -223,10 +222,10 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div className="tag" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
-              What You Get
+              What gets better
             </div>
-            <h2>Five deliverables. Yours to keep.</h2>
-            <p>Every engagement ends with documented & implemented systems that your team owns and can build on.</p>
+            <h2>Less scrambling. Better follow-through. More room to lead.</h2>
+            <p>The business still has moving parts. The difference is that people can see them, own them, and move them forward without everything going through you.</p>
           </div>
 
           <div className="deliv-grid">
@@ -241,18 +240,17 @@ export default function HomePage() {
 
           <div className="deliv-artifact">
             <div className="deliv-artifact-copy">
-              <div className="deliv-num">Sample deliverable</div>
-              <h3>See exactly what you receive.</h3>
+              <div className="deliv-num">Example</div>
+              <h3>Make the hidden mess visible.</h3>
               <p>
-                Every engagement starts with a Business Systems Map like this: a visual audit of every workflow, tool,
-                and handoff, with the gaps and bottlenecks called out.
+                Before anything gets changed, we find where jobs are getting delayed, details are being re-entered, customers are waiting, or the team is relying on memory to know what happens next.
               </p>
             </div>
             <div className="deliv-artifact-frame">
               <Image
                 className="deliv-artifact-img"
                 src="/process-systems-map.svg"
-                alt="Sample Business Systems Map showing leads moving through sales, onboarding, delivery, and support with gaps highlighted."
+                alt="Sample operations map showing leads moving through sales, onboarding, delivery, and support with gaps highlighted."
                 width={1200}
                 height={520}
               />
@@ -265,8 +263,8 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div className="tag">How It Works</div>
-            <h2>Four phases, 60 days, clear outcomes.</h2>
-            <p>A structured process means no ambiguity about what happens when.</p>
+            <h2>A practical path from “how do we do this again?” to “it’s handled.”</h2>
+            <p>The engagement is structured, but the goal is simple: make the daily work clearer, calmer, and easier for the team to run.</p>
           </div>
 
           <div className="timeline">
@@ -291,19 +289,16 @@ export default function HomePage() {
         <div className="container">
           <div className="offer-summary-grid">
             <div>
-              <div className="tag">Free Systems Audit</div>
-              <h2 className="offer-summary-title">Find the workflow leaks before you hire another coordinator.</h2>
+              <div className="tag">Free Operations Audit</div>
+              <h2 className="offer-summary-title">Find the places where the business is harder to run than it should be.</h2>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 20 }}>
-                For qualified SaaS teams and agencies, I will review your current sales, onboarding, reporting, or
-                internal ops flow and identify the 3–5 places where work is getting dropped, duplicated, or stuck in
-                the founder&apos;s head.
+                I will review one messy part of your operation, like bookings, billing, customer follow-up, vendor coordination, order tracking, or internal task management, and identify the 3–5 places where things are getting dropped, duplicated, delayed, or stuck in someone’s head.
               </p>
               <p style={{ fontSize: 16, color: "var(--ink3)", lineHeight: 1.7, marginBottom: 32 }}>
-                If there is a clear implementation opportunity, I will show you exactly what I would install over the
-                next 30–60 days. No generic AI pitch. Just the operating leverage.
+                If there is a clear fit, I will show you what I would fix first so the team gets more consistency without hiring another coordinator or forcing everyone into a complicated new tool.
               </p>
               <Link className="btn btn-primary" href="/contact">
-                Get a Free Systems Audit →
+                Get a Free Operations Audit →
               </Link>
             </div>
             <div className="offer-summary-badge">
@@ -315,13 +310,13 @@ export default function HomePage() {
               <div className="badge-stat">
                 <div className="badge-stat-label">Best fit</div>
                 <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
-                  3–20 person SaaS or agency
+                  Small to medium business with messy operations
                 </div>
               </div>
               <div className="badge-stat">
                 <div className="badge-stat-label">Focus</div>
                 <div className="badge-stat-value" style={{ fontSize: 16, fontWeight: 500 }}>
-                  Leads, onboarding, reporting, ops
+                  Bookings, billing, follow-up, ops
                 </div>
               </div>
               <Link
@@ -339,19 +334,19 @@ export default function HomePage() {
       <section>
         <div className="container">
           <div className="section-head">
-            <div className="tag">Example Workflow Teardown</div>
-            <h2>What gets fixed in a messy client onboarding flow.</h2>
-            <p>A concrete example of the before/after operating layer Cohevo installs.</p>
+            <div className="tag">Example Operations Cleanup</div>
+            <h2>What changes when the business stops running on memory.</h2>
+            <p>A concrete example from a business with packages, customers, providers, billing, and booking details moving at the same time.</p>
           </div>
 
           <div className="po-grid">
             <div className="po-card bad">
               <h3>Before</h3>
-              <p>Client signs → founder manually sends forms → PM creates folders → Slack channel gets created late → onboarding email is rewritten every time → status lives in someone&apos;s head.</p>
+              <p>A package sells → someone checks the spreadsheet → someone else emails the hotel → billing status is unclear → the customer asks for an update → the team searches old messages to figure out what happened.</p>
             </div>
             <div className="po-card good">
               <h3>After</h3>
-              <p>Client signs → intake form sends automatically → CRM updates → project, folder, Slack channel, checklist, kickoff email, and team notification all trigger from one source of truth.</p>
+              <p>A package sells → the right board updates → owner, customer, provider, booking, billing, and next step are visible → the team can answer status questions without starting from scratch.</p>
             </div>
           </div>
         </div>
@@ -361,8 +356,8 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div className="tag">Pricing</div>
-            <h2>Three clear packages.</h2>
-            <p>Choose the scope that fits your business. Every package delivers a complete, working system.</p>
+            <h2>Pick the level of relief your business needs.</h2>
+            <p>Start with one painful area or clean up the bigger mess across bookings, billing, customer follow-up, provider coordination, and internal operations.</p>
           </div>
 
           <div className="pricing-grid">
@@ -378,7 +373,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link className={`btn ${item.popular ? "btn-primary" : "btn-ghost"}`} style={{ width: "100%" }} href={item.popular ? "/contact" : "/pricing"}>
-                  {item.popular ? "Get a Free Audit" : "See Details"}
+                  {item.popular ? "Get a Free Operations Audit" : "See Details"}
                 </Link>
               </div>
             ))}
@@ -387,7 +382,7 @@ export default function HomePage() {
           <p className="pricing-recommendation">
             Not sure which fits?{" "}
             <Link href="/contact">
-              Get a free systems audit and I&apos;ll recommend the right package.
+              Get a free operations audit and I&apos;ll recommend the right package.
             </Link>
           </p>
         </div>
@@ -412,13 +407,12 @@ export default function HomePage() {
 
       <div className="final-cta">
         <div className="container">
-          <h2>Ready for a calmer, faster business?</h2>
+          <h2>Ready for the business to feel less chaotic?</h2>
           <p>
-            Book a free 30-minute systems audit. You will leave with the 3–5 workflow leaks costing your
-            team time every week and the highest-ROI automations to fix first.
+            Book a free 30-minute operations audit. You will leave with the 3–5 places your team is losing time, dropping details, or routing decisions back to you.
           </p>
           <Link className="btn btn-primary btn-xl" href="/contact" style={{ background: "var(--accent-fill)", color: "var(--on-accent)" }}>
-            Get a Free Systems Audit →
+            Get a Free Operations Audit →
           </Link>
         </div>
       </div>

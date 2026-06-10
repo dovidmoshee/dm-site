@@ -30,9 +30,9 @@ const siteUrl = normalizeSiteUrl(
 
 export const siteConfig = {
   name: "Cohevo",
-  tagLine: "Install the operating system your business runs on.",
+  tagLine: "Bring order to the messy work that keeps pulling you back in.",
   description:
-    "In 60 days I streamline your tools, workflows, automations, and AI so your team moves faster with less manual work.",
+    "Cohevo helps small and medium businesses bring order to messy day-to-day operations so the owner can stop chasing every detail.",
   url: siteUrl,
   ogImage: "/og/homepage-default.png",
   ogImages: {
@@ -63,54 +63,54 @@ export const socialLinks = [
 export const deliverables = [
   {
     number: "01 /",
-    title: "Business Systems Map",
-    description: "A visual audit of every workflow, tool, and handoff point in your business.",
+    title: "Your team stops guessing",
+    description: "Everyone knows where the work stands, who owns it, and what needs to happen next.",
   },
   {
     number: "02 /",
-    title: "Tool Stack Architecture",
-    description: "A clean, justified recommendation for exactly which tools to use and why.",
+    title: "Details stop disappearing",
+    description: "Customer notes, booking status, billing steps, and vendor updates have a real place to live.",
   },
   {
     number: "03 /",
-    title: "Automation Layer",
-    description: "Live automations connecting your tools: lead capture, CRM updates, onboarding triggers.",
+    title: "Less time spent chasing",
+    description: "The team spends less time asking for status, re-entering details, and checking if the next step happened.",
   },
   {
     number: "04 /",
-    title: "AI Workflow Layer",
-    description: "AI installed where it saves real time: meeting summaries, support drafts, reporting.",
+    title: "The tools finally match the business",
+    description: "Your monday.com board, CRM, forms, spreadsheets, or inbox setup gets organized around the real work.",
   },
   {
     number: "05 /",
-    title: "Docs and Training",
-    description: "Written SOPs and a live walkthrough so your team can operate the system independently.",
+    title: "The business feels lighter to run",
+    description: "You get fewer small questions, fewer loose ends, and more space to lead instead of babysit the details.",
   },
 ] as const;
 
 export const processTimeline = [
   {
     icon: "🔍",
-    title: "Discover",
-    description: "Audit your tools, workflows, and pain points. Build the systems map.",
+    title: "Find the mess",
+    description: "We look at the real day-to-day work and find where details get lost, delayed, duplicated, or routed back to you.",
     active: true,
   },
   {
     icon: "🏗️",
-    title: "Design",
-    description: "Architect the stack. Define the automation logic. Get your sign-off.",
+    title: "Decide what needs fixing",
+    description: "We choose the few changes that will make the biggest difference, not a giant wish list nobody has time to use.",
     active: false,
   },
   {
     icon: "⚡",
-    title: "Implement",
-    description: "Build the automations, AI workflows, and documentation. Test everything.",
+    title: "Clean it up",
+    description: "We set up the boards, forms, views, automations, and instructions your team will actually use.",
     active: false,
   },
   {
     icon: "🎓",
-    title: "Train",
-    description: "Walk your team through the new system. Hand off cleanly. You're operational.",
+    title: "Hand it to the team",
+    description: "Your team learns how to run the cleaned-up process so the owner is not the backup plan for every detail.",
     active: false,
   },
 ] as const;
@@ -121,9 +121,9 @@ export const processPhases = [
     phase: "Phase One",
     title: "Discover and Map",
     description:
-      "This phase is about understanding how your business actually works, not how you think it works. I audit tools, run a workflow interview, and map every handoff.",
+      "This phase is about understanding how your business actually works, not how it is supposed to work on paper. I review the tools, talk through the day-to-day, and map the messy handoffs.",
     whatIDo: [
-      "90-minute kickoff and workflow interview",
+      "90-minute kickoff and operations walkthrough",
       "Full audit of tools, integrations, and data flows",
       "Identify time-wasting areas and broken handoffs",
       "Deliver the Business Systems Map",
@@ -149,8 +149,8 @@ export const processPhases = [
       "Using the map as the foundation, I design the tool stack and automation logic. You review and approve before anything is built.",
     whatIDo: [
       "Recommend the right tools for your specific situation",
-      "Design the automation logic for each workflow",
-      "Define the AI use cases with expected time savings",
+      "Design the cleanup logic for each recurring process",
+      "Identify where automation would actually save time",
       "Present the architecture for your sign-off",
     ],
     whatINeed: [
@@ -166,11 +166,11 @@ export const processPhases = [
     phase: "Phase Three",
     title: "Implement and Automate",
     description:
-      "I build every automation and AI workflow in your live environment. You see progress in real time. Everything is tested before handoff.",
+      "I clean up the process inside your live environment. You see progress as it happens, and everything is tested before handoff.",
     whatIDo: [
       "Configure and connect all approved tools",
       "Build automations with Zapier, Make, or n8n",
-      "Set up AI workflows and prompts",
+      "Set up automation and helpful prompts where they make sense",
       "Test every automation end-to-end",
     ],
     whatINeed: [
@@ -180,7 +180,7 @@ export const processPhases = [
     ],
     artifact: {
       src: "/process-automation-flow.svg",
-      alt: "Automation flow connecting a lead form trigger to CRM update, AI summary, and onboarding sequence.",
+      alt: "Automation flow connecting a sold package to customer status, provider updates, billing, and internal next steps.",
       width: 1200,
       height: 460,
     },
@@ -193,7 +193,7 @@ export const processPhases = [
     description:
       "The build is only complete when your team can run it without me. I write the SOPs and run a live training session so the handoff is real.",
     whatIDo: [
-      "Write SOPs for every new workflow",
+      "Write simple instructions for each cleaned-up process",
       "Record a walkthrough video of the full system",
       "Run a live training session with your team",
       "Answer questions and refine for 7 days post-launch",
@@ -243,13 +243,13 @@ export const packages = [
     name: "Foundation",
     price: "$6,000",
     description:
-      "Map your systems, design the right stack, and set up core automations. The right entry point for teams who want to understand before they build.",
+      "Start with the part of the business causing the most dropped balls, repeated questions, or owner cleanup. Good for teams that want focused relief first.",
     popular: false,
     includes: [
-      "Business Systems Map (visual audit of all workflows)",
-      "Tool Stack Architecture document",
-      "Up to 5 core automations built and tested",
-      "Written SOPs for each automated workflow",
+      "Clear before and after view of the painful area",
+      "Specific fixes for ownership, status, and tool usage",
+      "Up to 5 high-value operations improvements built and tested",
+      "Simple team instructions for the cleaned-up process",
       "1 hour of team Q&A on delivery",
     ],
   },
@@ -257,11 +257,11 @@ export const packages = [
     name: "Build",
     price: "$9,500",
     description:
-      "Full implementation with AI workflows and team training. The most complete version of the engagement for growing teams.",
+      "Clean up the recurring operational mess that keeps pulling the owner back into bookings, billing, customer updates, vendor follow-up, and team coordination.",
     includes: [
       "Everything in Foundation",
-      "Up to 12 automations across leads, onboarding, and ops",
-      "AI workflow layer (meeting summaries, support drafts, reporting)",
+      "Up to 12 improvements across bookings, billing, customer follow-up, provider coordination, and ops",
+      "Helpful automation where it saves real time, not where it adds noise",
       "Full SOP documentation package",
       "Live team training session (90 minutes)",
       "7-day post-launch support window",
@@ -272,13 +272,13 @@ export const packages = [
     name: "Scale",
     price: "$14,000",
     description:
-      "Advanced automations, analytics dashboards, and 60 days of post-launch support. Built for teams that want to move fast and stay fast.",
+      "For businesses that need deeper cleanup across departments, better visibility, and support after launch so the new habits stick.",
     popular: false,
     includes: [
       "Everything in Build",
-      "Advanced multi-step automation sequences",
-      "Custom analytics dashboard setup",
-      "API integrations and custom webhook logic",
+      "Advanced multi-step handoffs, reminders, and automation sequences",
+      "Clear visibility into status, ownership, and stuck work",
+      "Deeper tool connections where the business case is clear",
       "60-day post-launch stewardship period",
       "Monthly ops review at end of support period",
     ],
@@ -289,12 +289,12 @@ export const faqItems = [
   {
     question: "Who is this for?",
     answer:
-      "SaaS startups and agencies with 3 to 20 people. You should have existing revenue and a team that is growing but running on manual processes. If you are pre-product or pre-revenue, this engagement is likely premature. If your internal chaos is slowing you down, it is probably the right time.",
+      "Small to medium businesses with real customers, a small team, and too many details living in people’s heads. You should have existing revenue and recurring operational work. If bookings, billing, customer updates, vendor follow-up, or internal task management keep getting messy, this is probably the right time.",
   },
   {
     question: "What tools do you work with?",
     answer:
-      "Automations are built using Zapier, Make, or n8n depending on your needs. CRM, project management, and communication tools are selected based on your situation and existing stack. I work with tools like HubSpot, Notion, Airtable, Slack, Linear, Intercom, and most major SaaS platforms. If you have an existing stack I work within it where possible.",
+      "I usually work inside the tools you already have, then clean up or connect what is missing. That may include monday.com, Airtable, Notion, HubSpot, Google Workspace, forms, spreadsheets, email, Zapier, Make, or n8n. If the current setup is working in some areas, I keep it. If something is causing the mess, I flag it clearly.",
   },
   {
     question: "Do you replace our ops manager?",
@@ -329,7 +329,7 @@ export const faqItems = [
   {
     question: "What deliverables do we keep?",
     answer:
-      "Everything. The Business Systems Map, Tool Stack Architecture document, all built automations, the AI workflow setup, and the full SOP documentation package are yours. They live in your tools and your accounts. If the engagement ends, you have a complete, documented system that your team can run independently.",
+      "Everything. The cleaned-up boards, forms, automations, documentation, and team instructions are yours. They live in your tools and your accounts. If the engagement ends, your team still has a clear process they can run independently.",
   },
   {
     question: "What results can we realistically expect?",

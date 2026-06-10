@@ -13,8 +13,7 @@ export function SiteFooter() {
               <Image src="/cohevo-logo-dark.svg" alt="Cohevo" height={32} width={120} />
             </div>
             <div className="footer-tagline">
-              I design and install the operating system that runs your business. Systems mapping, automation, and AI
-              for growing teams.
+              I help small and medium businesses bring order to the messy work that keeps pulling the owner back in.
             </div>
             <div className="footer-socials" aria-label="Social">
               <Link
@@ -40,7 +39,7 @@ export function SiteFooter() {
             <p className="footer-col-title">Services</p>
             <ul className="footer-links">
               <li>
-                <Link href="/offer">Business OS Setup</Link>
+                <Link href="/offer">Business Cleanup</Link>
               </li>
               <li>
                 <Link href="/process">How It Works</Link>
