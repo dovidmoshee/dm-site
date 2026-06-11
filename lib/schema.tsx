@@ -205,7 +205,7 @@ export function blogSchema(posts: BlogPostSummary[]) {
     name: "Cohevo Blog",
     url: absoluteUrl("/blog"),
     description:
-      "Articles on business systems, automation, workflow design, and operations for growing teams.",
+      "Articles on cleaning up operations, reducing owner dependence, and making small businesses easier to run.",
     publisher: { "@id": `${siteConfig.url}/#organization` },
     blogPost: posts.slice(0, 12).map((post) => ({
       "@type": "BlogPosting",

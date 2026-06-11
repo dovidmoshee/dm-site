@@ -7,7 +7,7 @@ export const metadata = buildMetadata({
   description: "Privacy policy for Cohevo.",
   path: "/legal/privacy",
   ogImage: siteConfig.ogImages.homepageAlt,
-  ogImageAlt: "Cohevo Business OS Setup overview",
+  ogImageAlt: "Cohevo privacy policy preview",
 });
 
 export default function PrivacyPage() {
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
 
         <h2>How we use it</h2>
         <p>
-          We use your information to respond to inquiries, send requested resources like the business systems
+          We use your information to respond to inquiries, send requested resources like the operations cleanup
           checklist, and occasionally share relevant updates about our services. We do not sell your data. We do not
           share it with third parties except where needed to operate our services.
         </p>

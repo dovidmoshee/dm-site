@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   path: "/thank-you",
   noIndex: true,
   ogImage: siteConfig.ogImages.splitLime,
-  ogImageAlt: "Cohevo Business OS Setup preview",
+  ogImageAlt: "Cohevo operations audit thank-you preview",
 });
 
 type ThankYouPageProps = {

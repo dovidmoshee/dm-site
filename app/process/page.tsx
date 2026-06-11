@@ -8,10 +8,10 @@ import { processPhases, siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "How It Works",
   description:
-    "Transparent, structured delivery in four phases: discover, design, implement, and train.",
+    "A practical four-phase cleanup process for small businesses with messy operations.",
   path: "/process",
   ogImage: siteConfig.ogImages.blogAndServicePages,
-  ogImageAlt: "Cohevo Business OS service preview",
+  ogImageAlt: "Cohevo operations cleanup process preview",
 });
 
 export default function ProcessPage() {
@@ -23,7 +23,7 @@ export default function ProcessPage() {
             path: "/process",
             title: "How It Works",
             description:
-              "Transparent, structured delivery in four phases: discover, design, implement, and train.",
+              "A practical four-phase cleanup process for small businesses with messy operations.",
             breadcrumbs: [
               { name: "Home", path: "/" },
               { name: "Process", path: "/process" },
@@ -35,9 +35,9 @@ export default function ProcessPage() {
       <div className="inner-hero">
         <div className="container">
           <div className="tag">The Process</div>
-          <h1>Transparent, structured, and built for busy founders.</h1>
+          <h1>Clear enough to follow. Practical enough to use.</h1>
           <p>
-            No black box. You know what is happening in each phase, what you need to provide, and what I will deliver.
+            No black box. You know what is being cleaned up, what I need from you, and how the team will use it after handoff.
           </p>
         </div>
       </div>
@@ -99,22 +99,22 @@ export default function ProcessPage() {
           <div style={{ marginTop: 16 }}>
             <div className="section-head">
               <div className="tag">What Success Looks Like</div>
-              <h2>The outcomes you can expect.</h2>
+              <h2>What should feel different.</h2>
             </div>
             <div className="success-grid">
               <div className="success-item">
                 <div className="metric">10+ hrs</div>
-                <p>Saved per week through automation of repetitive tasks</p>
+                <p>Saved per week by removing repeated admin work and status chasing</p>
               </div>
               <div className="success-item" style={{ background: "var(--surface-strong)", color: "var(--on-strong)" }}>
                 <div className="metric" style={{ color: "var(--lime)" }}>
                   50%
                 </div>
-                <p>Reduction in onboarding time for new customers and team members</p>
+                <p>Less time spent getting customers, orders, or projects into the right place</p>
               </div>
               <div className="success-item" style={{ background: "var(--bg2)", color: "var(--ink)" }}>
                 <div className="metric">100%</div>
-                <p style={{ color: "var(--ink2)" }}>Of workflows documented and owned by your team, not me</p>
+                <p style={{ color: "var(--ink2)" }}>Of cleaned-up processes owned by your team, not me</p>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function ProcessPage() {
       <div className="final-cta">
         <div className="container">
           <h2>See how this applies to your business.</h2>
-          <p>Book a free audit call and we will walk through your specific situation together.</p>
+          <p>Book a free audit call and we will look at the messy part of your operation together.</p>
           <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →
           </Link>

@@ -6,10 +6,10 @@ import { packages, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Pricing",
-  description: "Clear packages. No surprises. Choose Foundation, Build, or Scale.",
+  description: "Clear packages for cleaning up messy operations. Choose Foundation, Build, or Scale.",
   path: "/pricing",
   ogImage: siteConfig.ogImages.blogAndServicePages,
-  ogImageAlt: "Cohevo Business OS service preview",
+  ogImageAlt: "Cohevo business cleanup pricing preview",
 });
 
 export default function PricingPage() {
@@ -20,7 +20,7 @@ export default function PricingPage() {
           ...pageSchemas({
             path: "/pricing",
             title: "Pricing",
-            description: "Clear packages. No surprises. Choose Foundation, Build, or Scale.",
+            description: "Clear packages for cleaning up messy operations. Choose Foundation, Build, or Scale.",
             breadcrumbs: [
               { name: "Home", path: "/" },
               { name: "Pricing", path: "/pricing" },
@@ -33,7 +33,7 @@ export default function PricingPage() {
         <div className="container">
           <div className="tag">Pricing</div>
           <h1>Clear packages. No surprises.</h1>
-          <p>Every package delivers a complete, working system. Choose the scope that fits where you are right now.</p>
+          <p>Start with one messy area or clean up the bigger operational mess. Choose the scope that fits where you are right now.</p>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export default function PricingPage() {
             <h2 style={{ fontSize: 22, marginBottom: 10 }}>50% upfront, 50% on delivery</h2>
             <p style={{ color: "var(--ink3)", fontSize: 15, lineHeight: 1.65, marginBottom: 20 }}>
               All packages follow the same payment structure. The first payment kicks off the engagement. The second is
-              due on the day of your final training session and system handoff.
+              due on the day of your final training session and handoff.
             </p>
             <p style={{ fontSize: 14, color: "var(--ink3)" }}>
               Not sure which package is right?{" "}
@@ -77,7 +77,7 @@ export default function PricingPage() {
 
       <div className="final-cta">
         <div className="container">
-          <h2>Ready to pick your package?</h2>
+          <h2>Not sure what needs cleaning up first?</h2>
           <p>Book a 30-minute call and we will figure out the right fit together.</p>
           <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →

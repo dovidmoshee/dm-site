@@ -7,10 +7,10 @@ import { BlogPosts } from "./blog-posts";
 export const metadata = buildMetadata({
   title: "Blog",
   description:
-    "Authoritative articles on business systems, automation, workflow design, and operations for growing teams.",
+    "Practical articles on cleaning up operations, reducing owner dependence, and making small businesses easier to run.",
   path: "/blog",
   ogImage: siteConfig.ogImages.blogAndServicePages,
-  ogImageAlt: "Cohevo business systems articles preview",
+  ogImageAlt: "Cohevo operations cleanup articles preview",
 });
 
 export default async function BlogPage() {
@@ -24,7 +24,7 @@ export default async function BlogPage() {
             path: "/blog",
             title: "Blog",
             description:
-              "Authoritative articles on business systems, automation, workflow design, and operations for growing teams.",
+              "Practical articles on cleaning up operations, reducing owner dependence, and making small businesses easier to run.",
             type: "CollectionPage",
             breadcrumbs: [
               { name: "Home", path: "/" },
@@ -37,10 +37,10 @@ export default async function BlogPage() {
       <section className="inner-hero blog-hero">
         <div className="container">
           <div className="tag">Insights</div>
-          <h1>Authoritative articles on systems, automation, and growth operations.</h1>
+          <h1>Practical notes on making a messy business easier to run.</h1>
           <p>
-            Practical frameworks for founders and operators who want less chaos, better execution, and scalable
-            internal infrastructure.
+            Guides for owners and operators dealing with scattered details, unclear ownership, too many manual steps,
+            and tools that never quite got set up right.
           </p>
         </div>
       </section>

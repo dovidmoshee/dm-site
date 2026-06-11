@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd, pageSchemas, serviceSchema } from "@/lib/schema";
-import { deliverables, packages, processTimeline, siteConfig } from "@/lib/site";
+import { benefitItems, packages, processTimeline, siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Cohevo",
@@ -218,7 +218,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="deliverables-section">
+      <section className="benefits-section">
         <div className="container">
           <div className="section-head">
             <div className="tag" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
@@ -229,7 +229,7 @@ export default function HomePage() {
           </div>
 
           <div className="deliv-grid">
-            {deliverables.map((item) => (
+            {benefitItems.map((item) => (
               <div key={item.title} className="deliv-card">
                 <div className="deliv-num">{item.number}</div>
                 <h3>{item.title}</h3>

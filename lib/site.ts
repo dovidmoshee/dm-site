@@ -60,7 +60,7 @@ export const socialLinks = [
   { href: "mailto:hi@cohevo.co", label: "Email" },
 ] as const;
 
-export const deliverables = [
+export const benefitItems = [
   {
     number: "01 /",
     title: "Your team stops guessing",
@@ -124,9 +124,9 @@ export const processPhases = [
       "This phase is about understanding how your business actually works, not how it is supposed to work on paper. I review the tools, talk through the day-to-day, and map the messy handoffs.",
     whatIDo: [
       "90-minute kickoff and operations walkthrough",
-      "Full audit of tools, integrations, and data flows",
-      "Identify time-wasting areas and broken handoffs",
-      "Deliver the Business Systems Map",
+      "Full review of tools, boards, forms, spreadsheets, and handoffs",
+      "Identify where details get dropped, duplicated, delayed, or stuck",
+      "Deliver a clear operations map",
     ],
     whatINeed: [
       "Access to your main tools (view-only is fine)",
@@ -135,7 +135,7 @@ export const processPhases = [
     ],
     artifact: {
       src: "/process-systems-map.svg",
-      alt: "Business systems map showing leads, sales, onboarding, delivery, and support flows with gap callouts.",
+      alt: "Operations map showing customer, booking, billing, provider, and internal task flows with gap callouts.",
       width: 1200,
       height: 520,
     },
@@ -144,17 +144,17 @@ export const processPhases = [
   {
     number: "02",
     phase: "Phase Two",
-    title: "Design the Architecture",
+    title: "Pick the Fixes",
     description:
-      "Using the map as the foundation, I design the tool stack and automation logic. You review and approve before anything is built.",
+      "Using the map as the starting point, I show what should change first, what can stay, and what is not worth touching. You approve the plan before anything gets built.",
     whatIDo: [
-      "Recommend the right tools for your specific situation",
+      "Recommend what to keep, clean up, connect, or replace",
       "Design the cleanup logic for each recurring process",
       "Identify where automation would actually save time",
-      "Present the architecture for your sign-off",
+      "Present the cleanup plan for your sign-off",
     ],
     whatINeed: [
-      "45-minute architecture review call",
+      "45-minute cleanup plan review call",
       "Feedback and approval on the proposed stack",
       "Budget context for any new tool recommendations",
     ],
@@ -164,14 +164,14 @@ export const processPhases = [
   {
     number: "03",
     phase: "Phase Three",
-    title: "Implement and Automate",
+    title: "Clean Up and Automate",
     description:
       "I clean up the process inside your live environment. You see progress as it happens, and everything is tested before handoff.",
     whatIDo: [
-      "Configure and connect all approved tools",
+      "Configure and connect the approved tools",
       "Build automations with Zapier, Make, or n8n",
       "Set up automation and helpful prompts where they make sense",
-      "Test every automation end-to-end",
+      "Test every important handoff from start to finish",
     ],
     whatINeed: [
       "Admin access to the relevant tools",
@@ -191,17 +191,17 @@ export const processPhases = [
     phase: "Phase Four",
     title: "Document and Train",
     description:
-      "The build is only complete when your team can run it without me. I write the SOPs and run a live training session so the handoff is real.",
+      "The work is only complete when your team can run it without me. I write simple instructions and run a live training session so the handoff is real.",
     whatIDo: [
       "Write simple instructions for each cleaned-up process",
-      "Record a walkthrough video of the full system",
+      "Record a walkthrough video of the cleaned-up setup",
       "Run a live training session with your team",
       "Answer questions and refine for 7 days post-launch",
     ],
     whatINeed: [
       "60-minute team training session",
       "Feedback on SOPs within 3 days",
-      "Confirmation that the system is working as expected",
+      "Confirmation that the cleaned-up process is working as expected",
     ],
     artifact: null,
     artifactHeight: 0,
@@ -299,12 +299,12 @@ export const faqItems = [
   {
     question: "Do you replace our ops manager?",
     answer:
-      "No. This is a one-time infrastructure build, not an ongoing management role. If you have an ops manager, this engagement gives them a much better foundation to work from. If you do not have one yet, this buys you the time to grow before you need one. Ongoing stewardship is available as an add-on if you want continued support after handoff.",
+      "No. This is not an ongoing management role. If you have an ops manager, this gives them a cleaner setup to work from. If you do not have one yet, this can buy you time before you need to hire one. Ongoing cleanup is available as an add-on if you want continued support after handoff.",
   },
   {
     question: "How much time will you need from us?",
     answer:
-      "Plan for two to three hours per week. The kickoff call takes 90 minutes. The architecture review takes 45 minutes. The training session takes 90 minutes. Outside of those touchpoints, async communication should be under one hour per day during the build phase. I do the heavy lifting so you can stay focused on running your business.",
+      "Plan for two to three hours per week. The kickoff call takes 90 minutes. The cleanup plan review takes 45 minutes. The training session takes about an hour. Outside of those touchpoints, I may need quick answers during the build phase. I do the heavy lifting so you can stay focused on running the business.",
   },
   {
     question: "What if we already have tools set up?",
@@ -327,19 +327,24 @@ export const faqItems = [
       "I request the minimum level of access needed to do the work. View-only access is sufficient for the audit phase. Build access is needed for the implementation phase and is removed after handoff. I do not store credentials and do not retain access to your tools after the engagement ends. A clear access log is provided with your documentation.",
   },
   {
-    question: "What deliverables do we keep?",
+    question: "What do we keep?",
     answer:
       "Everything. The cleaned-up boards, forms, automations, documentation, and team instructions are yours. They live in your tools and your accounts. If the engagement ends, your team still has a clear process they can run independently.",
   },
   {
     question: "What results can we realistically expect?",
     answer:
-      "Results vary by business and starting point, but most clients save 8 to 15 hours per week across the team through automation. Onboarding times typically drop by 40 to 60 percent. Tool costs often decrease because you end up with fewer, better-used subscriptions. The harder-to-measure outcome is clarity: your team knows how things work and nothing falls through the cracks.",
+      "Results vary by business and starting point, but the usual wins are fewer dropped details, less time spent chasing status, cleaner handoffs, and better visibility into what is stuck. If automation can save hours every week, we build it. If the fix is a cleaner board, better ownership, or simpler instructions, we do that instead.",
+  },
+  {
+    question: "What does Cohevo mean?",
+    answer:
+      "Cohevo blends cohesive and evolve. That is the idea behind the work: make the messy parts of the business more cohesive, then leave the setup flexible enough to evolve as the business changes.",
   },
   {
     question: "How is payment handled?",
     answer:
-      "All packages follow a 50/50 payment structure. The first half is due before the engagement starts. The second half is due on the day of your final training session and system handoff. Payment is via bank transfer or Stripe invoice. No surprises, no scope creep.",
+      "All packages follow a 50/50 payment structure. The first half is due before the engagement starts. The second half is due on the day of your final training session and handoff. Payment is via bank transfer or Stripe invoice. No surprises, no scope creep.",
   },
 ] as const;
 

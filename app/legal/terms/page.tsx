@@ -7,7 +7,7 @@ export const metadata = buildMetadata({
   description: "Terms of service for Cohevo.",
   path: "/legal/terms",
   ogImage: siteConfig.ogImages.homepageAlt,
-  ogImageAlt: "Cohevo Business OS Setup overview",
+  ogImageAlt: "Cohevo terms of service preview",
 });
 
 export default function TermsPage() {
@@ -36,7 +36,7 @@ export default function TermsPage() {
 
         <h2>Services</h2>
         <p>
-          Cohevo provides business systems consulting, workflow design, automation implementation, and related
+          Cohevo provides operations cleanup, tool setup, automation implementation, documentation, and related
           services. The specific scope of each engagement is defined in a separate Statement of Work agreed upon before
           work begins.
         </p>

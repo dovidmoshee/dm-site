@@ -6,12 +6,12 @@ import { CalBooking } from "./cal-booking";
 import { submitContactForm } from "./actions";
 
 export const metadata = buildMetadata({
-  title: "Free Systems Audit",
+  title: "Free Operations Audit",
   description:
-    "Get a free 30-minute systems audit and identify the workflow leaks costing your team time every week.",
+    "Get a free 30-minute operations audit and find the places where work is getting dropped, delayed, duplicated, or stuck in someone’s head.",
   path: "/contact",
   ogImage: siteConfig.ogImages.splitLime,
-  ogImageAlt: "Cohevo free systems audit preview",
+  ogImageAlt: "Cohevo free operations audit preview",
 });
 
 type ContactPageProps = {
@@ -45,9 +45,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       <JsonLd
         data={pageSchemas({
           path: "/contact",
-          title: "Free Systems Audit | Cohevo",
+          title: "Free Operations Audit | Cohevo",
           description:
-            "Get a free 30-minute systems audit and identify the workflow leaks costing your team time every week.",
+            "Get a free 30-minute operations audit and find the places where work is getting dropped, delayed, duplicated, or stuck in someone’s head.",
           type: "ContactPage",
           breadcrumbs: [
             { name: "Home", path: "/" },
@@ -57,11 +57,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       />
       <div className="inner-hero">
         <div className="container">
-          <div className="tag">Free Systems Audit</div>
-          <h1>Find the workflow leaks costing your team time.</h1>
+          <div className="tag">Free Operations Audit</div>
+          <h1>Find where the business is harder to run than it should be.</h1>
           <p>
-            Book a free 30-minute audit or send a message. You will get a straight answer on where the leverage is,
-            what to automate first, and whether Cohevo is the right fit to install it.
+            Book a free 30-minute audit or send a message. You will get a straight answer on what is messy, what is
+            worth fixing first, and whether Cohevo is the right fit to help.
           </p>
         </div>
       </div>
@@ -71,10 +71,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <div className="contact-grid">
             <div>
               <div className="tag">Recommended</div>
-              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Systems Audit</h2>
+              <h2 style={{ fontSize: 24, marginBottom: 8 }}>Book a Free Operations Audit</h2>
               <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 20, lineHeight: 1.6 }}>
-                A free 30-minute call for qualified SaaS teams and agencies. We will identify the 3–5 workflow leaks
-                costing your team time and the highest-ROI automations to fix first.
+                A free 30-minute call for small and medium businesses with messy operations. We will identify the 3–5 places
+                where details are getting dropped, duplicated, delayed, or stuck in someone’s head.
               </p>
               <a
                 className="btn btn-primary btn-lg"
@@ -106,7 +106,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             <div id="checklist">
               <h2 style={{ fontSize: 24, marginBottom: 8 }}>Or send a message</h2>
               <p style={{ color: "var(--ink3)", fontSize: 15, marginBottom: 24, lineHeight: 1.6 }}>
-                Tell me where work is getting stuck and I will follow up with initial thoughts plus a link to book your audit.
+                Tell me where the business feels messy and I will follow up with initial thoughts plus a link to book your audit.
               </p>
 
               {errorMessage ? (
@@ -218,7 +218,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                     id="message"
                     name="message"
                     className="form-textarea"
-                    placeholder="Tell me what still runs through the founder, where handoffs break, and which tools feel messy."
+                    placeholder="Tell me what still depends on you, where details get lost, and which tools feel messy."
                     rows={4}
                   />
                 </div>
@@ -226,7 +226,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 <div className="form-group">
                   <label className="checkbox-group" htmlFor="checklistOpt">
                     <input id="checklistOpt" type="checkbox" name="checklist" />
-                    <span>Send me the Business Systems Checklist (free)</span>
+                    <span>Send me the operations cleanup checklist (free)</span>
                   </label>
                 </div>
 

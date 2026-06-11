@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   description: "Honest answers to common questions about fit, process, scope, security, and pricing.",
   path: "/faq",
   ogImage: siteConfig.ogImages.homepageAlt,
-  ogImageAlt: "Cohevo Business OS Setup overview",
+  ogImageAlt: "Cohevo business cleanup FAQ preview",
 });
 
 export default function FaqPage() {
@@ -46,7 +46,7 @@ export default function FaqPage() {
           <div style={{ textAlign: "center", marginTop: 48 }}>
             <p style={{ fontSize: 16, color: "var(--ink3)", marginBottom: 20 }}>Still have questions?</p>
             <Link className="btn btn-primary btn-lg" href="/contact">
-              Book a Free Audit Call
+              Book a Free Operations Audit
             </Link>
           </div>
         </div>

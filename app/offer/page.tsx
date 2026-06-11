@@ -5,93 +5,93 @@ import { JsonLd, pageSchemas, serviceSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Business OS Setup",
+  title: "Business Cleanup",
   description:
-    "The system your business needs to grow without adding headcount. See deliverables, scope, timeline, and optional add-ons.",
+    "A practical 60-day cleanup for small and medium businesses where bookings, billing, customer updates, and handoffs have gotten messy.",
   path: "/offer",
   ogImage: siteConfig.ogImages.blogAndServicePages,
-  ogImageAlt: "Cohevo Business OS service preview",
+  ogImageAlt: "Cohevo business cleanup preview",
 });
 
 const fitItems = [
-  "You have 3 to 20 people and feel like coordination is eating your week",
-  "You are using 5 or more tools that don't connect to each other",
-  "New hires take too long to get up to speed because nothing is documented",
-  "You want to scale without hiring a full-time ops person right now",
-  "You are a SaaS startup, agency, or services business with existing revenue",
+  "You have a small team and too much work still depends on memory",
+  "Customers ask for status and your team has to hunt through messages",
+  "Bookings, billing, provider updates, or order details keep getting messy",
+  "You are using tools like monday.com, spreadsheets, email, or forms, but the setup is not clean",
+  "You want the business organized enough to step back without hiring another coordinator",
 ] as const;
 
 const includedItems = [
   {
-    title: "Business Systems Map",
+    title: "Operations Map",
     description:
-      "A complete visual audit of your workflows, tools, and handoffs. You will see where work is getting stuck.",
+      "A clear view of where work gets delayed, duplicated, dropped, or routed back to the owner.",
   },
   {
-    title: "Tool Stack Architecture",
+    title: "Clean Tool Setup",
     description:
-      "A documented recommendation for your tooling. Every choice is justified and tied to your actual needs.",
+      "Your existing tools get cleaned up around the work your team actually does. If a tool should change, you get a plain reason why.",
   },
   {
-    title: "Automation Layer",
+    title: "Follow-up and Status Automation",
     description:
-      "Live, tested automations built with Zapier, Make, or n8n. Lead forms to CRM. CRM to onboarding. Notifications and handoffs.",
+      "Tested automations for reminders, status updates, task creation, billing steps, customer updates, and provider follow-up.",
   },
   {
-    title: "AI Workflow Layer",
+    title: "Useful Automation Where It Fits",
     description:
-      "AI integrated into your day-to-day work: meeting summaries, support reply drafting, reporting, and research tasks.",
+      "Automation only where it removes real work. No shiny-tool project for the sake of looking modern.",
   },
   {
-    title: "Documentation and Training",
+    title: "Team Instructions and Handoff",
     description:
-      "Written SOPs for every new workflow and a live training session with your team.",
+      "Simple instructions and a live walkthrough so the team knows how to run the cleaned-up process without me.",
   },
 ] as const;
 
 const notIncluded = [
   "Custom software development or code-heavy integrations",
-  "Ongoing management or monitoring after handoff (available as an add-on)",
-  "Tool licensing costs (you own and pay for your own subscriptions)",
-  "Marketing campaigns or demand generation strategy",
+  "Ongoing management after handoff unless we add it separately",
+  "Tool licensing costs. You own and pay for your own subscriptions",
+  "Marketing campaigns, ad management, or sales strategy",
 ] as const;
 
 const weekByWeek = [
   {
     week: "Phase 1",
-    title: "Discovery and Mapping",
+    title: "Find the Mess",
     description:
-      "Full audit call, tool access, workflow interviews. Deliver the Business Systems Map at the close of this phase.",
+      "We walk through the real day-to-day work, review the tools, and find where details are getting lost or stuck.",
   },
   {
     week: "Phase 2",
-    title: "Architecture and Sign-off",
+    title: "Pick the Fixes",
     description:
-      "Present the Tool Stack Architecture and automation logic. Align on priorities. Get your approval before building.",
+      "I show you what should change first, what can stay, and what is not worth touching. You approve the plan before anything gets built.",
   },
   {
     week: "Phase 3",
-    title: "Build and Automate",
+    title: "Clean It Up",
     description:
-      "Build, configure, and test all automations and AI workflows. Mid-phase check-in to flag anything unexpected.",
+      "I set up the boards, forms, views, automations, and instructions inside your real tools, then test the important handoffs.",
   },
   {
     week: "Phase 4",
-    title: "Documentation and Handoff",
+    title: "Hand It to the Team",
     description:
-      "Write the SOPs, run the training session, and hand over the full system. You own it completely from here.",
+      "I write the instructions, walk the team through the new setup, and make sure people know where things live.",
   },
 ] as const;
 
 const addOns = [
   {
-    title: "Ongoing Stewardship",
-    description: "Monthly check-ins, automation maintenance, and system updates as your business evolves.",
+    title: "Ongoing Cleanup",
+    description: "Monthly check-ins, automation maintenance, and updates as the business changes.",
     price: "From $1,200 / month",
   },
   {
-    title: "Advanced Automations",
-    description: "Complex multi-step workflows, custom API integrations, and advanced AI pipeline setup.",
+    title: "Advanced Automation",
+    description: "More complex handoffs, reminders, tool connections, and reporting when the business case is clear.",
     price: "From $2,500",
   },
 ] as const;
@@ -103,9 +103,9 @@ export default function OfferPage() {
         data={[
           ...pageSchemas({
             path: "/offer",
-            title: "Business OS Setup",
+            title: "Business Cleanup",
             description:
-              "The system your business needs to grow without adding headcount. See deliverables, scope, timeline, and optional add-ons.",
+              "A practical 60-day cleanup for small and medium businesses where bookings, billing, customer updates, and handoffs have gotten messy.",
             breadcrumbs: [
               { name: "Home", path: "/" },
               { name: "Offer", path: "/offer" },
@@ -116,11 +116,11 @@ export default function OfferPage() {
       />
       <div className="inner-hero">
         <div className="container">
-          <div className="tag">Business OS Setup</div>
-          <h1>The system your business needs to grow without adding headcount.</h1>
+          <div className="tag">Business Cleanup</div>
+          <h1>Get the messy parts of the business under control.</h1>
           <p>
-            A 60-day structured engagement to map, design, build, and hand off a complete operating infrastructure for
-            your team.
+            A 60-day engagement for small and medium businesses where too many details live in people’s heads,
+            inboxes, spreadsheets, and half-used tools.
           </p>
         </div>
       </div>
@@ -130,7 +130,7 @@ export default function OfferPage() {
           <div className="two-col">
             <div>
               <div className="tag">Best For</div>
-              <h2 style={{ fontSize: 32, marginBottom: 16 }}>This engagement is a fit if:</h2>
+              <h2 style={{ fontSize: 32, marginBottom: 16 }}>This is a fit if:</h2>
               <ul className="check-list" style={{ marginBottom: 48 }}>
                 {fitItems.map((item) => (
                   <li key={item}>
@@ -140,7 +140,7 @@ export default function OfferPage() {
                 ))}
               </ul>
 
-              <div className="tag">Deliverables</div>
+              <div className="tag">What Gets Cleaned Up</div>
               <h2 style={{ fontSize: 32, marginBottom: 16 }}>What is included</h2>
               <ul className="check-list" style={{ marginBottom: 16 }}>
                 {includedItems.map((item) => (
@@ -192,16 +192,16 @@ export default function OfferPage() {
             <div>
               <div className="offer-summary-badge">
                 <div className="mono" style={{ color: "var(--on-strong-muted)", marginBottom: 8 }}>
-                  Business OS Setup
+                  Business Cleanup
                 </div>
                 <h3>Ready to get started?</h3>
-                <p>Book a free 30-minute audit call. No pitch, no pressure. Just a clear look at your systems.</p>
+                <p>Book a free 30-minute audit call. No pitch, no pressure. Just a clear look at where the business is messy.</p>
                 <Link
                   className="btn btn-primary"
                   style={{ width: "100%", marginBottom: 12, background: "var(--accent-fill)", color: "var(--on-accent)" }}
                   href="/contact"
                 >
-                  Book a Free Audit Call
+                  Book a Free Operations Audit
                 </Link>
                 <Link
                   className="btn btn-ghost"
@@ -228,8 +228,8 @@ export default function OfferPage() {
 
       <div className="final-cta">
         <div className="container">
-          <h2>Let&apos;s build your business OS.</h2>
-          <p>Book a free audit call and leave with a clear picture of where your systems need work.</p>
+          <h2>Ready to make the business easier to run?</h2>
+          <p>Book a free audit call and leave with a clear picture of what needs to be cleaned up first.</p>
           <Link className="btn btn-xl" style={{ background: "var(--accent-fill)", color: "var(--on-accent)", fontWeight: 600 }} href="/contact">
             Book a Call →
           </Link>
