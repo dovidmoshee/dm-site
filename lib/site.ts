@@ -30,9 +30,9 @@ const siteUrl = normalizeSiteUrl(
 
 export const siteConfig = {
   name: "Cohevo",
-  tagLine: "Bring order to the messy work that keeps pulling you back in.",
+  tagLine: "Clean up messy operations so work stops falling through the cracks.",
   description:
-    "Cohevo helps small and medium businesses bring order to messy day-to-day operations so the owner can stop chasing every detail.",
+    "Cohevo helps small and medium businesses clean up messy operations so work stops falling through the cracks and the owner gets pulled into fewer daily fires.",
   url: siteUrl,
   ogImage: "/og/homepage-default.png",
   ogImages: {

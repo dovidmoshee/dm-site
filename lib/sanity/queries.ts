@@ -9,7 +9,7 @@ type SanityPost = {
   publishedAt: string
   updatedAt?: string
   tags: string[]
-  author: {name: string; role: string}
+  author?: {name?: string; role?: string} | null
   cta?: {title: string; description: string; href: string; label: string}
   body: string
 }
@@ -44,7 +44,10 @@ function fromSanityPost(post: SanityPost): BlogPost {
     publishedAt: post.publishedAt,
     updatedAt: post.updatedAt,
     tags: post.tags ?? [],
-    author: post.author,
+    author: {
+      name: post.author?.name ?? 'Cohevo',
+      role: post.author?.role ?? 'Operations Systems',
+    },
     cta: post.cta,
     content: post.body ?? '',
     readingMinutes: toReadingMinutes(post.body ?? ''),
