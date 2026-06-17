@@ -177,7 +177,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
+      <section className="home-light-cards">
         <div className="container">
           <div className="section-head">
             <div className="tag">What Cohevo Does</div>
@@ -227,7 +227,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
+      <section className="home-light-cards">
         <div className="container">
           <div className="section-head">
             <div className="tag">What Success Looks Like</div>

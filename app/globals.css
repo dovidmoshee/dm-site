@@ -756,6 +756,15 @@ section {
   line-height: 1.5;
 }
 
+.offer-summary-badge .pricing-features li {
+  color: var(--on-strong);
+  border-bottom-color: var(--strong-border);
+}
+
+.offer-summary-badge .pricing-features li::before {
+  color: var(--lime);
+}
+
 .badge-stat {
   border-top: 1px solid var(--strong-border);
   padding-top: 16px;
@@ -866,6 +875,36 @@ section {
   height: auto;
   display: block;
   border-radius: calc(var(--r) - 8px);
+}
+
+.home-light-cards .deliv-card {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.home-light-cards .deliv-card h3 {
+  color: var(--ink);
+}
+
+.home-light-cards .deliv-card p {
+  color: var(--ink2);
+}
+
+.home-light-cards .deliv-num {
+  color: var(--accent);
+}
+
+.home-light-cards .deliv-artifact {
+  border-top-color: var(--border);
+}
+
+.home-light-cards .deliv-artifact-copy h3 {
+  color: var(--ink);
+}
+
+.home-light-cards .deliv-artifact-copy p {
+  color: var(--ink2);
 }
 
 /* Timeline */
