@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { DM_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Cormorant_Garamond, DM_Mono, Instrument_Sans, Instrument_Serif, Inter } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -30,6 +30,21 @@ const dmMono = DM_Mono({
   weight: ["400", "500"],
   display: "swap",
   variable: "--font-cohevo-mono",
+});
+
+const claritySerif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-clarity-serif",
+});
+
+const claritySans = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  variable: "--font-clarity-sans",
 });
 
 export const metadata: Metadata = {
@@ -73,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${dmMono.variable}`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${dmMono.variable} ${claritySerif.variable} ${claritySans.variable}`}
       suppressHydrationWarning
     >
       <body>

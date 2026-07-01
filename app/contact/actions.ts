@@ -451,12 +451,12 @@ export async function submitContactForm(formData: FormData) {
   }
 
   if (!name || !email) {
-    redirect("/contact?error=missing-fields");
+    redirect("/?error=missing-fields#start");
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
-    redirect("/contact?error=invalid-email");
+    redirect("/?error=invalid-email#start");
   }
 
   const submission: Submission = {

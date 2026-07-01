@@ -1,6 +1,6 @@
 <svg width="920" height="880" viewBox="0 0 920 880" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Cohevo business operating system map</title>
-  <desc id="desc">A calm business systems map showing scattered tools being organized into one operating layer.</desc>
+  <desc id="desc">A business systems map showing scattered tools being organized into one operating layer.</desc>
   <defs>
     <linearGradient id="panel" x1="160" y1="76" x2="748" y2="775" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FEFCF4"/>
@@ -102,7 +102,7 @@
   <g filter="url(#cardShadow)">
     <rect x="632" y="170" width="178" height="94" rx="24" fill="#263427"/>
     <text x="664" y="207" fill="#DCEED7" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="1.4">AFTER</text>
-    <text x="664" y="236" fill="#FFFEF7" font-family="Georgia, 'Times New Roman', serif" font-size="25">Calm control</text>
+    <text x="664" y="236" fill="#FFFEF7" font-family="Georgia, 'Times New Roman', serif" font-size="25">Clear control</text>
   </g>
 
   <g filter="url(#cardShadow)">

@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Project-local AI harness/vendor installs:
+    ".agents/**",
+    ".claude/**",
   ]),
 ]);
 
