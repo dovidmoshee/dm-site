@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { DM_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Mono, Instrument_Sans } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -16,14 +16,6 @@ const instrumentSans = Instrument_Sans({
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-cohevo-sans",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-cohevo-serif",
 });
 
 const dmMono = DM_Mono({
@@ -60,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${dmMono.variable}`}
+      className={`${instrumentSans.variable} ${dmMono.variable}`}
       suppressHydrationWarning
     >
       <body>

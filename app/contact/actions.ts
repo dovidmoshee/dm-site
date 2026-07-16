@@ -450,13 +450,17 @@ export async function submitContactForm(formData: FormData) {
     redirect("/thank-you");
   }
 
-  if (!name || !email) {
+  if (!name || !email || !bottleneck || !message) {
     redirect("/?error=missing-fields#start");
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     redirect("/?error=invalid-email#start");
+  }
+
+  if (name.length > 120 || email.length > 254 || company.length > 160 || message.length > 3000) {
+    redirect("/?error=invalid-details#start");
   }
 
   const submission: Submission = {

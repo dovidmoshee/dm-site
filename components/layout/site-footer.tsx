@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className="rescue-footer">
       <div className="rescue-shell rescue-footer-grid">
         <div>
-          <Image src="/cohevo-logo-dark.svg" alt="Cohevo" width={140} height={31} className="rescue-footer-logo" />
+          <Image src="/cohevo-logo-dark.svg" alt="Cohevo" width={140} height={30} className="rescue-footer-logo" loading="eager" />
           <p>Friendly, practical technology help for websites, business tools, workflows, software, and computers.</p>
         </div>
         <div className="rescue-footer-links">

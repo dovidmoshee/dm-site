@@ -9,7 +9,7 @@ export function SiteHeader() {
     <header className="rescue-header">
       <nav className="rescue-nav" aria-label="Main navigation">
         <Link href="/#top" className="rescue-logo" aria-label="Cohevo home">
-          <Image src="/cohevo-logo-light.svg" alt="Cohevo" width={134} height={30} priority />
+          <Image src="/cohevo-logo-light.svg" alt="Cohevo" width={134} height={29} priority />
         </Link>
         <div className="rescue-nav-links">
           <Link href="/#services">What I fix</Link>

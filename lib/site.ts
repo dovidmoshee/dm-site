@@ -27,12 +27,12 @@ export const siteConfig = {
   description:
     "Friendly, practical technology help for websites, business tools, workflows, software, and computers. Remote help worldwide, with physical service in Carmei Gat and Kiryat Gat.",
   url: siteUrl,
-  ogImage: "/og-image.svg",
+  ogImage: "/og-image.png",
   ogImages: {
-    homepageDefault: "/og-image.svg",
-    homepageAlt: "/og-image.svg",
-    splitLime: "/og-image.svg",
-    blogAndServicePages: "/og-image.svg",
+    homepageDefault: "/og-image.png",
+    homepageAlt: "/og-image.png",
+    splitLime: "/og-image.png",
+    blogAndServicePages: "/og-image.png",
   },
   contactEmail: "hi@cohevo.co",
   whatsAppUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL?.trim() || defaultWhatsAppUrl,

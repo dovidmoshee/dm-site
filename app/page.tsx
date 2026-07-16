@@ -19,6 +19,7 @@ import {
 import { JsonLd, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { faqItems, siteConfig } from "@/lib/site";
+import { ContactSubmitButton } from "@/components/contact-submit-button";
 import { submitContactForm } from "./contact/actions";
 
 const homepageDescription =
@@ -33,6 +34,17 @@ export const metadata = buildMetadata({
 });
 
 const whatsAppUrl = siteConfig.whatsAppUrl;
+
+type HomePageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+const formErrorMessages: Record<string, string> = {
+  "missing-fields": "Please fill in your name, email, help category, and a short description.",
+  "invalid-email": "That email address does not look right. Please check it and try again.",
+  "invalid-details": "One of the entries is too long. Please shorten it and try again.",
+  "delivery-failed": "I could not send the form. Please try again, use WhatsApp, or email hi@cohevo.co.",
+};
 
 const homeProblems = [
   { icon: MonitorCog, text: "A slow, unreliable, or newly purchased computer" },
@@ -117,7 +129,12 @@ const steps = [
   },
 ] as const;
 
-export default function HomePage() {
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const params = await searchParams;
+  const rawError = params.error;
+  const errorCode = Array.isArray(rawError) ? rawError[0] : rawError;
+  const formError = errorCode ? formErrorMessages[errorCode] : undefined;
+
   return (
     <>
       <JsonLd data={faqSchema()} />
@@ -125,10 +142,6 @@ export default function HomePage() {
       <section className="rescue-hero" id="top">
         <div className="rescue-shell rescue-hero-grid">
           <div className="rescue-hero-copy">
-{/*            <div className="rescue-eyebrow">
-              <span className="rescue-status-dot" aria-hidden="true" />
-              Practical technology help
-            </div>*/}
             <h1>
               Technology problem?
               <span>Let&apos;s get it working.</span>
@@ -178,7 +191,7 @@ export default function HomePage() {
       <section className="rescue-problem-strip" aria-label="How to start">
         <div className="rescue-shell">
           <span>NOT SURE WHAT KIND OF HELP YOU NEED?</span>
-          <p>That is normal. Send the half-explained problem.</p>
+          <p>That is completely fine. Send whatever you know so far.</p>
           <a href={whatsAppUrl}>Tell me what&apos;s happening <ArrowRight aria-hidden="true" /></a>
         </div>
       </section>
@@ -186,7 +199,6 @@ export default function HomePage() {
       <section className="rescue-section" id="services">
         <div className="rescue-shell">
           <div className="rescue-section-intro">
-            <span className="rescue-kicker">Problems I can take off your plate</span>
             <h2>One person for the technology that keeps getting in the way.</h2>
             <p>Start with the problem you can see. If it points to a bigger setup issue, I will explain that without turning a small job into a sales pitch.</p>
           </div>
@@ -223,7 +235,6 @@ export default function HomePage() {
         <div className="rescue-shell">
           <div className="rescue-offers-heading">
             <div>
-              <span className="rescue-kicker">Three ways to work together</span>
               <h2>Start small. Go bigger only when the problem calls for it.</h2>
             </div>
             <p>Clear starting prices in shekels. Parts, paid software, and extensive travel are separate.</p>
@@ -263,7 +274,7 @@ export default function HomePage() {
           <div className="rescue-process-copy">
             <span className="rescue-kicker">How it works</span>
             <h2>You don&apos;t need to know what went wrong.</h2>
-            <p>You work directly with me, David. I ask questions, explain what I see in normal language, and focus on the smallest useful solution.</p>
+            <p>You work directly with me, David. I ask questions, explain what I see in plain language, and focus on the smallest useful solution.</p>
             <div className="rescue-person-card">
               <div className="rescue-monogram" aria-hidden="true">DE</div>
               <div>
@@ -300,7 +311,6 @@ export default function HomePage() {
       <section className="rescue-section rescue-faq-section" id="faq">
         <div className="rescue-shell rescue-faq-grid">
           <div>
-            <span className="rescue-kicker">Before you message</span>
             <h2>A few useful answers.</h2>
           </div>
           <div className="rescue-faq-list">
@@ -319,7 +329,7 @@ export default function HomePage() {
           <div className="rescue-contact-copy">
             <span className="rescue-kicker rescue-kicker-light">Start here</span>
             <h2>Tell me what is frustrating you.</h2>
-            <p>You do not need a polished explanation. Send a few words about what is happening and what you need to work again.</p>
+            <p>You do not need a polished explanation. Tell me what is happening and what you want to get working again.</p>
             <a className="rescue-button rescue-button-lime" href={whatsAppUrl}>
               <MessageCircle aria-hidden="true" /> WhatsApp 054-787-0089 <ArrowRight aria-hidden="true" />
             </a>
@@ -337,16 +347,21 @@ export default function HomePage() {
               <span>SHORT CONTACT FORM</span>
               <p>A short description is enough.</p>
             </div>
+            {formError ? (
+              <div className="rescue-form-error" id="form-error" role="alert">
+                {formError}
+              </div>
+            ) : null}
             <form action={submitContactForm}>
               <div className="rescue-honeypot" aria-hidden="true">
                 <label htmlFor="website">Website</label>
                 <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
               </div>
               <div className="rescue-form-row">
-                <label>Your name<input name="name" type="text" autoComplete="name" required /></label>
-                <label>Email<input name="email" type="email" autoComplete="email" required /></label>
+                <label>Your name<input name="name" type="text" autoComplete="name" maxLength={120} required /></label>
+                <label>Email<input name="email" type="email" autoComplete="email" maxLength={254} required /></label>
               </div>
-              <label>Business name <span>(optional)</span><input name="company" type="text" autoComplete="organization" /></label>
+              <label>Business name <span>(optional)</span><input name="company" type="text" autoComplete="organization" maxLength={160} /></label>
               <label>
                 What do you need help with?
                 <select name="bottleneck" defaultValue="" required>
@@ -359,8 +374,8 @@ export default function HomePage() {
                   <option>Something else</option>
                 </select>
               </label>
-              <label>What is happening?<textarea name="message" rows={5} placeholder="For example: Our office printer keeps disconnecting, or our website form stopped sending emails..." required /></label>
-              <button type="submit" className="rescue-form-submit">Send the problem <ArrowRight aria-hidden="true" /></button>
+              <label>What is happening?<textarea name="message" rows={5} maxLength={3000} placeholder="For example: Our office printer keeps disconnecting, or our website form stopped sending emails…" required /></label>
+              <ContactSubmitButton />
             </form>
           </div>
         </div>

@@ -156,7 +156,7 @@ Primary content sources:
 - Global/page metadata via `lib/seo.ts` and each page export
 - Sitemap: `app/sitemap.ts`
 - Robots: `app/robots.ts`
-- OG image: `public/og-image.svg`
+- OG image: `public/og-image.png` (source artwork: `public/og-image.svg`)
 
 ## Deploy to Vercel
 
