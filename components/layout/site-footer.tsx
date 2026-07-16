@@ -6,9 +6,9 @@ export function SiteFooter() {
   return (
     <footer className="ref-footer">
       <Image src="/cohevo-logo-dark.svg" alt="Cohevo" width={136} height={30} className="ref-footer-logo" />
-      <p className="final-thought">Cohevo Business Systems Clarity Audit</p>
+      <p className="final-thought">Practical technology help for businesses and people</p>
       <hr />
-      <small>© {currentYear} Cohevo &nbsp;·&nbsp; All rights reserved</small>
+      <small>© {currentYear} Cohevo &nbsp;·&nbsp; Remote worldwide &nbsp;·&nbsp; Local computer service in Carmei Gat and Kiryat Gat</small>
     </footer>
   );
 }

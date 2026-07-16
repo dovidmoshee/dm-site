@@ -9,7 +9,7 @@ export function SiteHeader() {
           <Image src="/cohevo-logo-light.svg" alt="Cohevo" width={128} height={28} priority />
         </Link>
         <Link href="/#start" className="ref-nav-cta">
-          Start the Audit
+          Get Tech Help
         </Link>
       </nav>
     </header>

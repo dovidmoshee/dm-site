@@ -30,9 +30,9 @@ const siteUrl = normalizeSiteUrl(
 
 export const siteConfig = {
   name: "Cohevo",
-  tagLine: "When your business feels too tangled, you need someone to look at the system.",
+  tagLine: "When technology gets messy, I help make it work.",
   description:
-    "A business systems audit for owners whose tools, workflows, and follow-up have gotten too messy. Clear recommendations before anyone starts building.",
+    "Practical technology help for websites, business tools, workflows, software, and computers. Remote support worldwide, with local computer repair in Carmei Gat and Kiryat Gat.",
   url: siteUrl,
   ogImage: "/og-image.svg",
   ogImages: {
@@ -54,65 +54,65 @@ export const socialLinks = [
 
 export const packages = [
   {
-    name: "1-Hour Consulting Call",
-    price: "$500",
+    name: "Remote Tech Rescue",
+    price: "$150",
     description:
-      "A focused 60-minute strategy session to look at your current setup, find the obvious inefficiencies, and define the next steps that would actually help.",
+      "A focused 90-minute working session for one frustrating website, software, email, domain, or business-tool problem.",
   },
   {
-    name: "Deep Dive + Short Report",
-    price: "$1,500",
+    name: "Website or Systems Cleanup",
+    price: "$750",
     description:
-      "A 90-minute deep dive followed by a short written report with key findings, recommended tools, and workflow improvements.",
+      "A focused project to review and improve one messy website, lead flow, client process, file system, tool setup, or recurring workflow.",
   },
   {
-    name: "3-Week System Audit & Strategy Report",
-    price: "$3,500",
+    name: "Ongoing Tech Support",
+    price: "$300/mo",
     description:
-      "A complete 3-week consulting engagement with interviews, process mapping, and a full 10 to 15 page strategy report.",
+      "Reliable remote support for questions, small fixes, monitoring, and ongoing practical improvements.",
   },
 ] as const;
 
 export const processPhases = [
   {
-    title: "Review the current setup",
-    description: "Look at the tools, workflows, handoffs, follow-up, files, and recurring operational friction.",
+    title: "Understand the problem",
+    description: "Look at what is happening, what has already been tried, and what needs to work better.",
   },
   {
-    title: "Find the bottlenecks",
-    description: "Separate tool problems from process problems, unclear ownership, missing information, and unnecessary complexity.",
+    title: "Choose the right scope",
+    description: "Use a working session, focused project, ongoing support plan, or local repair depending on the problem.",
   },
   {
-    title: "Recommend the next clean version",
-    description: "Give the owner a practical written plan for what to keep, simplify, replace, automate, delegate, or ignore for now.",
+    title: "Fix and hand over",
+    description: "Complete the agreed work, explain the important decisions, and provide clear next steps.",
   },
 ] as const;
 
 export const faqItems = [
   {
-    question: "Do you build the system too?",
+    question: "Can you work with clients outside Israel?",
     answer:
-      "Not in this offer. This is an audit and recommendations offer. If implementation is needed, I can tell you what kind of help to look for.",
+      "Yes. Website, software, business-tool, workflow, and remote technology support are available worldwide.",
   },
   {
-    question: "What tools can you review?",
+    question: "Where is physical computer repair available?",
     answer:
-      "Common examples include Notion, Airtable, ClickUp, Monday, HubSpot, Google Workspace, spreadsheets, forms, Zapier, Make, CRMs, inbox workflows, and project management tools.",
+      "Physical computer repairs and upgrades are available by appointment in Carmei Gat and Kiryat Gat.",
   },
   {
-    question: "Who is this for?",
+    question: "What tools can you help with?",
     answer:
-      "Business owners with real operational mess: leads, clients, projects, admin, follow-up, files, tasks, or team handoffs taking too much mental space.",
+      "Common examples include websites, domains, business email, Google Workspace, forms, CRMs, Notion, Airtable, ClickUp, Monday, spreadsheets, Zapier, Make, cloud storage, and everyday computer software.",
   },
 ] as const;
 
-export const teamSizeOptions = ["Just me", "2 to 5", "6 to 15", "16 plus"] as const;
+export const teamSizeOptions = ["Personal", "Just me", "2 to 5", "6 to 15", "16 plus"] as const;
 
 export const bottleneckOptions = [
-  "Lead handoff and follow-up",
-  "Customer onboarding",
-  "Project or task management",
-  "Reporting and visibility",
-  "Internal ops and team coordination",
+  "Website or online technology",
+  "Business tools or workflow",
+  "Remote personal tech help",
+  "Local computer repair or upgrade",
+  "Ongoing technology support",
   "Other",
 ] as const;

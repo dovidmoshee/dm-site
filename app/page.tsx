@@ -3,68 +3,97 @@ import { siteConfig } from "@/lib/site";
 import { submitContactForm } from "./contact/actions";
 
 const homepageDescription =
-  "A focused business systems audit for owners whose tools, workflows, and follow-up feel messy. Get a clear read on what to fix first.";
+  "Practical technology help for websites, business tools, workflows, and computers. Remote support worldwide, with local computer repair in Carmei Gat and Kiryat Gat.";
 
 export const metadata = buildMetadata({
-  title: "Cohevo Business Systems Audit",
+  title: "Practical Technology Help",
   description: homepageDescription,
   path: "/",
   ogImage: siteConfig.ogImages.homepageDefault,
-  ogImageAlt: "Cohevo Business Systems Audit",
+  ogImageAlt: "Cohevo practical technology help",
 });
 
-const feelItems = [
-  "Leads, client notes, files, tasks, and follow-up are spread across too many places.",
-  "You keep holding the system together because no one else can see the whole flow.",
-  "You know something is inefficient, but it is hard to tell what should change first.",
+const serviceItems = [
+  {
+    title: "Websites and online technology",
+    text: "Fix broken pages, forms, domains, email, analytics, integrations, hosting problems, and the small technical issues that keep getting postponed. Available remotely worldwide.",
+  },
+  {
+    title: "Business tools and workflows",
+    text: "Clean up scattered tools, confusing handoffs, lost follow-up, messy files, and processes that depend too heavily on one person. Available remotely worldwide.",
+  },
+  {
+    title: "Remote personal tech help",
+    text: "Get patient help with software, backups, file transfers, email, cloud storage, device setup, and everyday technology problems from anywhere.",
+  },
+  {
+    title: "Computer repair and upgrades",
+    text: "Slow computers, SSD and RAM upgrades, Windows problems, cleaning, backups, and file transfers. Physical service is available locally in Carmei Gat and Kiryat Gat.",
+  },
 ] as const;
 
-const auditItems = [
-  "We look at the real flow of work, not the polished version.",
-  "We find where information gets lost, duplicated, delayed, or pushed back to you.",
-  "We separate tool problems from workflow problems.",
-  "We choose the few fixes that would create the most relief first.",
-] as const;
-
-const recapItems = [
-  "What is actually broken",
-  "What to clean up first",
-  "Which tools or workflows make sense",
-  "What not to build yet",
+const approachItems = [
+  "Start with the problem that is costing you time, money, or energy.",
+  "Choose the smallest useful format: a working session, a focused project, or ongoing support.",
+  "Fix what is in scope and explain every important decision clearly.",
+  "Leave you with a working result and practical next steps.",
 ] as const;
 
 const packageItems = [
   {
-    name: "1-Hour Consulting Call",
-    price: "$500",
-    description: "A focused 60-minute strategy session to look at your current setup, find the obvious inefficiencies, and define the next steps that would actually help. Good for solopreneurs or small teams who need someone to make sense of the mess quickly.",
-    includes: ["Pre-call intake", "60-minute strategy call", "Current setup review", "Main inefficiencies and bottlenecks", "Actionable next steps"],
+    name: "Remote Tech Rescue",
+    price: "$150",
+    description:
+      "A focused 90-minute working session for one frustrating technology problem. We troubleshoot together and make as much progress as the session allows.",
+    includes: [
+      "Short pre-session intake",
+      "Up to 90 minutes of remote help",
+      "Hands-on troubleshooting and fixes",
+      "Clear written recap",
+      "Useful for websites, email, domains, forms, software, and business tools",
+    ],
   },
   {
-    name: "Deep Dive + Short Report",
-    price: "$1,500",
-    description: "A 90-minute deep dive followed by a short written report with key findings, recommended tools, and workflow improvements. Good for growing teams that need documentation they can act on, not just another conversation.",
-    includes: ["Detailed intake", "90-minute deep dive", "Key findings report", "Recommended tools", "Workflow improvements"],
+    name: "Website or Systems Cleanup",
+    price: "$750",
+    description:
+      "A focused project to review and improve one messy area, such as a website, lead flow, client process, file system, tool setup, or recurring workflow.",
+    includes: [
+      "Current setup review",
+      "Prioritized fixes",
+      "Hands-on implementation within the agreed scope",
+      "Tool and workflow recommendations",
+      "Handover notes and next steps",
+    ],
   },
   {
-    name: "3-Week System Audit & Strategy Report",
-    price: "$3,500",
-    description: "A complete 3-week consulting engagement with interviews, process mapping, and a full 10 to 15 page strategy report. Good for businesses that are ready to understand the whole system and hand the team a real roadmap for what should happen next.",
-    includes: ["3-week audit", "Owner and team interviews", "Process mapping", "10 to 15 page strategy report", "Detailed recommendations and roadmap"],
+    name: "Ongoing Tech Support",
+    price: "$300/mo",
+    description:
+      "Reliable support for businesses that need a practical technology person available for questions, small fixes, and ongoing improvements.",
+    includes: [
+      "Two hours of remote support each month",
+      "Priority response during working hours",
+      "Small website and tool fixes",
+      "Basic website and domain monitoring",
+      "Monthly check-in and recommendations",
+    ],
   },
 ] as const;
 
+const whatsAppUrl =
+  siteConfig.whatsAppUrl ||
+  "https://wa.me/972547870089?text=Hi%20David%2C%20I%20need%20help%20with%20a%20technology%20problem.";
+
 const contactOptions = [
-  siteConfig.whatsAppUrl
-    ? {
-        href: siteConfig.whatsAppUrl,
-        icon: "💬",
-        title: "Message me on WhatsApp",
-        text: "Send: I am interested in a systems audit.",
-      }
-    : null,
   {
-    href: `mailto:${siteConfig.contactEmail}?subject=Business%20Systems%20Audit&body=Hi%20David%2C%0A%0AI%27m%20interested%20in%20a%20business%20systems%20audit.%20The%20messiest%20part%20right%20now%20is%3A%0A`,
+    href: whatsAppUrl,
+    icon: "💬",
+    title: "Message me on WhatsApp",
+    text: "Send a few words about what is going wrong.",
+  },
+  {
+    href: `mailto:${siteConfig.contactEmail}?subject=Technology%20Help&body=Hi%20David%2C%0A%0AI%20need%20help%20with%3A%0A`,
     icon: "✉️",
     title: "Send an email",
     text: siteConfig.contactEmail,
@@ -73,81 +102,49 @@ const contactOptions = [
     href: "#form-section",
     icon: "📋",
     title: "Fill out the form",
-    text: "A few honest details is enough to start.",
+    text: "A short description is enough to get started.",
   },
-].filter(Boolean) as Array<{ href: string; icon: string; title: string; text: string }>;
+] as const;
 
 export default function HomePage() {
   return (
     <>
       <section className="clarity-ref-hero" id="top">
         <div className="clarity-ref-hero-inner">
-          <span className="section-label">Cohevo Business Systems Audit</span>
+          <span className="section-label">Cohevo Practical Technology Help</span>
           <h1>
-            When your business feels <em>too tangled</em>, you need someone to look at the system.
+            When technology gets <em>messy</em>, I help make it work.
           </h1>
           <p className="hero-sub">
-            A focused audit with David Ehrentreu for business owners whose tools, workflows, follow-up, and handoffs have gotten messy.
+            Practical help with websites, business tools, workflows, software, and computers. Remote support is available worldwide. Physical computer repair is available in Carmei Gat and Kiryat Gat.
           </p>
-          <div className="hero-proof-strip" aria-label="Audit summary">
-            <span>Tool + workflow review</span>
-            <span>Written recommendations</span>
-            <span>Clear next steps</span>
+          <div className="hero-proof-strip" aria-label="Service summary">
+            <span>Remote help worldwide</span>
+            <span>Clear scope and pricing</span>
+            <span>Local computer repair</span>
           </div>
           <div className="hero-actions">
-            <a href="#start" className="clarity-btn-primary">Start with a Message</a>
-            <a href="#audit" className="clarity-btn-secondary">See the Audit</a>
+            <a href="#start" className="clarity-btn-primary">Tell Me the Problem</a>
+            <a href="#services" className="clarity-btn-secondary">See What I Help With</a>
           </div>
-          <p className="hero-note">For owners who are tired of being the backup system.</p>
+          <p className="hero-note">Start with the thing that is wasting the most time or causing the most frustration.</p>
         </div>
       </section>
 
-      <section className="clarity-ref-section">
+      <section className="clarity-ref-section" id="services">
         <div className="clarity-ref-container">
-          <span className="section-label">The problem</span>
-          <h2>The tools may not be the real issue. The flow underneath them is usually where the mess lives.</h2>
-          <div className="divider" />
-
-          <div className="overwhelm-grid">
-            {feelItems.map((item) => (
-              <div className="overwhelm-card" key={item}>{item}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="clarity-ref-section" id="audit">
-        <div className="clarity-ref-container">
-          <span className="section-label">The audit</span>
-          <h2>A focused review of one messy part of the business.</h2>
+          <span className="section-label">What I help with</span>
+          <h2>One place to bring the technology problems that keep getting in the way.</h2>
           <div className="divider" />
           <p>
-            We look at how work moves from first inquiry to delivery, where status disappears, which tools are helping, and which ones are making things heavier.
+            Cohevo combines practical technical help with systems thinking. The work can be a small repair, a focused cleanup, or ongoing support.
           </p>
 
-          <ul className="features-list">
-            {auditItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-
-          <div className="pivot-block">
-            <p>The goal is simple: fewer vague problems, clearer language for what is broken, and a short list of fixes that actually make sense.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="clarity-ref-section">
-        <div className="clarity-ref-container">
-          <span className="section-label">What you leave with</span>
-          <h2>A written readout you can act on.</h2>
-          <div className="divider" />
-          <p>Not a giant deck. A clear recap of what matters now.</p>
-
           <div className="deliverables recap-deliverables">
-            {recapItems.map((item) => (
-              <div className="deliverable" key={item}>
-                <h4>{item}</h4>
+            {serviceItems.map((item) => (
+              <div className="deliverable" key={item.title}>
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
               </div>
             ))}
           </div>
@@ -156,14 +153,32 @@ export default function HomePage() {
 
       <section className="clarity-ref-section">
         <div className="clarity-ref-container">
-          <span className="section-label">Who this is with</span>
-          <h2>You will be speaking with David Ehrentreu.</h2>
+          <span className="section-label">The approach</span>
+          <h2>Begin with a real problem and build the right-sized solution.</h2>
+          <div className="divider" />
+
+          <ul className="features-list">
+            {approachItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
+          <div className="pivot-block">
+            <p>The goal is a useful result: a fixed problem, a cleaner setup, and less technology sitting in your head.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="clarity-ref-section">
+        <div className="clarity-ref-container">
+          <span className="section-label">Who you work with</span>
+          <h2>You will be working directly with David Ehrentreu.</h2>
           <div className="divider" />
           <p>
-            I am not here to sell every business a complicated tech stack. My strength is seeing the system underneath the mess: where information gets lost, where tools fight the workflow, and where a simpler setup would help.
+            I work across technology, websites, marketing systems, business operations, and hands-on computer support. My strength is understanding what is actually happening, explaining it plainly, and finding a practical way forward.
           </p>
           <div className="quote-block">
-            <p>A lot of business clarity comes from seeing the actual flow of work. A lot of relief comes from fixing the right few things first.</p>
+            <p>You can bring me the half-explained problem. We will work out what it is and what should happen next.</p>
           </div>
         </div>
       </section>
@@ -171,9 +186,10 @@ export default function HomePage() {
       <section className="clarity-ref-section" id="offer">
         <div className="clarity-ref-container">
           <div className="centered-heading">
-            <span className="section-label">The options</span>
-            <h2>Choose the level that matches the mess.</h2>
+            <span className="section-label">Remote services</span>
+            <h2>Choose the level of help that fits the problem.</h2>
             <div className="divider" />
+            <p>Remote services are available to clients anywhere in the world. Prices are listed in USD.</p>
           </div>
 
           {packageItems.map((pkg) => (
@@ -201,12 +217,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="clarity-ref-section" id="local-repair">
+        <div className="clarity-ref-container">
+          <span className="section-label">Local computer service</span>
+          <h2>Physical computer repair and upgrades in Carmei Gat and Kiryat Gat.</h2>
+          <div className="divider" />
+          <p>
+            Local service is available by appointment for laptops and desktop computers. Common jobs include slow-computer troubleshooting, SSD and RAM upgrades, Windows and software problems, internal cleaning, backups, and file transfers.
+          </p>
+
+          <div className="pivot-block">
+            <p>Diagnosis is ₪100 and is credited toward repairs over ₪250. Parts and paid software are separate. You receive the price for approval before work begins.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="contact-section" id="start">
         <div className="clarity-ref-container">
           <span className="section-label">How to start</span>
-          <h2>Send me a few words about the messiest part of your business right now.</h2>
+          <h2>Tell me what is going wrong and what you need to be working instead.</h2>
           <div className="divider" />
-          <p>You do not need to explain it perfectly. That is what the audit is for.</p>
+          <p>You can describe it in your own words. Screenshots, links, and photos can come after the first message.</p>
 
           <div className="contact-options">
             {contactOptions.map((option) => (
@@ -219,7 +250,7 @@ export default function HomePage() {
           </div>
 
           <div className="contact-form" id="form-section">
-            <h3>Fill out the form</h3>
+            <h3>Tell me about the problem</h3>
             <form action={submitContactForm}>
               <div
                 aria-hidden="true"
@@ -244,15 +275,26 @@ export default function HomePage() {
                   <input id="company" name="company" type="text" placeholder="Optional" autoComplete="organization" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="teamSize">Team size</label>
-                  <input id="teamSize" name="teamSize" type="text" placeholder="Just you, small team, growing team..." />
+                  <label htmlFor="teamSize">Team / Situation</label>
+                  <input id="teamSize" name="teamSize" type="text" placeholder="Personal, solo business, small team..." />
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="message">What feels messy right now?</label>
-                <textarea id="message" name="message" placeholder="A few honest details is enough. Tools, workflows, follow-up, leads, clients, team handoffs, admin, whatever is taking too much space." required />
+                <label htmlFor="bottleneck">What kind of help do you need?</label>
+                <select id="bottleneck" name="bottleneck" defaultValue="" required>
+                  <option value="" disabled>Choose one</option>
+                  <option>Website or online technology</option>
+                  <option>Business tools or workflow</option>
+                  <option>Remote personal tech help</option>
+                  <option>Local computer repair or upgrade</option>
+                  <option>Ongoing technology support</option>
+                  <option>Something else</option>
+                </select>
               </div>
-              <input type="hidden" name="bottleneck" value="Business systems audit" />
+              <div className="form-group">
+                <label htmlFor="message">What is happening?</label>
+                <textarea id="message" name="message" placeholder="Describe the problem, what you have tried, and what you need to be working." required />
+              </div>
               <button type="submit" className="form-submit">Send Message</button>
             </form>
           </div>
