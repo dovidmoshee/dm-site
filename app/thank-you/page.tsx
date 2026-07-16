@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   path: "/thank-you",
   noIndex: true,
   ogImage: siteConfig.ogImages.splitLime,
-  ogImageAlt: "Cohevo business systems audit thank-you preview",
+  ogImageAlt: "Cohevo technology help thank-you preview",
 });
 
 export default function ThankYouPage() {
@@ -28,7 +28,7 @@ export default function ThankYouPage() {
           <div className="thankyou-icon">✓</div>
           <h1>Message received.</h1>
           <p>
-            Thank you for reaching out. I will review what you sent and get back to you with some initial thoughts and a link to book time if it makes sense.
+            Thank you for reaching out. I will review what you sent and reply with the best next step, whether that is a quick session, a focused project, ongoing support, or a local repair appointment.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -36,7 +36,7 @@ export default function ThankYouPage() {
               Back to Home
             </Link>
             <Link className="btn btn-ghost btn-lg" href="/#offer">
-              See the Audit Options
+              See Service Options
             </Link>
           </div>
         </div>
