@@ -6,18 +6,8 @@ function normalizeSiteUrl(value: string) {
 
   try {
     const url = new URL(trimmedValue);
-
-    // Production traffic is forced onto the HTTPS www host, so SEO-facing outputs
-    // should always advertise the same canonical origin even if env vars use
-    // the apex domain or the wrong scheme.
-    if (url.hostname === "cohevo.co") {
-      url.hostname = "www.cohevo.co";
-    }
-
-    if (url.hostname === "www.cohevo.co") {
-      url.protocol = "https:";
-    }
-
+    if (url.hostname === "cohevo.co") url.hostname = "www.cohevo.co";
+    if (url.hostname === "www.cohevo.co") url.protocol = "https:";
     return url.toString().replace(/\/$/, "");
   } catch {
     return trimmedValue;
@@ -28,11 +18,14 @@ const siteUrl = normalizeSiteUrl(
   process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? defaultSiteUrl,
 );
 
+const defaultWhatsAppUrl =
+  "https://wa.me/972547870089?text=Hi%20David%2C%20I%20need%20help%20with%20a%20technology%20problem.";
+
 export const siteConfig = {
   name: "Cohevo",
-  tagLine: "When technology gets messy, I help make it work.",
+  tagLine: "Technology problem? Let's get it working.",
   description:
-    "Practical technology help for websites, business tools, workflows, software, and computers. Remote support worldwide, with local computer repair in Carmei Gat and Kiryat Gat.",
+    "Friendly, practical technology help for websites, business tools, workflows, software, and computers. Remote help worldwide, with physical service in Carmei Gat and Kiryat Gat.",
   url: siteUrl,
   ogImage: "/og-image.svg",
   ogImages: {
@@ -42,7 +35,7 @@ export const siteConfig = {
     blogAndServicePages: "/og-image.svg",
   },
   contactEmail: "hi@cohevo.co",
-  whatsAppUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL?.trim() || "",
+  whatsAppUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL?.trim() || defaultWhatsAppUrl,
 } as const;
 
 export const navLinks = [] as const;
@@ -54,65 +47,67 @@ export const socialLinks = [
 
 export const packages = [
   {
-    name: "Remote Tech Rescue",
-    price: "$150",
-    description:
-      "A focused 90-minute working session for one frustrating website, software, email, domain, or business-tool problem.",
+    name: "Quick Tech Rescue",
+    price: "₪450",
+    description: "Up to 90 minutes of focused remote troubleshooting and hands-on help.",
   },
   {
-    name: "Website or Systems Cleanup",
-    price: "$750",
-    description:
-      "A focused project to review and improve one messy website, lead flow, client process, file system, tool setup, or recurring workflow.",
+    name: "Small Business Tech Cleanup",
+    price: "₪2,500",
+    description: "A focused review and fixes for the three most important technology problems in the agreed scope.",
   },
   {
-    name: "Ongoing Tech Support",
-    price: "$300/mo",
-    description:
-      "Reliable remote support for questions, small fixes, monitoring, and ongoing practical improvements.",
+    name: "Monthly Tech Care",
+    price: "₪900/mo",
+    description: "Reliable ongoing remote support, routine checks, and small practical fixes.",
   },
 ] as const;
 
 export const processPhases = [
   {
-    title: "Understand the problem",
-    description: "Look at what is happening, what has already been tried, and what needs to work better.",
+    title: "Send the problem",
+    description: "A sentence, screenshot, photo, or voice note is enough to begin.",
   },
   {
-    title: "Choose the right scope",
-    description: "Use a working session, focused project, ongoing support plan, or local repair depending on the problem.",
+    title: "Get a clear next step",
+    description: "Find out whether the problem fits a remote session, onsite visit, cleanup project, or another route.",
   },
   {
-    title: "Fix and hand over",
-    description: "Complete the agreed work, explain the important decisions, and provide clear next steps.",
+    title: "Fix it without surprises",
+    description: "Agree on scope and price first, then complete the work with clear explanations and next steps.",
   },
 ] as const;
 
 export const faqItems = [
   {
-    question: "Can you work with clients outside Israel?",
+    question: "Where do you provide service?",
     answer:
-      "Yes. Website, software, business-tool, workflow, and remote technology support are available worldwide.",
+      "Website, business-tool, workflow, software, and other remote technology help is available worldwide. Onsite visits and physical computer repairs are available by appointment in Carmei Gat and Kiryat Gat.",
   },
   {
-    question: "Where is physical computer repair available?",
+    question: "What if I cannot explain the problem properly?",
     answer:
-      "Physical computer repairs and upgrades are available by appointment in Carmei Gat and Kiryat Gat.",
+      "That is completely fine. Send a short description, screenshot, photo, or voice note. You do not need to diagnose the problem or know the technical terminology before getting in touch.",
   },
   {
-    question: "What tools can you help with?",
+    question: "What tools and problems can you help with?",
     answer:
-      "Common examples include websites, domains, business email, Google Workspace, forms, CRMs, Notion, Airtable, ClickUp, Monday, spreadsheets, Zapier, Make, cloud storage, and everyday computer software.",
+      "Common examples include Windows computers, SSD and RAM upgrades, Wi-Fi, printers, backups, file transfers, websites, domains, business email, Google Workspace, forms, CRMs, Notion, Airtable, Monday, spreadsheets, Zapier, Make, and cloud storage.",
+  },
+  {
+    question: "Will I know the price before you continue?",
+    answer:
+      "Yes. Quick Tech Rescue has a clear session price. Parts, paid software, extensive travel, or work beyond the agreed session are discussed and approved before I continue.",
   },
 ] as const;
 
 export const teamSizeOptions = ["Personal", "Just me", "2 to 5", "6 to 15", "16 plus"] as const;
 
 export const bottleneckOptions = [
-  "Website or online technology",
-  "Business tools or workflow",
-  "Remote personal tech help",
-  "Local computer repair or upgrade",
+  "Slow computer, repair, or upgrade",
+  "Wi-Fi, printer, backup, or device setup",
+  "Website, domain, form, or business email",
+  "Business tools, files, or workflow",
   "Ongoing technology support",
-  "Other",
+  "Something else",
 ] as const;

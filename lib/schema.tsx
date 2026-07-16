@@ -120,17 +120,17 @@ export function serviceSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${absoluteUrl("/offer")}#service`,
-    name: "Cohevo Business Cleanup",
-    serviceType: "Small business operations cleanup and implementation",
-    url: absoluteUrl("/offer"),
+    "@id": `${absoluteUrl("/")}#service`,
+    name: "Cohevo Practical Technology Help",
+    serviceType: "Computer, website, and small-business technology support",
+    url: absoluteUrl("/"),
     description:
-      "A 60-day engagement that helps small and medium businesses reduce owner dependence, clean up messy operations, and stop dropping important details.",
+      "Friendly, practical technology help for websites, business tools, workflows, software, and computers.",
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: "Worldwide",
     audience: {
-      "@type": "BusinessAudience",
-      audienceType: "Small and medium businesses with messy day-to-day operations",
+      "@type": "Audience",
+      audienceType: "Individuals and small businesses that need practical technology help",
     },
     hasOfferCatalog: offerCatalogSchema(),
   };
@@ -139,19 +139,19 @@ export function serviceSchema() {
 export function offerCatalogSchema() {
   return {
     "@type": "OfferCatalog",
-    name: "Cohevo business cleanup packages",
+    name: "Cohevo practical technology help",
     itemListElement: packages.map((item) => ({
       "@type": "Offer",
       name: item.name,
       description: item.description,
       price: item.price.replace(/[^0-9.]/g, ""),
-      priceCurrency: "USD",
+      priceCurrency: "ILS",
       availability: "https://schema.org/InStock",
-      url: absoluteUrl("/pricing"),
+      url: absoluteUrl("/#offers"),
       itemOffered: {
         "@type": "Service",
-        name: `${item.name} Business Cleanup`,
-        serviceType: "Small business operations cleanup and implementation",
+        name: item.name,
+        serviceType: "Practical technology help",
         provider: { "@id": `${siteConfig.url}/#organization` },
       },
     })),

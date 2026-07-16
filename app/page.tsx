@@ -1,9 +1,28 @@
+import {
+  ArrowRight,
+  Building2,
+  Check,
+  CheckCircle2,
+  Clock3,
+  HardDrive,
+  Laptop,
+  Mail,
+  MapPin,
+  MessageCircle,
+  MonitorCog,
+  ShieldCheck,
+  UserRound,
+  Wifi,
+  Wrench,
+} from "lucide-react";
+
+import { JsonLd, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
+import { faqItems, siteConfig } from "@/lib/site";
 import { submitContactForm } from "./contact/actions";
 
 const homepageDescription =
-  "Practical technology help for websites, business tools, workflows, and computers. Remote support worldwide, with local computer repair in Carmei Gat and Kiryat Gat.";
+  "Friendly, practical technology help for websites, business tools, workflows, software, and computers. Remote help worldwide, with physical service in Carmei Gat and Kiryat Gat.";
 
 export const metadata = buildMetadata({
   title: "Practical Technology Help",
@@ -13,289 +32,335 @@ export const metadata = buildMetadata({
   ogImageAlt: "Cohevo practical technology help",
 });
 
-const serviceItems = [
-  {
-    title: "Websites and online technology",
-    text: "Fix broken pages, forms, domains, email, analytics, integrations, hosting problems, and the small technical issues that keep getting postponed. Available remotely worldwide.",
-  },
-  {
-    title: "Business tools and workflows",
-    text: "Clean up scattered tools, confusing handoffs, lost follow-up, messy files, and processes that depend too heavily on one person. Available remotely worldwide.",
-  },
-  {
-    title: "Remote personal tech help",
-    text: "Get patient help with software, backups, file transfers, email, cloud storage, device setup, and everyday technology problems from anywhere.",
-  },
-  {
-    title: "Computer repair and upgrades",
-    text: "Slow computers, SSD and RAM upgrades, Windows problems, cleaning, backups, and file transfers. Physical service is available locally in Carmei Gat and Kiryat Gat.",
-  },
+const whatsAppUrl = siteConfig.whatsAppUrl;
+
+const homeProblems = [
+  { icon: MonitorCog, text: "A slow, unreliable, or newly purchased computer" },
+  { icon: Wifi, text: "Wi-Fi, printer, or home-office problems" },
+  { icon: HardDrive, text: "Backups, file transfers, storage, and setup" },
+  { icon: ShieldCheck, text: "Software problems, updates, and safer everyday use" },
 ] as const;
 
-const approachItems = [
-  "Start with the problem that is costing you time, money, or energy.",
-  "Choose the smallest useful format: a working session, a focused project, or ongoing support.",
-  "Fix what is in scope and explain every important decision clearly.",
-  "Leave you with a working result and practical next steps.",
+const businessProblems = [
+  { icon: Laptop, text: "A broken, outdated, or confusing website" },
+  { icon: Mail, text: "Business email, domains, forms, or booking systems" },
+  { icon: Building2, text: "Scattered files, duplicated tools, and lost follow-up" },
+  { icon: Wrench, text: "Small technical problems nobody has time to own" },
 ] as const;
 
-const packageItems = [
+const offers = [
   {
-    name: "Remote Tech Rescue",
-    price: "$150",
+    number: "01",
+    name: "Quick Tech Rescue",
+    label: "Best place to start",
     description:
-      "A focused 90-minute working session for one frustrating technology problem. We troubleshoot together and make as much progress as the session allows.",
-    includes: [
-      "Short pre-session intake",
-      "Up to 90 minutes of remote help",
-      "Hands-on troubleshooting and fixes",
-      "Clear written recap",
-      "Useful for websites, email, domains, forms, software, and business tools",
+      "A focused working session for one frustrating technology problem. We troubleshoot it together and make as much progress as the session allows.",
+    prices: [
+      { amount: "₪450", note: "remote" },
+      { amount: "₪600", note: "onsite" },
     ],
+    includes: [
+      "Up to 90 minutes of hands-on help",
+      "Clear explanation of what went wrong",
+      "Approval before any extra work or cost",
+      "Short written recap and next steps",
+    ],
+    featured: true,
   },
   {
-    name: "Website or Systems Cleanup",
-    price: "$750",
+    number: "02",
+    name: "Small Business Tech Cleanup",
+    label: "For a bigger mess",
     description:
-      "A focused project to review and improve one messy area, such as a website, lead flow, client process, file system, tool setup, or recurring workflow.",
+      "A focused review of your computers, website, email, files, forms, backups, and everyday workflow, followed by fixes to the three most important problems in the agreed scope.",
+    prices: [{ amount: "₪2,500", note: "starting at" }],
     includes: [
       "Current setup review",
-      "Prioritized fixes",
-      "Hands-on implementation within the agreed scope",
-      "Tool and workflow recommendations",
-      "Handover notes and next steps",
+      "Three priorities chosen with you",
+      "Hands-on fixes within scope",
+      "Practical handover notes",
     ],
+    featured: false,
   },
   {
-    name: "Ongoing Tech Support",
-    price: "$300/mo",
+    number: "03",
+    name: "Monthly Tech Care",
+    label: "For ongoing support",
     description:
-      "Reliable support for businesses that need a practical technology person available for questions, small fixes, and ongoing improvements.",
+      "A reliable technology person for small questions, routine checks, and the fixes that otherwise sit on your list for months.",
+    prices: [{ amount: "₪900", note: "per month" }],
     includes: [
-      "Two hours of remote support each month",
+      "Two hours of remote support",
       "Priority response during working hours",
-      "Small website and tool fixes",
-      "Basic website and domain monitoring",
-      "Monthly check-in and recommendations",
+      "Basic website, domain, and backup checks",
+      "Additional work quoted separately",
     ],
+    featured: false,
   },
 ] as const;
 
-const whatsAppUrl =
-  siteConfig.whatsAppUrl ||
-  "https://wa.me/972547870089?text=Hi%20David%2C%20I%20need%20help%20with%20a%20technology%20problem.";
-
-const contactOptions = [
+const steps = [
   {
-    href: whatsAppUrl,
-    icon: "💬",
-    title: "Message me on WhatsApp",
-    text: "Send a few words about what is going wrong.",
+    number: "1",
+    title: "Send the problem",
+    text: "A sentence, screenshot, photo, or voice note is enough. You do not need to know the technical name for it.",
   },
   {
-    href: `mailto:${siteConfig.contactEmail}?subject=Technology%20Help&body=Hi%20David%2C%0A%0AI%20need%20help%20with%3A%0A`,
-    icon: "✉️",
-    title: "Send an email",
-    text: siteConfig.contactEmail,
+    number: "2",
+    title: "Get a clear next step",
+    text: "I will tell you whether it fits a rescue session, onsite visit, cleanup project, or something outside my scope.",
   },
   {
-    href: "#form-section",
-    icon: "📋",
-    title: "Fill out the form",
-    text: "A short description is enough to get started.",
+    number: "3",
+    title: "Fix it without surprises",
+    text: "We agree on the scope and price first. If the problem is bigger than expected, I stop and explain the options.",
   },
 ] as const;
 
 export default function HomePage() {
   return (
     <>
-      <section className="clarity-ref-hero" id="top">
-        <div className="clarity-ref-hero-inner">
-          <span className="section-label">Cohevo Practical Technology Help</span>
-          <h1>
-            When technology gets <em>messy</em>, I help make it work.
-          </h1>
-          <p className="hero-sub">
-            Practical help with websites, business tools, workflows, software, and computers. Remote support is available worldwide. Physical computer repair is available in Carmei Gat and Kiryat Gat.
-          </p>
-          <div className="hero-proof-strip" aria-label="Service summary">
-            <span>Remote help worldwide</span>
-            <span>Clear scope and pricing</span>
-            <span>Local computer repair</span>
-          </div>
-          <div className="hero-actions">
-            <a href="#start" className="clarity-btn-primary">Tell Me the Problem</a>
-            <a href="#services" className="clarity-btn-secondary">See What I Help With</a>
-          </div>
-          <p className="hero-note">Start with the thing that is wasting the most time or causing the most frustration.</p>
-        </div>
-      </section>
+      <JsonLd data={faqSchema()} />
 
-      <section className="clarity-ref-section" id="services">
-        <div className="clarity-ref-container">
-          <span className="section-label">What I help with</span>
-          <h2>One place to bring the technology problems that keep getting in the way.</h2>
-          <div className="divider" />
-          <p>
-            Cohevo combines practical technical help with systems thinking. The work can be a small repair, a focused cleanup, or ongoing support.
-          </p>
+      <section className="rescue-hero" id="top">
+        <div className="rescue-shell rescue-hero-grid">
+          <div className="rescue-hero-copy">
+{/*            <div className="rescue-eyebrow">
+              <span className="rescue-status-dot" aria-hidden="true" />
+              Practical technology help
+            </div>*/}
+            <h1>
+              Technology problem?
+              <span>Let&apos;s get it working.</span>
+            </h1>
+            <p className="rescue-hero-lede">
+              Friendly, practical help with computers, Wi-Fi, websites, business email, backups, and confusing technology setups.
+            </p>
+            <div className="rescue-hero-actions">
+              <a className="rescue-button rescue-button-primary" href={whatsAppUrl}>
+                <MessageCircle aria-hidden="true" />
+                WhatsApp David
+                <ArrowRight aria-hidden="true" />
+              </a>
+              <a className="rescue-button rescue-button-secondary" href="#offers">
+                See prices
+              </a>
+            </div>
+            <ul className="rescue-proof-list" aria-label="Service availability">
+              <li><Check aria-hidden="true" /> Remote help worldwide</li>
+              <li><Check aria-hidden="true" /> Onsite in Carmei Gat and Kiryat Gat</li>
+              <li><Check aria-hidden="true" /> Price agreed before work begins</li>
+            </ul>
+          </div>
 
-          <div className="deliverables recap-deliverables">
-            {serviceItems.map((item) => (
-              <div className="deliverable" key={item.title}>
-                <h4>{item.title}</h4>
-                <p>{item.text}</p>
+          <div className="rescue-diagnostic" aria-label="Examples of technology problems Cohevo can help with">
+            <div className="rescue-diagnostic-topbar">
+              <span>COHEVO / TECH RESCUE</span>
+              <span className="rescue-live"><i aria-hidden="true" /> AVAILABLE</span>
+            </div>
+            <div className="rescue-diagnostic-body">
+              <p className="rescue-diagnostic-label">WHAT&apos;S NOT WORKING?</p>
+              <div className="rescue-issue-list">
+                <div><span>01</span><strong>My computer is painfully slow</strong></div>
+                <div><span>02</span><strong>The Wi-Fi or printer keeps dropping</strong></div>
+                <div><span>03</span><strong>Our website form is broken</strong></div>
+                <div><span>04</span><strong>Our files and tools are a mess</strong></div>
               </div>
-            ))}
+              <div className="rescue-diagnostic-footer">
+                <Wrench aria-hidden="true" />
+                <p><strong>You do not need to diagnose it first.</strong><br />Show me what is happening and we will start there.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="clarity-ref-section">
-        <div className="clarity-ref-container">
-          <span className="section-label">The approach</span>
-          <h2>Begin with a real problem and build the right-sized solution.</h2>
-          <div className="divider" />
-
-          <ul className="features-list">
-            {approachItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-
-          <div className="pivot-block">
-            <p>The goal is a useful result: a fixed problem, a cleaner setup, and less technology sitting in your head.</p>
-          </div>
+      <section className="rescue-problem-strip" aria-label="How to start">
+        <div className="rescue-shell">
+          <span>NOT SURE WHAT KIND OF HELP YOU NEED?</span>
+          <p>That is normal. Send the half-explained problem.</p>
+          <a href={whatsAppUrl}>Tell me what&apos;s happening <ArrowRight aria-hidden="true" /></a>
         </div>
       </section>
 
-      <section className="clarity-ref-section">
-        <div className="clarity-ref-container">
-          <span className="section-label">Who you work with</span>
-          <h2>You will be working directly with David Ehrentreu.</h2>
-          <div className="divider" />
-          <p>
-            I work across technology, websites, marketing systems, business operations, and hands-on computer support. My strength is understanding what is actually happening, explaining it plainly, and finding a practical way forward.
-          </p>
-          <div className="quote-block">
-            <p>You can bring me the half-explained problem. We will work out what it is and what should happen next.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="clarity-ref-section" id="offer">
-        <div className="clarity-ref-container">
-          <div className="centered-heading">
-            <span className="section-label">Remote services</span>
-            <h2>Choose the level of help that fits the problem.</h2>
-            <div className="divider" />
-            <p>Remote services are available to clients anywhere in the world. Prices are listed in USD.</p>
+      <section className="rescue-section" id="services">
+        <div className="rescue-shell">
+          <div className="rescue-section-intro">
+            <span className="rescue-kicker">Problems I can take off your plate</span>
+            <h2>One person for the technology that keeps getting in the way.</h2>
+            <p>Start with the problem you can see. If it points to a bigger setup issue, I will explain that without turning a small job into a sales pitch.</p>
           </div>
 
-          {packageItems.map((pkg) => (
-            <div className="pricing-card" key={pkg.name}>
-              <span className="pricing-label">Cohevo</span>
-              <div className="pricing-title">{pkg.name}</div>
-              <p>{pkg.description}</p>
-              <ul className="pricing-includes">
-                {pkg.includes.map((item) => (
-                  <li key={item}>{item}</li>
+          <div className="rescue-audience-grid">
+            <article className="rescue-audience-card">
+              <div className="rescue-audience-heading">
+                <UserRound aria-hidden="true" />
+                <div><span>FOR HOME</span><h3>Everyday technology help</h3></div>
+              </div>
+              <ul>
+                {homeProblems.map(({ icon: Icon, text }) => (
+                  <li key={text}><Icon aria-hidden="true" /><span>{text}</span></li>
                 ))}
               </ul>
-              <div className="pricing-price">
-                <div>
-                  <div className="price-intro">Starting at</div>
-                  <div className="price-line">
-                    <span className="price-amount">{pkg.price.replace("$", "")}</span>
-                    <span className="price-currency">USD</span>
-                  </div>
-                </div>
+            </article>
+
+            <article className="rescue-audience-card rescue-audience-card-dark">
+              <div className="rescue-audience-heading">
+                <Building2 aria-hidden="true" />
+                <div><span>FOR SMALL BUSINESS</span><h3>Technology and workflow help</h3></div>
               </div>
-              <a href="#start" className="clarity-btn-primary block">Ask About This Option</a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="clarity-ref-section" id="local-repair">
-        <div className="clarity-ref-container">
-          <span className="section-label">Local computer service</span>
-          <h2>Physical computer repair and upgrades in Carmei Gat and Kiryat Gat.</h2>
-          <div className="divider" />
-          <p>
-            Local service is available by appointment for laptops and desktop computers. Common jobs include slow-computer troubleshooting, SSD and RAM upgrades, Windows and software problems, internal cleaning, backups, and file transfers.
-          </p>
-
-          <div className="pivot-block">
-            <p>Diagnosis is ₪100 and is credited toward repairs over ₪250. Parts and paid software are separate. You receive the price for approval before work begins.</p>
+              <ul>
+                {businessProblems.map(({ icon: Icon, text }) => (
+                  <li key={text}><Icon aria-hidden="true" /><span>{text}</span></li>
+                ))}
+              </ul>
+            </article>
           </div>
         </div>
       </section>
 
-      <section className="contact-section" id="start">
-        <div className="clarity-ref-container">
-          <span className="section-label">How to start</span>
-          <h2>Tell me what is going wrong and what you need to be working instead.</h2>
-          <div className="divider" />
-          <p>You can describe it in your own words. Screenshots, links, and photos can come after the first message.</p>
+      <section className="rescue-section rescue-offers-section" id="offers">
+        <div className="rescue-shell">
+          <div className="rescue-offers-heading">
+            <div>
+              <span className="rescue-kicker">Three ways to work together</span>
+              <h2>Start small. Go bigger only when the problem calls for it.</h2>
+            </div>
+            <p>Clear starting prices in shekels. Parts, paid software, and extensive travel are separate.</p>
+          </div>
 
-          <div className="contact-options">
-            {contactOptions.map((option) => (
-              <a href={option.href} className="contact-option" key={option.title}>
-                <span className="contact-option-icon">{option.icon}</span>
-                <h4>{option.title}</h4>
-                <p>{option.text}</p>
-              </a>
+          <div className="rescue-offers-grid">
+            {offers.map((offer) => (
+              <article className={`rescue-offer-card${offer.featured ? " rescue-offer-card-featured" : ""}`} key={offer.name}>
+                <div className="rescue-offer-topline">
+                  <span>{offer.number}</span>
+                  <span>{offer.label}</span>
+                </div>
+                <h3>{offer.name}</h3>
+                <p className="rescue-offer-description">{offer.description}</p>
+                <div className="rescue-price-row">
+                  {offer.prices.map((price) => (
+                    <div className="rescue-price" key={`${offer.name}-${price.note}`}>
+                      <strong>{price.amount}</strong>
+                      <span>{price.note}</span>
+                    </div>
+                  ))}
+                </div>
+                <ul className="rescue-includes">
+                  {offer.includes.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}
+                </ul>
+                <a href={whatsAppUrl} className="rescue-offer-link">
+                  Ask about this option <ArrowRight aria-hidden="true" />
+                </a>
+              </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="contact-form" id="form-section">
-            <h3>Tell me about the problem</h3>
+      <section className="rescue-section rescue-process-section" id="process">
+        <div className="rescue-shell rescue-process-grid">
+          <div className="rescue-process-copy">
+            <span className="rescue-kicker">How it works</span>
+            <h2>You don&apos;t need to know what went wrong.</h2>
+            <p>You work directly with me, David. I ask questions, explain what I see in normal language, and focus on the smallest useful solution.</p>
+            <div className="rescue-person-card">
+              <div className="rescue-monogram" aria-hidden="true">DE</div>
+              <div>
+                <strong>David Ehrentreu</strong>
+                <span>Practical technology help</span>
+              </div>
+            </div>
+          </div>
+
+          <ol className="rescue-steps">
+            {steps.map((step) => (
+              <li key={step.number}>
+                <span>{step.number}</span>
+                <div><h3>{step.title}</h3><p>{step.text}</p></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="rescue-local-section" id="local">
+        <div className="rescue-shell rescue-local-grid">
+          <div>
+            <span className="rescue-kicker rescue-kicker-light">Local computer service</span>
+            <h2>Onsite repair and upgrades in Carmei Gat and Kiryat Gat.</h2>
+          </div>
+          <div className="rescue-local-details">
+            <div><MapPin aria-hidden="true" /><p><strong>Local by appointment</strong><span>Laptops, desktops, home offices, and small-business setups.</span></p></div>
+            <div><Clock3 aria-hidden="true" /><p><strong>Diagnosis: ₪100</strong><span>Credited toward repairs over ₪250. You approve the price before work begins.</span></p></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="rescue-section rescue-faq-section" id="faq">
+        <div className="rescue-shell rescue-faq-grid">
+          <div>
+            <span className="rescue-kicker">Before you message</span>
+            <h2>A few useful answers.</h2>
+          </div>
+          <div className="rescue-faq-list">
+            {faqItems.map((item, index) => (
+              <details key={item.question} open={index === 0}>
+                <summary>{item.question}<span aria-hidden="true">+</span></summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="rescue-contact-section" id="start">
+        <div className="rescue-shell rescue-contact-grid">
+          <div className="rescue-contact-copy">
+            <span className="rescue-kicker rescue-kicker-light">Start here</span>
+            <h2>Tell me what is frustrating you.</h2>
+            <p>You do not need a polished explanation. Send a few words about what is happening and what you need to work again.</p>
+            <a className="rescue-button rescue-button-lime" href={whatsAppUrl}>
+              <MessageCircle aria-hidden="true" /> WhatsApp 054-787-0089 <ArrowRight aria-hidden="true" />
+            </a>
+            <a className="rescue-email-link" href={`mailto:${siteConfig.contactEmail}`}>
+              Or email {siteConfig.contactEmail}
+            </a>
+            <div className="rescue-response-note">
+              <span className="rescue-status-dot" aria-hidden="true" />
+              I will reply with the most sensible next step, even if that means the job is not a fit.
+            </div>
+          </div>
+
+          <div className="rescue-form-card" id="form-section">
+            <div className="rescue-form-heading">
+              <span>SHORT CONTACT FORM</span>
+              <p>A short description is enough.</p>
+            </div>
             <form action={submitContactForm}>
-              <div
-                aria-hidden="true"
-                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
-              >
+              <div className="rescue-honeypot" aria-hidden="true">
                 <label htmlFor="website">Website</label>
                 <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
               </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
-                  <input id="name" name="name" type="text" placeholder="What should I call you?" autoComplete="name" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input id="email" name="email" type="email" placeholder="How to reach you" autoComplete="email" required />
-                </div>
+              <div className="rescue-form-row">
+                <label>Your name<input name="name" type="text" autoComplete="name" required /></label>
+                <label>Email<input name="email" type="email" autoComplete="email" required /></label>
               </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="company">Business / Company</label>
-                  <input id="company" name="company" type="text" placeholder="Optional" autoComplete="organization" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="teamSize">Team / Situation</label>
-                  <input id="teamSize" name="teamSize" type="text" placeholder="Personal, solo business, small team..." />
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="bottleneck">What kind of help do you need?</label>
-                <select id="bottleneck" name="bottleneck" defaultValue="" required>
-                  <option value="" disabled>Choose one</option>
-                  <option>Website or online technology</option>
-                  <option>Business tools or workflow</option>
-                  <option>Remote personal tech help</option>
-                  <option>Local computer repair or upgrade</option>
+              <label>Business name <span>(optional)</span><input name="company" type="text" autoComplete="organization" /></label>
+              <label>
+                What do you need help with?
+                <select name="bottleneck" defaultValue="" required>
+                  <option value="" disabled>Choose the closest option</option>
+                  <option>Slow computer, repair, or upgrade</option>
+                  <option>Wi-Fi, printer, backup, or device setup</option>
+                  <option>Website, domain, form, or business email</option>
+                  <option>Business tools, files, or workflow</option>
                   <option>Ongoing technology support</option>
                   <option>Something else</option>
                 </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">What is happening?</label>
-                <textarea id="message" name="message" placeholder="Describe the problem, what you have tried, and what you need to be working." required />
-              </div>
-              <button type="submit" className="form-submit">Send Message</button>
+              </label>
+              <label>What is happening?<textarea name="message" rows={5} placeholder="For example: Our office printer keeps disconnecting, or our website form stopped sending emails..." required /></label>
+              <button type="submit" className="rescue-form-submit">Send the problem <ArrowRight aria-hidden="true" /></button>
             </form>
           </div>
         </div>

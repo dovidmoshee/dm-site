@@ -478,12 +478,12 @@ export async function submitContactForm(formData: FormData) {
       console.error(
         "Contact form delivery is not configured. Set SMTP_USER and SMTP_PASS, or configure Attio.",
       );
-      redirect("/contact?error=delivery-failed");
+      redirect("/?error=delivery-failed#start");
     }
 
     const persisted = await writeSubmissionToFile(submission);
     if (!persisted) {
-      redirect("/contact?error=delivery-failed");
+      redirect("/?error=delivery-failed#start");
     }
   } else {
     const deliveryTasks: Promise<void>[] = [];
@@ -503,10 +503,10 @@ export async function submitContactForm(formData: FormData) {
       console.error("Failed to deliver contact submission.", deliveries);
       const persisted = await writeSubmissionToFile(submission);
       if (!persisted) {
-        redirect("/contact?error=delivery-failed");
+        redirect("/?error=delivery-failed#start");
       }
 
-      redirect("/contact?error=delivery-failed");
+      redirect("/?error=delivery-failed#start");
     }
 
     for (const result of deliveries) {

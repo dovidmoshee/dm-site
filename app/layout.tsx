@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Cormorant_Garamond, DM_Mono, Instrument_Sans, Instrument_Serif, Inter } from "next/font/google";
+import { DM_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -8,6 +8,7 @@ import { JsonLd, organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
+import "./rescue.css";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -32,20 +33,6 @@ const dmMono = DM_Mono({
   variable: "--font-cohevo-mono",
 });
 
-const claritySerif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-clarity-serif",
-});
-
-const claritySans = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-  variable: "--font-clarity-sans",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -64,21 +51,6 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInitScript = `(() => {
-  try {
-    const key = "cohevo-theme-preference";
-    const legacyKey = "calibrate-theme-preference";
-    const stored = window.localStorage.getItem(key) ?? window.localStorage.getItem(legacyKey);
-    const preference =
-      stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
-    window.localStorage.setItem(key, preference);
-    window.localStorage.removeItem(legacyKey);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved = preference === "system" ? (prefersDark ? "dark" : "light") : preference;
-    document.documentElement.dataset.theme = resolved;
-    document.documentElement.dataset.themePreference = preference;
-  } catch {}
-})();`;
 
 export default function RootLayout({
   children,
@@ -88,11 +60,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${dmMono.variable} ${claritySerif.variable} ${claritySans.variable}`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${dmMono.variable}`}
       suppressHydrationWarning
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <GoogleTagManager gtmId="GTM-KJ8HDKJ" />
         <a href="#main-content" className="skip-link">

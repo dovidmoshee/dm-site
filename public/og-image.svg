@@ -1,21 +1,18 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#FAF7F2"/>
-  <circle cx="170" cy="80" r="260" fill="#EAF0EC"/>
-  <circle cx="1070" cy="570" r="260" fill="#F1E8DA"/>
-  <rect x="132" y="96" width="936" height="438" rx="10" fill="#F5F1EA" stroke="#E8E0D4" stroke-width="2"/>
-  <text x="600" y="172" text-anchor="middle" fill="#B8976A" font-family="Georgia, 'Times New Roman', serif" font-size="27" letter-spacing="8">
-    COHEVO BUSINESS SYSTEMS AUDIT
-  </text>
-  <text x="600" y="270" text-anchor="middle" fill="#2A2520" font-family="Georgia, 'Times New Roman', serif" font-size="70">
-    When the business feels tangled,
-  </text>
-  <text x="600" y="354" text-anchor="middle" fill="#3D5A4A" font-family="Georgia, 'Times New Roman', serif" font-size="70" font-style="italic">
-    look at the system.
-  </text>
-  <text x="600" y="430" text-anchor="middle" fill="#5A534A" font-family="Arial, sans-serif" font-size="29" font-weight="300">
-    A practical tool + workflow review with David Ehrentreu.
-  </text>
-  <text x="600" y="480" text-anchor="middle" fill="#5A534A" font-family="Arial, sans-serif" font-size="25" font-weight="300">
-    Bottlenecks • recommendations • clear next steps
-  </text>
+  <rect width="1200" height="630" fill="#F4F5EF"/>
+  <g opacity="0.58" stroke="#C8D0C7">
+    <path d="M0 52.5H1200M0 104.5H1200M0 156.5H1200M0 208.5H1200M0 260.5H1200M0 312.5H1200M0 364.5H1200M0 416.5H1200M0 468.5H1200M0 520.5H1200M0 572.5H1200"/>
+    <path d="M52.5 0V630M104.5 0V630M156.5 0V630M208.5 0V630M260.5 0V630M312.5 0V630M364.5 0V630M416.5 0V630M468.5 0V630M520.5 0V630M572.5 0V630M624.5 0V630M676.5 0V630M728.5 0V630M780.5 0V630M832.5 0V630M884.5 0V630M936.5 0V630M988.5 0V630M1040.5 0V630M1092.5 0V630M1144.5 0V630"/>
+  </g>
+  <rect x="70" y="62" width="1060" height="506" fill="#F4F5EF" stroke="#102019" stroke-width="2"/>
+  <rect x="70" y="62" width="20" height="506" fill="#C8FF00"/>
+  <circle cx="133" cy="118" r="8" fill="#55A26E"/>
+  <text x="158" y="126" fill="#31443A" font-family="monospace" font-size="18" letter-spacing="2">PRACTICAL TECHNOLOGY HELP</text>
+  <text x="126" y="250" fill="#102019" font-family="Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-4">Technology problem?</text>
+  <text x="126" y="336" fill="#416454" font-family="Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="-4">Let's get it working.</text>
+  <text x="130" y="414" fill="#31443A" font-family="Arial, sans-serif" font-size="28">Computers · Wi-Fi · websites · business email · backups</text>
+  <rect x="126" y="462" width="420" height="62" fill="#102019"/>
+  <text x="336" y="502" text-anchor="middle" fill="#FFFEF9" font-family="Arial, sans-serif" font-size="22" font-weight="700">COHEVO PRACTICAL TECH HELP</text>
+  <text x="1080" y="506" text-anchor="end" fill="#102019" font-family="monospace" font-size="18">REMOTE HELP WORLDWIDE</text>
+  <text x="1080" y="535" text-anchor="end" fill="#416454" font-family="monospace" font-size="16">PHYSICAL SERVICE: CARMEI GAT + KIRYAT GAT</text>
 </svg>
