@@ -13,7 +13,7 @@ export function ContactSubmitButton() {
       disabled={pending}
       aria-disabled={pending}
     >
-      <span>{pending ? "Sending…" : "Send the problem"}</span>
+      <span>{pending ? "Sending…" : "Send message"}</span>
       <ArrowRight aria-hidden="true" />
     </button>
   );

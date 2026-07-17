@@ -1,4 +1,4 @@
-import { faqItems, packages, processPhases, siteConfig, socialLinks } from "@/lib/site";
+import { packages, processPhases, siteConfig, socialLinks } from "@/lib/site";
 import type { BlogPost, BlogPostSummary } from "@/lib/blog";
 
 type JsonLdValue = Record<string, unknown> | Record<string, unknown>[];
@@ -121,11 +121,10 @@ export function serviceSchema() {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${absoluteUrl("/")}#service`,
-    name: "Cohevo Practical Technology Help",
-    serviceType: "Computer, website, and small-business technology support",
+    name: "Cohevo technology help",
+    serviceType: "Computer, website, and business technology help",
     url: absoluteUrl("/"),
-    description:
-      "Friendly, practical technology help for websites, business tools, workflows, software, and computers.",
+    description: siteConfig.description,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: "Worldwide",
     audience: {
@@ -163,22 +162,6 @@ export function pricingSchema() {
     "@context": "https://schema.org",
     ...offerCatalogSchema(),
     "@id": `${absoluteUrl("/pricing")}#offers`,
-  };
-}
-
-export function faqSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${absoluteUrl("/faq")}#faq`,
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
   };
 }
 

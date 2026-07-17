@@ -16,14 +16,13 @@ import {
   Wrench,
 } from "lucide-react";
 
-import { JsonLd, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { faqItems, siteConfig } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 import { ContactSubmitButton } from "@/components/contact-submit-button";
 import { submitContactForm } from "./contact/actions";
 
 const homepageDescription =
-  "Friendly, practical technology help for websites, business tools, workflows, software, and computers. Remote help worldwide, with physical service in Carmei Gat and Kiryat Gat.";
+  "Straightforward help with computers, websites, email, business tools, and other tech that isn't working. Remote help worldwide, with repairs in Carmei Gat and Kiryat Gat.";
 
 export const metadata = buildMetadata({
   title: "Practical Technology Help",
@@ -41,65 +40,54 @@ type HomePageProps = {
 
 const formErrorMessages: Record<string, string> = {
   "missing-fields": "Please fill in your name, email, help category, and a short description.",
-  "invalid-email": "That email address does not look right. Please check it and try again.",
+  "invalid-email": "That email address doesn't look right. Please check it and try again.",
   "invalid-details": "One of the entries is too long. Please shorten it and try again.",
-  "delivery-failed": "I could not send the form. Please try again, use WhatsApp, or email hi@cohevo.co.",
+  "delivery-failed": "I couldn't send the form. Please try again, use WhatsApp, or email hi@cohevo.co.",
 };
 
 const homeProblems = [
-  { icon: MonitorCog, text: "A slow, unreliable, or newly purchased computer" },
-  { icon: Wifi, text: "Wi-Fi, printer, or home-office problems" },
-  { icon: HardDrive, text: "Backups, file transfers, storage, and setup" },
-  { icon: ShieldCheck, text: "Software problems, updates, and safer everyday use" },
+  { icon: MonitorCog, text: "Slow computers and new computer setup" },
+  { icon: Wifi, text: "Wi-Fi, printers, and home office problems" },
+  { icon: HardDrive, text: "Backups, file transfers, and storage" },
+  { icon: ShieldCheck, text: "Software problems and updates" },
 ] as const;
 
 const businessProblems = [
-  { icon: Laptop, text: "A broken, outdated, or confusing website" },
-  { icon: Mail, text: "Business email, domains, forms, or booking systems" },
-  { icon: Building2, text: "Scattered files, duplicated tools, and lost follow-up" },
-  { icon: Wrench, text: "Small technical problems nobody has time to own" },
+  { icon: Laptop, text: "Websites that are broken, outdated, or hard to manage" },
+  { icon: Mail, text: "Email, domains, forms, and booking systems" },
+  { icon: Building2, text: "Files, business tools, and messy workflows" },
+  { icon: Wrench, text: "CRM, spreadsheet, and automation setup" },
 ] as const;
 
 const offers = [
   {
-    number: "01",
     name: "Quick Tech Rescue",
-    label: "Best place to start",
-    description:
-      "A focused working session for one frustrating technology problem. We troubleshoot it together and make as much progress as the session allows.",
+    description: "One problem, up to 90 minutes. We'll work on it together and get as far as we can.",
     prices: [
       { amount: "₪450", note: "remote" },
       { amount: "₪600", note: "onsite" },
     ],
     includes: [
-      "Up to 90 minutes of hands-on help",
-      "Clear explanation of what went wrong",
-      "Approval before any extra work or cost",
-      "Short written recap and next steps",
+      "Hands-on help",
+      "A clear explanation",
+      "A short recap with next steps",
     ],
     featured: true,
   },
   {
-    number: "02",
     name: "Small Business Tech Cleanup",
-    label: "For a bigger mess",
-    description:
-      "A focused review of your computers, website, email, files, forms, backups, and everyday workflow, followed by fixes to the three most important problems in the agreed scope.",
+    description: "We'll go through the tech that's slowing your business down and fix the three biggest issues we agree on.",
     prices: [{ amount: "₪2,500", note: "starting at" }],
     includes: [
-      "Current setup review",
-      "Three priorities chosen with you",
-      "Hands-on fixes within scope",
-      "Practical handover notes",
+      "A review of your current setup",
+      "Three priorities we'll choose together",
+      "Fixes and simple handover notes",
     ],
     featured: false,
   },
   {
-    number: "03",
     name: "Monthly Tech Care",
-    label: "For ongoing support",
-    description:
-      "A reliable technology person for small questions, routine checks, and the fixes that otherwise sit on your list for months.",
+    description: "For small questions, routine checks, and tech jobs that keep sitting on your list.",
     prices: [{ amount: "₪900", note: "per month" }],
     includes: [
       "Two hours of remote support",
@@ -114,18 +102,18 @@ const offers = [
 const steps = [
   {
     number: "1",
-    title: "Send the problem",
-    text: "A sentence, screenshot, photo, or voice note is enough. You do not need to know the technical name for it.",
+    title: "Send me what's happening",
+    text: "A message, photo, screenshot, or voice note is fine.",
   },
   {
     number: "2",
-    title: "Get a clear next step",
-    text: "I will tell you whether it fits a rescue session, onsite visit, cleanup project, or something outside my scope.",
+    title: "I'll tell you what I'd do",
+    text: "You'll get a clear price before I start.",
   },
   {
     number: "3",
-    title: "Fix it without surprises",
-    text: "We agree on the scope and price first. If the problem is bigger than expected, I stop and explain the options.",
+    title: "We'll get to work",
+    text: "If anything changes, I'll check with you first.",
   },
 ] as const;
 
@@ -137,17 +125,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
-      <JsonLd data={faqSchema()} />
-
       <section className="rescue-hero" id="top">
         <div className="rescue-shell rescue-hero-grid">
           <div className="rescue-hero-copy">
             <h1>
-              Technology problem?
-              <span>Let&apos;s get it working.</span>
+              Something&apos;s not working?
+              <span>I&apos;ll help you fix it.</span>
             </h1>
             <p className="rescue-hero-lede">
-              Friendly, practical help with computers, Wi-Fi, websites, business email, backups, and confusing technology setups.
+              Computers, Wi-Fi, websites, email, business tools, and other tech that&apos;s wasting your time.
             </p>
             <div className="rescue-hero-actions">
               <a className="rescue-button rescue-button-primary" href={whatsAppUrl}>
@@ -162,52 +148,23 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <ul className="rescue-proof-list" aria-label="Service availability">
               <li><Check aria-hidden="true" /> Remote help worldwide</li>
               <li><Check aria-hidden="true" /> Onsite in Carmei Gat and Kiryat Gat</li>
-              <li><Check aria-hidden="true" /> Price agreed before work begins</li>
             </ul>
           </div>
 
-          <div className="rescue-diagnostic" aria-label="Examples of technology problems Cohevo can help with">
-            <div className="rescue-diagnostic-topbar">
-              <span>COHEVO / TECH RESCUE</span>
-              <span className="rescue-live"><i aria-hidden="true" /> AVAILABLE</span>
-            </div>
-            <div className="rescue-diagnostic-body">
-              <p className="rescue-diagnostic-label">WHAT&apos;S NOT WORKING?</p>
-              <div className="rescue-issue-list">
-                <div><span>01</span><strong>My computer is painfully slow</strong></div>
-                <div><span>02</span><strong>The Wi-Fi or printer keeps dropping</strong></div>
-                <div><span>03</span><strong>Our website form is broken</strong></div>
-                <div><span>04</span><strong>Our files and tools are a mess</strong></div>
-              </div>
-              <div className="rescue-diagnostic-footer">
-                <Wrench aria-hidden="true" />
-                <p><strong>You do not need to diagnose it first.</strong><br />Show me what is happening and we will start there.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="rescue-problem-strip" aria-label="How to start">
-        <div className="rescue-shell">
-          <span>NOT SURE WHAT KIND OF HELP YOU NEED?</span>
-          <p>That is completely fine. Send whatever you know so far.</p>
-          <a href={whatsAppUrl}>Tell me what&apos;s happening <ArrowRight aria-hidden="true" /></a>
         </div>
       </section>
 
       <section className="rescue-section" id="services">
         <div className="rescue-shell">
           <div className="rescue-section-intro">
-            <h2>One person for the technology that keeps getting in the way.</h2>
-            <p>Start with the problem you can see. If it points to a bigger setup issue, I will explain that without turning a small job into a sales pitch.</p>
+            <h2>What I can help with</h2>
           </div>
 
           <div className="rescue-audience-grid">
             <article className="rescue-audience-card">
               <div className="rescue-audience-heading">
                 <UserRound aria-hidden="true" />
-                <div><span>FOR HOME</span><h3>Everyday technology help</h3></div>
+                <div><h3>At home</h3></div>
               </div>
               <ul>
                 {homeProblems.map(({ icon: Icon, text }) => (
@@ -219,7 +176,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <article className="rescue-audience-card rescue-audience-card-dark">
               <div className="rescue-audience-heading">
                 <Building2 aria-hidden="true" />
-                <div><span>FOR SMALL BUSINESS</span><h3>Technology and workflow help</h3></div>
+                <div><h3>For your business</h3></div>
               </div>
               <ul>
                 {businessProblems.map(({ icon: Icon, text }) => (
@@ -235,18 +192,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         <div className="rescue-shell">
           <div className="rescue-offers-heading">
             <div>
-              <h2>Start small. Go bigger only when the problem calls for it.</h2>
+              <h2>Ways to get help</h2>
             </div>
-            <p>Clear starting prices in shekels. Parts, paid software, and extensive travel are separate.</p>
+            <p>Parts, paid software, and long-distance travel cost extra.</p>
           </div>
 
           <div className="rescue-offers-grid">
             {offers.map((offer) => (
               <article className={`rescue-offer-card${offer.featured ? " rescue-offer-card-featured" : ""}`} key={offer.name}>
-                <div className="rescue-offer-topline">
-                  <span>{offer.number}</span>
-                  <span>{offer.label}</span>
-                </div>
                 <h3>{offer.name}</h3>
                 <p className="rescue-offer-description">{offer.description}</p>
                 <div className="rescue-price-row">
@@ -261,7 +214,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   {offer.includes.map((item) => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}
                 </ul>
                 <a href={whatsAppUrl} className="rescue-offer-link">
-                  Ask about this option <ArrowRight aria-hidden="true" />
+                  Message me about this <ArrowRight aria-hidden="true" />
                 </a>
               </article>
             ))}
@@ -272,14 +225,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <section className="rescue-section rescue-process-section" id="process">
         <div className="rescue-shell rescue-process-grid">
           <div className="rescue-process-copy">
-            <span className="rescue-kicker">How it works</span>
-            <h2>You don&apos;t need to know what went wrong.</h2>
-            <p>You work directly with me, David. I ask questions, explain what I see in plain language, and focus on the smallest useful solution.</p>
+            <h2>Here&apos;s how it works</h2>
+            <p>You&apos;ll deal with me, David, from start to finish.</p>
             <div className="rescue-person-card">
               <div className="rescue-monogram" aria-hidden="true">DE</div>
               <div>
                 <strong>David Ehrentreu</strong>
-                <span>Practical technology help</span>
+                <span>Cohevo</span>
               </div>
             </div>
           </div>
@@ -298,28 +250,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <section className="rescue-local-section" id="local">
         <div className="rescue-shell rescue-local-grid">
           <div>
-            <span className="rescue-kicker rescue-kicker-light">Local computer service</span>
-            <h2>Onsite repair and upgrades in Carmei Gat and Kiryat Gat.</h2>
+            <h2>Computer repairs in Carmei Gat and Kiryat Gat</h2>
           </div>
           <div className="rescue-local-details">
-            <div><MapPin aria-hidden="true" /><p><strong>Local by appointment</strong><span>Laptops, desktops, home offices, and small-business setups.</span></p></div>
-            <div><Clock3 aria-hidden="true" /><p><strong>Diagnosis: ₪100</strong><span>Credited toward repairs over ₪250. You approve the price before work begins.</span></p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="rescue-section rescue-faq-section" id="faq">
-        <div className="rescue-shell rescue-faq-grid">
-          <div>
-            <h2>A few useful answers.</h2>
-          </div>
-          <div className="rescue-faq-list">
-            {faqItems.map((item, index) => (
-              <details key={item.question} open={index === 0}>
-                <summary>{item.question}<span aria-hidden="true">+</span></summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
+            <div><MapPin aria-hidden="true" /><p><strong>By appointment</strong><span>Laptops, desktops, home offices, and small-business setups.</span></p></div>
+            <div><Clock3 aria-hidden="true" /><p><strong>Diagnosis: ₪100</strong><span>I&apos;ll deduct it from repairs over ₪250.</span></p></div>
           </div>
         </div>
       </section>
@@ -327,26 +262,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <section className="rescue-contact-section" id="start">
         <div className="rescue-shell rescue-contact-grid">
           <div className="rescue-contact-copy">
-            <span className="rescue-kicker rescue-kicker-light">Start here</span>
-            <h2>Tell me what is frustrating you.</h2>
-            <p>You do not need a polished explanation. Tell me what is happening and what you want to get working again.</p>
+            <h2>What&apos;s going wrong?</h2>
+            <p>WhatsApp me or use the form. A few lines or a voice note is plenty.</p>
             <a className="rescue-button rescue-button-lime" href={whatsAppUrl}>
               <MessageCircle aria-hidden="true" /> WhatsApp 054-787-0089 <ArrowRight aria-hidden="true" />
             </a>
             <a className="rescue-email-link" href={`mailto:${siteConfig.contactEmail}`}>
               Or email {siteConfig.contactEmail}
             </a>
-            <div className="rescue-response-note">
-              <span className="rescue-status-dot" aria-hidden="true" />
-              I will reply with the most sensible next step, even if that means the job is not a fit.
-            </div>
           </div>
 
           <div className="rescue-form-card" id="form-section">
-            <div className="rescue-form-heading">
-              <span>SHORT CONTACT FORM</span>
-              <p>A short description is enough.</p>
-            </div>
             {formError ? (
               <div className="rescue-form-error" id="form-error" role="alert">
                 {formError}
@@ -374,7 +300,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                   <option>Something else</option>
                 </select>
               </label>
-              <label>What is happening?<textarea name="message" rows={5} maxLength={3000} placeholder="For example: Our office printer keeps disconnecting, or our website form stopped sending emails…" required /></label>
+              <label>What&apos;s happening?<textarea name="message" rows={5} maxLength={3000} placeholder="For example: our printer keeps disconnecting, or our website form stopped sending emails…" required /></label>
               <ContactSubmitButton />
             </form>
           </div>

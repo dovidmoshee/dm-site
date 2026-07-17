@@ -6,8 +6,8 @@ import { JsonLd, pageSchemas } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Message Received",
-  description: "Your technology-help message has been received.",
+  title: "Thanks, I've got your message",
+  description: "Thanks for getting in touch with Cohevo.",
   path: "/thank-you",
   noIndex: true,
   ogImage: siteConfig.ogImages.splitLime,
@@ -20,16 +20,15 @@ export default function ThankYouPage() {
       <JsonLd
         data={pageSchemas({
           path: "/thank-you",
-          title: "Message Received",
-          description: "Your technology-help message has been received.",
+          title: "Thanks, I've got your message",
+          description: "Thanks for getting in touch with Cohevo.",
         })}
       />
       <section className="rescue-thankyou">
         <div className="rescue-thankyou-card">
           <div className="rescue-thankyou-icon"><Check aria-hidden="true" /></div>
-          <span className="rescue-kicker">Message received</span>
-          <h1>Thanks. I&apos;ll take a look.</h1>
-          <p>I will review what you sent and reply with the most sensible next step, whether that is a remote session, onsite visit, focused cleanup, or something outside my scope.</p>
+          <h1>Thanks, I&apos;ve got it.</h1>
+          <p>I&apos;ll read through your message and get back to you. If I need anything else, I&apos;ll ask.</p>
           <div className="rescue-thankyou-actions">
             <Link className="rescue-button rescue-button-primary" href="/">
               <ArrowLeft aria-hidden="true" /> Back to home

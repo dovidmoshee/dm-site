@@ -23,9 +23,9 @@ const defaultWhatsAppUrl =
 
 export const siteConfig = {
   name: "Cohevo",
-  tagLine: "Technology problem? Let's get it working.",
+  tagLine: "Something's not working? I'll help you fix it.",
   description:
-    "Friendly, practical technology help for websites, business tools, workflows, software, and computers. Remote help worldwide, with physical service in Carmei Gat and Kiryat Gat.",
+    "Straightforward help with computers, websites, email, business tools, and other tech that isn't working. Remote help worldwide, with repairs in Carmei Gat and Kiryat Gat.",
   url: siteUrl,
   ogImage: "/og-image.png",
   ogImages: {
@@ -49,55 +49,32 @@ export const packages = [
   {
     name: "Quick Tech Rescue",
     price: "₪450",
-    description: "Up to 90 minutes of focused remote troubleshooting and hands-on help.",
+    description: "Up to 90 minutes of hands-on remote help with one problem.",
   },
   {
     name: "Small Business Tech Cleanup",
     price: "₪2,500",
-    description: "A focused review and fixes for the three most important technology problems in the agreed scope.",
+    description: "A review of your setup and fixes for the three biggest problems we agree on.",
   },
   {
     name: "Monthly Tech Care",
     price: "₪900/mo",
-    description: "Reliable ongoing remote support, routine checks, and small practical fixes.",
+    description: "Remote help for small questions, routine checks, and jobs that keep getting put off.",
   },
 ] as const;
 
 export const processPhases = [
   {
-    title: "Send the problem",
-    description: "A sentence, screenshot, photo, or voice note is enough to begin.",
+    title: "Send me what's happening",
+    description: "A message, screenshot, photo, or voice note is fine.",
   },
   {
-    title: "Get a clear next step",
-    description: "Find out whether the problem fits a remote session, onsite visit, cleanup project, or another route.",
+    title: "I'll tell you what I'd do",
+    description: "You'll get a clear price before I start.",
   },
   {
-    title: "Fix it without surprises",
-    description: "Agree on scope and price first, then complete the work with clear explanations and next steps.",
-  },
-] as const;
-
-export const faqItems = [
-  {
-    question: "Where do you provide service?",
-    answer:
-      "Website, business-tool, workflow, software, and other remote technology help is available worldwide. Onsite visits and physical computer repairs are available by appointment in Carmei Gat and Kiryat Gat.",
-  },
-  {
-    question: "What if I cannot explain the problem properly?",
-    answer:
-      "That is completely fine. Send a short description, screenshot, photo, or voice note. You do not need to diagnose the problem or know the technical terminology before getting in touch.",
-  },
-  {
-    question: "What tools and problems can you help with?",
-    answer:
-      "Common examples include Windows computers, SSD and RAM upgrades, Wi-Fi, printers, backups, file transfers, websites, domains, business email, Google Workspace, forms, CRMs, Notion, Airtable, Monday, spreadsheets, Zapier, Make, and cloud storage.",
-  },
-  {
-    question: "Will I know the price before you continue?",
-    answer:
-      "Yes. Quick Tech Rescue has a clear session price. Parts, paid software, extensive travel, or work beyond the agreed session are discussed and approved before I continue.",
+    title: "We'll get to work",
+    description: "If anything changes, I'll check with you first.",
   },
 ] as const;
 

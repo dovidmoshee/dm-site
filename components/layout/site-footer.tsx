@@ -11,7 +11,7 @@ export function SiteFooter() {
       <div className="rescue-shell rescue-footer-grid">
         <div>
           <Image src="/cohevo-logo-dark.svg" alt="Cohevo" width={140} height={30} className="rescue-footer-logo" loading="eager" />
-          <p>Friendly, practical technology help for websites, business tools, workflows, software, and computers.</p>
+          <p>I help with computers, websites, email, and business tools.</p>
         </div>
         <div className="rescue-footer-links">
           <Link href="/#services">What I fix</Link>
@@ -23,7 +23,7 @@ export function SiteFooter() {
       </div>
       <div className="rescue-shell rescue-footer-bottom">
         <small>© {currentYear} Cohevo</small>
-        <small>Remote worldwide · Physical service in Carmei Gat and Kiryat Gat</small>
+        <small>Remote worldwide · Repairs in Carmei Gat and Kiryat Gat</small>
       </div>
     </footer>
   );
